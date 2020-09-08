@@ -807,6 +807,7 @@ blockquote {
   margin-right: auto;
   border-radius: 50%;
   background-color: #fff;
+  background-image: url("../../assets/tree_small.jpg");
   background-size: 100%;
 }
 .Btn {
