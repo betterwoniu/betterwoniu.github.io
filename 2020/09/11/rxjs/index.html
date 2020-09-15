@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <meta name="author" content="Lbn">
+
+
+
+
+
+<title>rxjs | </title>
+
+
+
+    <link rel="icon" href="/favicon.ico">
+
+
+
+
+    <!-- stylesheets list from _config.yml -->
+    
+    <link rel="stylesheet" href="/css/style.css">
+    
+
+
+
+    <!-- scripts list from _config.yml -->
+    
+    <script src="/js/script.js"></script>
+    
+    <script src="/js/tocbot.min.js"></script>
+    
+
+
+
+    
+    
+        
+    
+
+
+<meta name="generator" content="Hexo 5.1.1"></head>
+<body>
+    <div class="wrapper">
+        <header>
+    <nav class="navbar">
+        <div class="container">
+            <div class="navbar-header header-logo"><a href="/">Bentham&#39;s Blog</a></div>
+            <div class="menu navbar-right">
+                
+                    <a class="menu-item" href="/">Home</a>
+                
+                    <a class="menu-item" href="/archives/">Archive</a>
+                
+                    <a class="menu-item" href="/tag/">Tags</a>
+                
+                    <a class="menu-item" href="/category/">Categories</a>
+                
+                    <a class="menu-item" href="/about/">About</a>
+                
+                <input id="switch_default" type="checkbox" class="switch_default">
+                <label for="switch_default" class="toggleBtn"></label>
+            </div>
+        </div>
+    </nav>
+
+    
+    <nav class="navbar-mobile" id="nav-mobile">
+        <div class="container">
+            <div class="navbar-header">
+                <div>
+                    <a href="/">Bentham&#39;s Blog</a><a id="mobile-toggle-theme">·&nbsp;Light</a>
+                </div>
+                <div class="menu-toggle" onclick="mobileBtn()">&#9776; Menu</div>
+            </div>
+            <div class="menu" id="mobile-menu">
+                
+                    <a class="menu-item" href="/">Home</a>
+                
+                    <a class="menu-item" href="/archives/">Archive</a>
+                
+                    <a class="menu-item" href="/tag/">Tags</a>
+                
+                    <a class="menu-item" href="/category/">Categories</a>
+                
+                    <a class="menu-item" href="/about/">About</a>
+                
+            </div>
+        </div>
+    </nav>
+
+</header>
+<script>
+    var mobileBtn = function f() {
+        var toggleMenu = document.getElementsByClassName("menu-toggle")[0];
+        var mobileMenu = document.getElementById("mobile-menu");
+        if(toggleMenu.classList.contains("active")){
+           toggleMenu.classList.remove("active")
+            mobileMenu.classList.remove("active")
+        }else{
+            toggleMenu.classList.add("active")
+            mobileMenu.classList.add("active")
+        }
+    }
+</script>
+        <div class="main">
+            <div class="container">
+    
+    
+        <div class="post-toc">
+    <div class="tocbot-list">
+    </div>
+    <div class="tocbot-list-menu">
+        <a class="tocbot-toc-expand" onclick="expand_toc()">Expand all</a>
+        <a onclick="go_top()">Back to top</a>
+        <a onclick="go_bottom()">Go to bottom</a>
+    </div>
+</div>
+
+<script>
+    document.ready(
+        function () {
+            tocbot.init({
+                tocSelector: '.tocbot-list',
+                contentSelector: '.post-content',
+                headingSelector: 'h1, h2, h3, h4, h5',
+                collapseDepth: 1,
+                orderedList: false,
+                scrollSmooth: true,
+            })
+        }
+    )
+
+    function expand_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 6,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "collapse_toc()");
+        b.innerHTML = "Collapse all"
+    }
+
+    function collapse_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 1,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "expand_toc()");
+        b.innerHTML = "Expand all"
+    }
+
+    function go_top() {
+        window.scrollTo(0, 0);
+    }
+
+    function go_bottom() {
+        window.scrollTo(0, document.body.scrollHeight);
+    }
+
+</script>
+    
+
+    
+    <article class="post-wrap">
+        <header class="post-header">
+            <h1 class="post-title">rxjs</h1>
+            
+                <div class="post-meta">
+                    
+                        Author: <a itemprop="author" rel="author" href="/">Lbn</a>
+                    
+
+                    
+                        <span class="post-time">
+                        Date: <a href="#">September 11, 2020&nbsp;&nbsp;10:40:51</a>
+                        </span>
+                    
+                    
+                        <span class="post-category">
+                    Category:
+                            
+                                <a href="/categories/javascript/">javascript</a>
+                            
+                                <a href="/categories/javascript/rxjs/">rxjs</a>
+                            
+                        </span>
+                    
+                </div>
+            
+        </header>
+
+        <div class="post-content">
+            <h3 id="Rxjs-note"><a href="#Rxjs-note" class="headerlink" title="Rxjs note"></a>Rxjs note</h3><h4 id="Rxjs-是一个库，它通过使用observable序列来编写异步和基于事件的程序。它提供了一个核心类型Observable-附属类型（-Obsever、Schedules、Subjects）和受-Array-extras-启发的操作符（map、filter、reduce、every）-这些数组操作符可以把异步事件作为集合来处理。结合了观察者模式、迭代器模式和使用集合的函数式编程，以满足以一种理想方式来管理事件序列所需要的一切。"><a href="#Rxjs-是一个库，它通过使用observable序列来编写异步和基于事件的程序。它提供了一个核心类型Observable-附属类型（-Obsever、Schedules、Subjects）和受-Array-extras-启发的操作符（map、filter、reduce、every）-这些数组操作符可以把异步事件作为集合来处理。结合了观察者模式、迭代器模式和使用集合的函数式编程，以满足以一种理想方式来管理事件序列所需要的一切。" class="headerlink" title="Rxjs 是一个库，它通过使用observable序列来编写异步和基于事件的程序。它提供了一个核心类型Observable,附属类型（ Obsever、Schedules、Subjects）和受[Array#extras]启发的操作符（map、filter、reduce、every）,这些数组操作符可以把异步事件作为集合来处理。结合了观察者模式、迭代器模式和使用集合的函数式编程，以满足以一种理想方式来管理事件序列所需要的一切。"></a><code>Rxjs</code> 是一个库，它通过使用<code>observable</code>序列来编写异步和基于事件的程序。它提供了一个核心类型<code>Observable</code>,附属类型（<code> Obsever、Schedules、Subjects</code>）和受<code>[Array#extras]</code>启发的操作符（<code>map、filter、reduce、every</code>）,这些数组操作符可以把异步事件作为集合来处理。结合了观察者模式、迭代器模式和使用集合的函数式编程，以满足以一种理想方式来管理事件序列所需要的一切。</h4><h4 id="在Rxjs用来解决异步事件管理的基本概念："><a href="#在Rxjs用来解决异步事件管理的基本概念：" class="headerlink" title="在Rxjs用来解决异步事件管理的基本概念："></a>在Rxjs用来解决异步事件管理的基本概念：</h4><h3 id="1-Observable-可观察对象-：表示一个概念，这个概念是一个可调用的未来值或事件的集合。"><a href="#1-Observable-可观察对象-：表示一个概念，这个概念是一个可调用的未来值或事件的集合。" class="headerlink" title="1.Observable(可观察对象)：表示一个概念，这个概念是一个可调用的未来值或事件的集合。"></a>1.<code>Observable</code>(可观察对象)：表示一个概念，这个概念是一个可调用的未来值或事件的集合。</h3><h4 id="Observable-是使用Rx-Observable-create或创建操作符创建的-并使用观察者（observer）观察它-然后它发送next-error-complete-通知观察者。"><a href="#Observable-是使用Rx-Observable-create或创建操作符创建的-并使用观察者（observer）观察它-然后它发送next-error-complete-通知观察者。" class="headerlink" title="Observable 是使用Rx.Observable.create或创建操作符创建的,并使用观察者（observer）观察它.然后它发送next/error/complete 通知观察者。"></a><code>Observable</code> 是使用<code>Rx.Observable.create</code>或创建操作符创建的,并使用观察者（<code>observer</code>）观察它.然后它发送<code>next/error/complete</code> 通知观察者。</h4><h4 id="创建Observable的方式："><a href="#创建Observable的方式：" class="headerlink" title="创建Observable的方式："></a>创建<code>Observable</code>的方式：</h4><ol>
+<li>create(subscribe: function)，使用给定的订阅函数创建</li>
+<li>empty(scheduler: Scheduler): Observable, 创建立即完成的 observable</li>
+<li>from(ish: ObservableInput, mapFn: function, thisArg: any, scheduler: Scheduler): Observable, 将数组、promise 或迭代器转换成 observable </li>
+<li>fromEvent(target: EventTargetLike, eventName: string, selector: function): Observable, 将事件转换成 observable 序列</li>
+<li>fromPromise(promise: Promise, scheduler: Scheduler): Observable, 创建由 promise 转换而来的 observable，并发出 promise 的结果。</li>
+<li>interval(period: number, scheduler: Scheduler): Observable, 基于给定时间间隔发出数字序列</li>
+<li>of(…values, scheduler: Scheduler): Observable 按顺序发出任意数量的值</li>
+<li>range(start: number, count: number, scheduler: Scheduler): Observable 依次发出给定区间内的数字。</li>
+<li>throw(error: any, scheduler: Scheduler): Observable 在订阅上发出错误</li>
+<li>timer(initialDelay: number | Date, period: number, scheduler: Scheduler): Observable 给定持续时间后，再按照指定间隔时间依次发出数字</li>
+</ol>
+<h4 id="2-Observer-观察者-：一个回调函数的集合，它知道如何去监听由Observable提供的值"><a href="#2-Observer-观察者-：一个回调函数的集合，它知道如何去监听由Observable提供的值" class="headerlink" title="2.Observer(观察者)：一个回调函数的集合，它知道如何去监听由Observable提供的值"></a>2.Observer(观察者)：一个回调函数的集合，它知道如何去监听由Observable提供的值</h4><h4 id="3-Subscription-订阅-：表示Observable的执行，主要用于取消Observable的执行"><a href="#3-Subscription-订阅-：表示Observable的执行，主要用于取消Observable的执行" class="headerlink" title="3.Subscription(订阅)：表示Observable的执行，主要用于取消Observable的执行"></a>3.Subscription(订阅)：表示Observable的执行，主要用于取消Observable的执行</h4><h4 id="4-Subject-主体-：相当于EventEmitter，并且是将值或事件多路推送给多个Observer的唯一方式"><a href="#4-Subject-主体-：相当于EventEmitter，并且是将值或事件多路推送给多个Observer的唯一方式" class="headerlink" title="4.Subject(主体)：相当于EventEmitter，并且是将值或事件多路推送给多个Observer的唯一方式"></a>4.Subject(主体)：相当于EventEmitter，并且是将值或事件多路推送给多个Observer的唯一方式</h4><h4 id="5-Scheduler-调度器-：用来控制并发并且是中央集权的调度员，允许我们在发生计算时进行协调，例如-setTimeout或-requestAnimationFrame-或其他"><a href="#5-Scheduler-调度器-：用来控制并发并且是中央集权的调度员，允许我们在发生计算时进行协调，例如-setTimeout或-requestAnimationFrame-或其他" class="headerlink" title="5.Scheduler(调度器)：用来控制并发并且是中央集权的调度员，允许我们在发生计算时进行协调，例如 setTimeout或 requestAnimationFrame 或其他"></a>5.Scheduler(调度器)：用来控制并发并且是中央集权的调度员，允许我们在发生计算时进行协调，例如 setTimeout或 requestAnimationFrame 或其他</h4>
+        </div>
+
+        
+            <section class="post-copyright">
+                
+                    <p class="copyright-item">
+                        <span>Author:</span>
+                        <span>Lbn</span>
+                    </p>
+                
+                
+                    <p class="copyright-item">
+                        <span>Permalink:</span>
+                        <span><a href="http://example.com/2020/09/11/rxjs/">http://example.com/2020/09/11/rxjs/</a></span>
+                    </p>
+                
+                
+                    <p class="copyright-item">
+                        <span>License:</span>
+                        <span>Copyright (c) 2019 <a target="_blank" rel="noopener" href="http://creativecommons.org/licenses/by-nc/4.0/">CC-BY-NC-4.0</a> LICENSE</span>
+                    </p>
+                
+                
+                     <p class="copyright-item">
+                         <span>Slogan:</span>
+                         <span>Do you believe in <strong>DESTINY</strong>?</span>
+                     </p>
+                
+
+            </section>
+        
+        <section class="post-tags">
+            <div>
+                <span>Tag(s):</span>
+                <span class="tag">
+                    
+                    
+                        <a href="/tags/javascript/"># javascript</a>
+                    
+                        <a href="/tags/rxjs/"># rxjs</a>
+                    
+                        
+                </span>
+            </div>
+            <div>
+                <a href="javascript:window.history.back();">back</a>
+                <span>· </span>
+                <a href="/">home</a>
+            </div>
+        </section>
+        <section class="post-nav">
+            
+            
+            <a class="next" rel="next" href="/2020/09/09/angular/">angular</a>
+            
+        </section>
+
+
+    </article>
+</div>
+
+        </div>
+        <footer id="footer" class="footer">
+    <div class="copyright">
+        <span>© Lbn | Powered by <a href="https://hexo.io" target="_blank">Hexo</a> & <a href="https://github.com/Siricee/hexo-theme-Chic" target="_blank">Chic</a></span>
+    </div>
+</footer>
+
+    </div>
+</body>
+</html>

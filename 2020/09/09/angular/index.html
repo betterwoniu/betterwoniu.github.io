@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <meta name="author" content="Lbn">
+
+
+
+
+
+<title>angular | </title>
+
+
+
+    <link rel="icon" href="/favicon.ico">
+
+
+
+
+    <!-- stylesheets list from _config.yml -->
+    
+    <link rel="stylesheet" href="/css/style.css">
+    
+
+
+
+    <!-- scripts list from _config.yml -->
+    
+    <script src="/js/script.js"></script>
+    
+    <script src="/js/tocbot.min.js"></script>
+    
+
+
+
+    
+    
+        
+    
+
+
+<meta name="generator" content="Hexo 5.1.1"></head>
+<body>
+    <div class="wrapper">
+        <header>
+    <nav class="navbar">
+        <div class="container">
+            <div class="navbar-header header-logo"><a href="/">Bentham&#39;s Blog</a></div>
+            <div class="menu navbar-right">
+                
+                    <a class="menu-item" href="/">Home</a>
+                
+                    <a class="menu-item" href="/archives/">Archive</a>
+                
+                    <a class="menu-item" href="/tag/">Tags</a>
+                
+                    <a class="menu-item" href="/category/">Categories</a>
+                
+                    <a class="menu-item" href="/about/">About</a>
+                
+                <input id="switch_default" type="checkbox" class="switch_default">
+                <label for="switch_default" class="toggleBtn"></label>
+            </div>
+        </div>
+    </nav>
+
+    
+    <nav class="navbar-mobile" id="nav-mobile">
+        <div class="container">
+            <div class="navbar-header">
+                <div>
+                    <a href="/">Bentham&#39;s Blog</a><a id="mobile-toggle-theme">·&nbsp;Light</a>
+                </div>
+                <div class="menu-toggle" onclick="mobileBtn()">&#9776; Menu</div>
+            </div>
+            <div class="menu" id="mobile-menu">
+                
+                    <a class="menu-item" href="/">Home</a>
+                
+                    <a class="menu-item" href="/archives/">Archive</a>
+                
+                    <a class="menu-item" href="/tag/">Tags</a>
+                
+                    <a class="menu-item" href="/category/">Categories</a>
+                
+                    <a class="menu-item" href="/about/">About</a>
+                
+            </div>
+        </div>
+    </nav>
+
+</header>
+<script>
+    var mobileBtn = function f() {
+        var toggleMenu = document.getElementsByClassName("menu-toggle")[0];
+        var mobileMenu = document.getElementById("mobile-menu");
+        if(toggleMenu.classList.contains("active")){
+           toggleMenu.classList.remove("active")
+            mobileMenu.classList.remove("active")
+        }else{
+            toggleMenu.classList.add("active")
+            mobileMenu.classList.add("active")
+        }
+    }
+</script>
+        <div class="main">
+            <div class="container">
+    
+    
+        <div class="post-toc">
+    <div class="tocbot-list">
+    </div>
+    <div class="tocbot-list-menu">
+        <a class="tocbot-toc-expand" onclick="expand_toc()">Expand all</a>
+        <a onclick="go_top()">Back to top</a>
+        <a onclick="go_bottom()">Go to bottom</a>
+    </div>
+</div>
+
+<script>
+    document.ready(
+        function () {
+            tocbot.init({
+                tocSelector: '.tocbot-list',
+                contentSelector: '.post-content',
+                headingSelector: 'h1, h2, h3, h4, h5',
+                collapseDepth: 1,
+                orderedList: false,
+                scrollSmooth: true,
+            })
+        }
+    )
+
+    function expand_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 6,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "collapse_toc()");
+        b.innerHTML = "Collapse all"
+    }
+
+    function collapse_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 1,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "expand_toc()");
+        b.innerHTML = "Expand all"
+    }
+
+    function go_top() {
+        window.scrollTo(0, 0);
+    }
+
+    function go_bottom() {
+        window.scrollTo(0, document.body.scrollHeight);
+    }
+
+</script>
+    
+
+    
+    <article class="post-wrap">
+        <header class="post-header">
+            <h1 class="post-title">angular</h1>
+            
+                <div class="post-meta">
+                    
+                        Author: <a itemprop="author" rel="author" href="/">Lbn</a>
+                    
+
+                    
+                        <span class="post-time">
+                        Date: <a href="#">September 9, 2020&nbsp;&nbsp;9:02:13</a>
+                        </span>
+                    
+                    
+                        <span class="post-category">
+                    Category:
+                            
+                                <a href="/categories/javascript/">javascript</a>
+                            
+                                <a href="/categories/javascript/angular/">angular</a>
+                            
+                        </span>
+                    
+                </div>
+            
+        </header>
+
+        <div class="post-content">
+            <h2 id="angular-基本知识"><a href="#angular-基本知识" class="headerlink" title="angular 基本知识"></a>angular 基本知识</h2><h3 id="绑定语法"><a href="#绑定语法" class="headerlink" title="绑定语法"></a>绑定语法</h3><table>
+<thead>
+<tr>
+<th>绑定类型</th>
+<th>语法</th>
+<th>分类</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>插值 属性 Attribute CSS 类 样式</td>
+<td><code>&#123;&#123;expression&#125;&#125; [target]=&quot;expression&quot; bind-target=&quot;expression&quot;</code></td>
+<td>单向 从数据源到视图</td>
+</tr>
+<tr>
+<td>事件</td>
+<td><code>(target)= statement on-target=&quot;statement&quot;</code></td>
+<td>从视图到数据源的单向绑定</td>
+</tr>
+<tr>
+<td>双向</td>
+<td><code>[(target)] = &quot;express&quot; bindon-target=&quot;expression&quot;</code></td>
+<td>双向</td>
+</tr>
+</tbody></table>
+<h3 id="Input-和-Output"><a href="#Input-和-Output" class="headerlink" title="@Input 和 @Output"></a><code>@Input</code> 和 <code>@Output</code></h3><h4 id="Input-和-Output-是-angular-中父上下文（父组件？）和子组件、子指令共享数据，-Input-属性是可写的，数据流入；而-Output-是可观察的对象，允许向外发送数据"><a href="#Input-和-Output-是-angular-中父上下文（父组件？）和子组件、子指令共享数据，-Input-属性是可写的，数据流入；而-Output-是可观察的对象，允许向外发送数据" class="headerlink" title="@Input 和 @Output 是 angular 中父上下文（父组件？）和子组件、子指令共享数据，@Input 属性是可写的，数据流入；而@Output 是可观察的对象，允许向外发送数据"></a><code>@Input</code> 和 <code>@Output</code> 是 angular 中父上下文（父组件？）和子组件、子指令共享数据，<code>@Input</code> 属性是可写的，数据流入；而<code>@Output</code> 是可观察的对象，允许向外发送数据</h4><h5 id="Input-一般是在父上下文向子组件或者子指令传递信息-父组件的html页面中引入子组件或者子指令的时候-写入类似-pcmsg-quot-pmsg-quot-pcmsg-是子组件或者子指令中定义接收父组件传递的数据变量，pmsg-是父上下文中定义要传递子组件或者子指令的变量"><a href="#Input-一般是在父上下文向子组件或者子指令传递信息-父组件的html页面中引入子组件或者子指令的时候-写入类似-pcmsg-quot-pmsg-quot-pcmsg-是子组件或者子指令中定义接收父组件传递的数据变量，pmsg-是父上下文中定义要传递子组件或者子指令的变量" class="headerlink" title="@Input 一般是在父上下文向子组件或者子指令传递信息 父组件的html页面中引入子组件或者子指令的时候 写入类似[pcmsg]=&quot;pmsg&quot; pcmsg 是子组件或者子指令中定义接收父组件传递的数据变量，pmsg 是父上下文中定义要传递子组件或者子指令的变量"></a><code>@Input</code> 一般是在父上下文向子组件或者子指令传递信息 父组件的<code>html</code>页面中引入子组件或者子指令的时候 写入类似<code>[pcmsg]=&quot;pmsg&quot;</code> <code>pcmsg</code> 是子组件或者子指令中定义接收父组件传递的数据变量，<code>pmsg</code> 是父上下文中定义要传递子组件或者子指令的变量</h5><h4 id="Output-通常是将该属性初始化为-Angular-EventEmitter-并将值作为事件流出。-Output-childmsg-new-EventEmitter-lt-string-gt-this-childmsg-emit-在子组件或者子指令中通过定义的事件流来向父上下文来传递数据"><a href="#Output-通常是将该属性初始化为-Angular-EventEmitter-并将值作为事件流出。-Output-childmsg-new-EventEmitter-lt-string-gt-this-childmsg-emit-在子组件或者子指令中通过定义的事件流来向父上下文来传递数据" class="headerlink" title="@Output 通常是将该属性初始化为 Angular EventEmitter,  并将值作为事件流出。 @Output() childmsg = new EventEmitter&lt;string&gt;(); this.childmsg.emit() 在子组件或者子指令中通过定义的事件流来向父上下文来传递数据"></a><code>@Output</code> 通常是将该属性初始化为 <code>Angular EventEmitter</code>,  并将值作为事件流出。<code> @Output() childmsg = new EventEmitter&lt;string&gt;(); this.childmsg.emit()</code> 在子组件或者子指令中通过定义的事件流来向父上下文来传递数据</h4><h3 id="属性型指令"><a href="#属性型指令" class="headerlink" title="属性型指令"></a>属性型指令</h3><h4 id="属性型指令是通过一个-Directive-装饰器的控制器的类获取到使用该指令的元素标签来控制该元素标签的操作。"><a href="#属性型指令是通过一个-Directive-装饰器的控制器的类获取到使用该指令的元素标签来控制该元素标签的操作。" class="headerlink" title="属性型指令是通过一个@Directive 装饰器的控制器的类获取到使用该指令的元素标签来控制该元素标签的操作。"></a>属性型指令是通过一个<code>@Directive</code> 装饰器的控制器的类获取到使用该指令的元素标签来控制该元素标签的操作。</h4><h3 id="结构型指令"><a href="#结构型指令" class="headerlink" title="结构型指令"></a>结构型指令</h3><h4 id="结构型指令的职责就是HTML-布局，重塑DOM的结构-比如添加、移除或维护这些元素"><a href="#结构型指令的职责就是HTML-布局，重塑DOM的结构-比如添加、移除或维护这些元素" class="headerlink" title="结构型指令的职责就是HTML 布局，重塑DOM的结构 比如添加、移除或维护这些元素"></a>结构型指令的职责就是<code>HTML</code> 布局，重塑<code>DOM</code>的结构 比如添加、移除或维护这些元素</h4><h3 id="组件交互"><a href="#组件交互" class="headerlink" title="组件交互"></a>组件交互</h3><h4 id="1-在父子组件中通过-Input-和-Output-两个装饰器来交互"><a href="#1-在父子组件中通过-Input-和-Output-两个装饰器来交互" class="headerlink" title="1.在父子组件中通过 @Input 和@Output 两个装饰器来交互"></a>1.在父子组件中通过 <code>@Input</code> 和<code>@Output</code> 两个装饰器来交互</h4><h4 id="2-通过setter-截听输入属性值的变化"><a href="#2-通过setter-截听输入属性值的变化" class="headerlink" title="2.通过setter 截听输入属性值的变化"></a>2.通过<code>setter</code> 截听输入属性值的变化</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 父组件中 &lt;app-child-msg [toChildMsg]=&quot;childMsg&quot;&gt;&lt;/app-child-msg&gt;   childMsg 是父组件定义的变量， toChildMsg 是与子组件交互传递的变量名</span></span><br><span class="line"></span><br><span class="line">  @Input()</span><br><span class="line">  <span class="keyword">set</span> <span class="title">toChildMsg</span>(<span class="params">toChildMsg: string</span>) &#123;</span><br><span class="line">    <span class="built_in">this</span>._tochidmsg = toChildMsg;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">get</span> <span class="title">toChildMsg</span>(): <span class="title">string</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">this</span>._tochidmsg;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="comment">// 子组件中仍然通过 @Input 装饰器来接受父组件传递的数据，但是通过set 和 get方式来监听数据的变化</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="3-通过生命周期的钩子函数OnChanges-函数来监听数据变化"><a href="#3-通过生命周期的钩子函数OnChanges-函数来监听数据变化" class="headerlink" title="3.通过生命周期的钩子函数OnChanges 函数来监听数据变化"></a>3.通过生命周期的钩子函数<code>OnChanges</code> 函数来监听数据变化</h4><h4 id="4-通过指令-XXX-来定义某组件，即可使用该组件中的函数和定义的属性变量"><a href="#4-通过指令-XXX-来定义某组件，即可使用该组件中的函数和定义的属性变量" class="headerlink" title="4.通过指令#XXX 来定义某组件，即可使用该组件中的函数和定义的属性变量"></a>4.通过指令<code>#XXX</code> 来定义某组件，即可使用该组件中的函数和定义的属性变量</h4><h4 id="5-通过在父组件中使用-ViewChild装饰器来定义代表子组件的变量，即可使用子组件中的函数和定义的属性变量"><a href="#5-通过在父组件中使用-ViewChild装饰器来定义代表子组件的变量，即可使用子组件中的函数和定义的属性变量" class="headerlink" title="5.通过在父组件中使用@ViewChild装饰器来定义代表子组件的变量，即可使用子组件中的函数和定义的属性变量"></a>5.通过在父组件中使用<code>@ViewChild</code>装饰器来定义代表子组件的变量，即可使用子组件中的函数和定义的属性变量</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">@ViewChild(CountdownTimerComponent)</span><br><span class="line">private timerComponent: CountdownTimerComponent;</span><br></pre></td></tr></table></figure>
+
+<h4 id="6-父子组件之间通讯？？？？"><a href="#6-父子组件之间通讯？？？？" class="headerlink" title="6.父子组件之间通讯？？？？"></a>6.父子组件之间通讯？？？？</h4>
+        </div>
+
+        
+            <section class="post-copyright">
+                
+                    <p class="copyright-item">
+                        <span>Author:</span>
+                        <span>Lbn</span>
+                    </p>
+                
+                
+                    <p class="copyright-item">
+                        <span>Permalink:</span>
+                        <span><a href="http://example.com/2020/09/09/angular/">http://example.com/2020/09/09/angular/</a></span>
+                    </p>
+                
+                
+                    <p class="copyright-item">
+                        <span>License:</span>
+                        <span>Copyright (c) 2019 <a target="_blank" rel="noopener" href="http://creativecommons.org/licenses/by-nc/4.0/">CC-BY-NC-4.0</a> LICENSE</span>
+                    </p>
+                
+                
+                     <p class="copyright-item">
+                         <span>Slogan:</span>
+                         <span>Do you believe in <strong>DESTINY</strong>?</span>
+                     </p>
+                
+
+            </section>
+        
+        <section class="post-tags">
+            <div>
+                <span>Tag(s):</span>
+                <span class="tag">
+                    
+                    
+                        <a href="/tags/angular/"># angular</a>
+                    
+                        <a href="/tags/javascript/"># javascript</a>
+                    
+                        
+                </span>
+            </div>
+            <div>
+                <a href="javascript:window.history.back();">back</a>
+                <span>· </span>
+                <a href="/">home</a>
+            </div>
+        </section>
+        <section class="post-nav">
+            
+                <a class="prev" rel="prev" href="/2020/09/11/rxjs/">rxjs</a>
+            
+            
+            <a class="next" rel="next" href="/2020/09/08/javascript/">javascript</a>
+            
+        </section>
+
+
+    </article>
+</div>
+
+        </div>
+        <footer id="footer" class="footer">
+    <div class="copyright">
+        <span>© Lbn | Powered by <a href="https://hexo.io" target="_blank">Hexo</a> & <a href="https://github.com/Siricee/hexo-theme-Chic" target="_blank">Chic</a></span>
+    </div>
+</footer>
+
+    </div>
+</body>
+</html>
