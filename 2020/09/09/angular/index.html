@@ -232,7 +232,17 @@
 
 <h4 id="3-通过生命周期的钩子函数OnChanges-函数来监听数据变化"><a href="#3-通过生命周期的钩子函数OnChanges-函数来监听数据变化" class="headerlink" title="3.通过生命周期的钩子函数OnChanges 函数来监听数据变化"></a>3.通过生命周期的钩子函数<code>OnChanges</code> 函数来监听数据变化</h4><h4 id="4-通过指令-XXX-来定义某组件，即可使用该组件中的函数和定义的属性变量"><a href="#4-通过指令-XXX-来定义某组件，即可使用该组件中的函数和定义的属性变量" class="headerlink" title="4.通过指令#XXX 来定义某组件，即可使用该组件中的函数和定义的属性变量"></a>4.通过指令<code>#XXX</code> 来定义某组件，即可使用该组件中的函数和定义的属性变量</h4><h4 id="5-通过在父组件中使用-ViewChild装饰器来定义代表子组件的变量，即可使用子组件中的函数和定义的属性变量"><a href="#5-通过在父组件中使用-ViewChild装饰器来定义代表子组件的变量，即可使用子组件中的函数和定义的属性变量" class="headerlink" title="5.通过在父组件中使用@ViewChild装饰器来定义代表子组件的变量，即可使用子组件中的函数和定义的属性变量"></a>5.通过在父组件中使用<code>@ViewChild</code>装饰器来定义代表子组件的变量，即可使用子组件中的函数和定义的属性变量</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">@ViewChild(CountdownTimerComponent)</span><br><span class="line">private timerComponent: CountdownTimerComponent;</span><br></pre></td></tr></table></figure>
 
-<h4 id="6-父子组件之间通讯？？？？"><a href="#6-父子组件之间通讯？？？？" class="headerlink" title="6.父子组件之间通讯？？？？"></a>6.父子组件之间通讯？？？？</h4>
+<h4 id="6-父子组件之间通讯？？？？"><a href="#6-父子组件之间通讯？？？？" class="headerlink" title="6.父子组件之间通讯？？？？"></a>6.父子组件之间通讯？？？？</h4><h3 id="angular-表单（模版驱动表单，响应式表单）"><a href="#angular-表单（模版驱动表单，响应式表单）" class="headerlink" title="angular 表单（模版驱动表单，响应式表单）"></a>angular 表单（模版驱动表单，响应式表单）</h3><h3 id="常用表单基础类"><a href="#常用表单基础类" class="headerlink" title="常用表单基础类"></a>常用表单基础类</h3><h4 id="响应式表单和模版驱动表单都是建立下列基础类之上的："><a href="#响应式表单和模版驱动表单都是建立下列基础类之上的：" class="headerlink" title="响应式表单和模版驱动表单都是建立下列基础类之上的："></a>响应式表单和模版驱动表单都是建立下列基础类之上的：</h4><ol>
+<li>FromControl 实例用于追踪单个表单控件的值和验证状态</li>
+<li>FromGroup 用于追踪一个表单控件组合的状态和值</li>
+<li>FormArray 用于追踪表单控件的数组的值和状态</li>
+<li>ControlValueAccessor 用于angular的FromControl实例和原生DOM元素之间的一个桥梁</li>
+</ol>
+<h4 id="模版驱动表单"><a href="#模版驱动表单" class="headerlink" title="模版驱动表单"></a>模版驱动表单</h4><p>[FromControl]指令会通过内部值的访问器来把显示创建的FromControl实例与视图中的表单元素联系在一起</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; Component &#125; <span class="keyword">from</span> <span class="string">&#x27;@angular/core&#x27;</span>;</span><br><span class="line"><span class="keyword">import</span> &#123; FormControl &#125; <span class="keyword">from</span> <span class="string">&#x27;@angular/forms&#x27;</span>;</span><br><span class="line"></span><br><span class="line">@Component(&#123;</span><br><span class="line">  selector: <span class="string">&#x27;app-reactive-favorite-color&#x27;</span>,</span><br><span class="line">  template: <span class="string">`</span></span><br><span class="line"><span class="string">    Favorite Color: &lt;input type=&quot;text&quot; [formControl]=&quot;favoriteColorControl&quot;&gt;</span></span><br><span class="line"><span class="string">  `</span></span><br><span class="line">&#125;)</span><br><span class="line"><span class="keyword">export</span> <span class="class"><span class="keyword">class</span> <span class="title">FavoriteColorComponent</span> </span>&#123;</span><br><span class="line">  favoriteColorControl = <span class="keyword">new</span> FormControl(<span class="string">&#x27;&#x27;</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="响应式表单"><a href="#响应式表单" class="headerlink" title="响应式表单"></a>响应式表单</h4><p>在模版驱动表单中，表单模式是隐式的，指令[(ngModel)]为指定的表单创建一个FromControl实例</p>
+ <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"> <span class="keyword">import</span> &#123; Component &#125; <span class="keyword">from</span> <span class="string">&#x27;@angular/core&#x27;</span>;</span><br><span class="line"></span><br><span class="line">@Component(&#123;</span><br><span class="line">  selector: <span class="string">&#x27;app-template-favorite-color&#x27;</span>,</span><br><span class="line">  template: <span class="string">`</span></span><br><span class="line"><span class="string">    Favorite Color: &lt;input type=&quot;text&quot; [(ngModel)]=&quot;favoriteColor&quot;&gt;</span></span><br><span class="line"><span class="string">  `</span></span><br><span class="line">&#125;)</span><br><span class="line"><span class="keyword">export</span> <span class="class"><span class="keyword">class</span> <span class="title">FavoriteColorComponent</span> </span>&#123;</span><br><span class="line">  favoriteColor = <span class="string">&#x27;&#x27;</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
         </div>
 
         
@@ -270,9 +280,9 @@
                 <span class="tag">
                     
                     
-                        <a href="/tags/angular/"># angular</a>
-                    
                         <a href="/tags/javascript/"># javascript</a>
+                    
+                        <a href="/tags/angular/"># angular</a>
                     
                         
                 </span>
