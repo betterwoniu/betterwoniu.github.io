@@ -214,7 +214,20 @@
 <li>服务端发送一个fin数据包到客户端，服务端关闭客户端的链接</li>
 <li>客户端接收到ack数据包，客户端关闭链接</li>
 </ol>
-
+<h3 id="HTTP之请求Request"><a href="#HTTP之请求Request" class="headerlink" title="HTTP之请求Request"></a>HTTP之请求Request</h3><p>请求分为请求行（request line）、请求头（request header）、空行、请求正文<br>请求行：请求的方式、请求的资源名称、http版本<br>请求头部：请求行后面的部分（第一行后的），请求的服务器的附带信息<br>请求正文（请求主体、请求数据）：请求的参数信息等</p>
+<h3 id="HTTP之响应Response"><a href="#HTTP之响应Response" class="headerlink" title="HTTP之响应Response"></a>HTTP之响应Response</h3><p>响应分为状态行、消息报头、空行、响应正文<br>状态行：响应的状态码、http版本、响应状态信息<br>消息报头：响应时间、contentType，编码等信息<br>响应正文：服务端向客户端返回的信息</p>
+<h3 id="HTTP状态码"><a href="#HTTP状态码" class="headerlink" title="HTTP状态码"></a>HTTP状态码</h3><p>状态码由三位数字组成，第一个数字定义了响应的类别，共分为5类：<br>1** —— 标识请求已经接收<br>2** —— 标识请求已经被成功接收<br>3** —— 重定向，请求需要进一步的操作<br>4** —— 客户端错误，请求发生错误<br>5** —— 服务器端发生错误</p>
+<h3 id="HTTP的请求方式"><a href="#HTTP的请求方式" class="headerlink" title="HTTP的请求方式"></a>HTTP的请求方式</h3><ol>
+<li>get —— 请求指定页面信息，返回实体主体</li>
+<li>post —— 向指定资源提交数据请求，数据包含在请求体中，可能会导致资源的新增或者修改</li>
+<li>head ——  类似get请求，但是没有返回实体主体，用于获取报头</li>
+<li>put —— 向服务器提交要修改的资源内容</li>
+<li>delete —— 请求删除资源</li>
+<li>options —— 允许客户端查看服务器的性能</li>
+<li>trace —— 回显服务端收到的请求，用于测试</li>
+<li>connect —— HTTP1.1协议中预留给能将链接改为管道链接的代理服务器</li>
+</ol>
+<h3 id="HTTP工作原理"><a href="#HTTP工作原理" class="headerlink" title="HTTP工作原理"></a>HTTP工作原理</h3><h3 id="get和post请求区别"><a href="#get和post请求区别" class="headerlink" title="get和post请求区别"></a>get和post请求区别</h3>
         </div>
 
         
