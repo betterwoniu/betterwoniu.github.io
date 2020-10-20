@@ -227,7 +227,11 @@
 <li>trace —— 回显服务端收到的请求，用于测试</li>
 <li>connect —— HTTP1.1协议中预留给能将链接改为管道链接的代理服务器</li>
 </ol>
-<h3 id="HTTP工作原理"><a href="#HTTP工作原理" class="headerlink" title="HTTP工作原理"></a>HTTP工作原理</h3><h3 id="get和post请求区别"><a href="#get和post请求区别" class="headerlink" title="get和post请求区别"></a>get和post请求区别</h3>
+<h3 id="HTTP工作原理"><a href="#HTTP工作原理" class="headerlink" title="HTTP工作原理"></a>HTTP工作原理</h3><p>1.浏览器向DNS解析用户输入的url地址，获取对象的ip地址<br>2.通过解析出来的ip地址和该服务器建立链接（三次握手）<br>3.浏览器向服务器发送http请求（三次握手中的最后一次请求）<br>4.服务端接收到浏览器发送的请求并作出响应，并将响应信息发送到浏览器<br>5.释放tcp链接<br>6.浏览器解析本内容并展示</p>
+<h3 id="get和post请求区别"><a href="#get和post请求区别" class="headerlink" title="get和post请求区别"></a>get和post请求区别</h3><p>1.get请求的参数会在地址栏中显示出来，post请求的参数是放在请求体中的</p>
+<p>2.get请求的浏览器和服务器对url访问地址长度有限制，post请求由于不是通过地址传参，理论上不受长度限制，但是服务器端也对请求体的参数大小有限制</p>
+<p>3.post请求的安全性高于get请求</p>
+
         </div>
 
         
