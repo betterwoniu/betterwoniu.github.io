@@ -12,7 +12,7 @@
 
 
 
-<title>Promise | </title>
+<title>BFC | </title>
 
 
 
@@ -177,7 +177,7 @@
     
     <article class="post-wrap">
         <header class="post-header">
-            <h1 class="post-title">Promise</h1>
+            <h1 class="post-title">BFC</h1>
             
                 <div class="post-meta">
                     
@@ -186,16 +186,14 @@
 
                     
                         <span class="post-time">
-                        Date: <a href="#">September 24, 2020&nbsp;&nbsp;12:01:47</a>
+                        Date: <a href="#">November 9, 2020&nbsp;&nbsp;19:32:13</a>
                         </span>
                     
                     
                         <span class="post-category">
                     Category:
                             
-                                <a href="/categories/promise/">promise</a>
-                            
-                                <a href="/categories/promise/angular/">angular</a>
+                                <a href="/categories/HTML/">HTML</a>
                             
                         </span>
                     
@@ -204,18 +202,12 @@
         </header>
 
         <div class="post-content">
-            <h4 id="promise的含义"><a href="#promise的含义" class="headerlink" title="promise的含义"></a>promise的含义</h4><p>promise是一种异步编程的解决方案，promise是一个对象，保存着某个未来才会结束的异步操作事件的结果。promise的对象状态不受外界的影响，有三种状态：<code>pending</code> 、<code>fulfilled</code> 、<code>rejected</code> ，只有异步操作的结果可以决定是哪一种状态，任何其他的操作都不能改变其状态；一旦promise的状态发生改变就不会再变化。</p>
-<h3 id="promise-then"><a href="#promise-then" class="headerlink" title="promise.then()"></a>promise.then()</h3><p>then()方法是定义在原型对象 promise.protype上的，该方法的作用是状态改变的回调函数。then方法的第一个参数是resolved状态的回调函数，第二哥参数是rejected状态的回调函数。then方法返回的是一个新的promise实例，因此可以采用链式写法;链式结构的中then方法return的结果将作为参数传入给下一个then方法</p>
-<h3 id="Promise-prototype-catch"><a href="#Promise-prototype-catch" class="headerlink" title="Promise.prototype.catch()"></a>Promise.prototype.catch()</h3><p>catch()方法是用于指定发生错误的回调函数，当promise的状态改变为rejected的时候就不会调用then方法而是回调catch方法</p>
-<h3 id="Promise-prototype-finally"><a href="#Promise-prototype-finally" class="headerlink" title="Promise.prototype.finally()"></a>Promise.prototype.finally()</h3><p>finally() 方法用于指定不管promise对象最后状态如何都会执行的操作</p>
-<h3 id="Promise-all"><a href="#Promise-all" class="headerlink" title="Promise.all()"></a>Promise.all()</h3><p>all()方法用于将多个promise实例包装成一个新的promise实例，返回一个数组存放各个promise的返回值。当多个primise的状态都变为filfilled，此时才返回值；当其中有一个被reject，新的promise的状态也会被reject</p>
-<h3 id="async-await-函数"><a href="#async-await-函数" class="headerlink" title="async/await 函数"></a>async/await 函数</h3><p>async 函数是解决异步方案，它是generator函数的语法糖，定义函数使用async关键字，await 命令后一般是一个promise对象，函数体中使用await 紧跟表达式需要等待的结果，并且async函数返回的是promise 对象。</p>
-<p>async 函数返回一个promise 对象，函数内部返回的值，将成为 then方法中的参数。<br>async 函数内部抛出的错误，会使返回的promise对象的状态变为reject状态，抛出的错误会被catch方法捕捉到。<br>async 函数返回的是一个promise对象，必须要等到函数体内的 await 后的promise 对象执行完才会状态发生改变，或者return 语句或发生错误。只有async 函数体内中的异步操作执行完，才会执行then方法指定的回调函数。</p>
-<p>async 错误处理机制：1.在函数体中使用 try…catch 捕捉错误；2.async函数使用catch方法捕捉错误</p>
-<h3 id="Generator-函数"><a href="#Generator-函数" class="headerlink" title="Generator 函数"></a>Generator 函数</h3><p>generator函数是es6 提供的一种异步解决方案。<br>1.语法上generator函数是一个状态机，封装着多个内部状态<br>2.执行generator函数会返回一个遍历对象，所以generator函数也是一个遍历生成函数，返回的遍历对象可以依次遍历generator函数的每一个状态<br>3.generator函数定义的关键字是一个*，函数体内部使用yield表达式，遍历该函数对象通过该函数的next()方法，返回的是一个对象{ value: ‘hello’, done: false },当done的值为true时该遍历对象遍历结束。<br>4 任意一个对象的Symbol.iterator方法，等于该对象的遍历器生成函数，调用该函数会返回该对象的一个遍历器对象。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> myiterator = &#123;&#125;;</span><br><span class="line">myiterator[<span class="built_in">Symbol</span>.iterator] = <span class="function"><span class="keyword">function</span> *(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">yield</span> <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">yield</span> <span class="number">2</span>;</span><br><span class="line">    <span class="keyword">yield</span> <span class="number">3</span>;</span><br><span class="line">&#125;</span><br><span class="line">[...myIterable] <span class="comment">// [1, 2, 3]</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+            <h3 id="BFC定义"><a href="#BFC定义" class="headerlink" title="BFC定义"></a>BFC定义</h3> <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">BFC(Block Formatting Context)块级格式化上下文。它是一个独立的渲染区域，只有Block-level box 参与，它规定了内部的Block-level Box的布局，并且与这个区域的外部不相干。</span><br></pre></td></tr></table></figure>
 
-<p>5.yield方法本身没有返回值，next方法可以带一个参数作为上一个yield表达式的值<br>6.for…of循环可以自动遍历generator函数运行生成的iterator对象，而不需要使用next方法<br>7.Generator.prototype.return()是可以给定参数，并终结该generator函数，如果return()方法不提供参数则返回value的值为undefined，如果generator函数体内存在try…finally，且正在执行try代码块，那么return方法就会进入finally代码块中，执行完毕，整个函数才会结束。</p>
+<h3 id="如何创建BFC"><a href="#如何创建BFC" class="headerlink" title="如何创建BFC"></a>如何创建BFC</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">1. 浮动元素：float的不为none</span><br><span class="line">2. 绝对定位元素：position的值为absolute 或 fixed</span><br><span class="line">3. overflow的值不为visible</span><br><span class="line">4. 非块级盒子的块级容器：display的值是inline-block、table-cell、flex、table-caption或者inline-flex、flow-root</span><br><span class="line">5. 根元素或其它包含它的元素</span><br><span class="line">除了兼容性问题，用display: flow-root来触发BFC最佳,不会产生任何副作用</span><br></pre></td></tr></table></figure>
+
+<h3 id="BFC布局场景"><a href="#BFC布局场景" class="headerlink" title="BFC布局场景"></a>BFC布局场景</h3> <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">1.在BFC区域中不会与float浮动元素重叠</span><br><span class="line">2.在同一个BFC区域中的相邻的块级元素之间的间隔取决于margin会发生重叠</span><br><span class="line">3.浮动元素造成了父级元素高度塌陷：父元素的高度取决于子元素的高度，当子元素变为浮动元素时就会造成父元素高度塌陷</span><br><span class="line">4.父子元素之间的margin重叠</span><br></pre></td></tr></table></figure>
+ <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;div id=<span class="string">&quot;app&quot;</span> style=<span class="string">&quot;height: 100Px;width: 100px;background-color: blue;margin-bottom: 10px;&quot;</span>&gt;&lt;/div&gt;</span><br><span class="line">  &lt;div style=<span class="string">&quot;display:flow-root;border: 1px solid black;&quot;</span>&gt;</span><br><span class="line">      &lt;div id=<span class="string">&quot;addnumber&quot;</span> style=<span class="string">&quot;height: 100Px;width: 100px;background-color: brown;margin-top: 10px;float: left;&quot;</span>&gt;+&lt;/div&gt;</span><br><span class="line">      &lt;div id=<span class="string">&quot;addnumber&quot;</span> style=<span class="string">&quot;background-color:burlywood;margin-top: 10px;display:flow-root;&quot;</span>&gt;+&lt;/div&gt;</span><br><span class="line">  &lt;/div&gt;</span><br><span class="line"> </span><br></pre></td></tr></table></figure>
 
         </div>
 
@@ -230,7 +222,7 @@
                 
                     <p class="copyright-item">
                         <span>Permalink:</span>
-                        <span><a href="http://example.com/2020/09/24/Promise/">http://example.com/2020/09/24/Promise/</a></span>
+                        <span><a href="http://example.com/2020/11/09/BFC/">http://example.com/2020/11/09/BFC/</a></span>
                     </p>
                 
                 
@@ -254,9 +246,7 @@
                 <span class="tag">
                     
                     
-                        <a href="/tags/promise/"># promise</a>
-                    
-                        <a href="/tags/javascript/"># javascript</a>
+                        <a href="/tags/BFC/"># BFC</a>
                     
                         
                 </span>
@@ -269,10 +259,8 @@
         </section>
         <section class="post-nav">
             
-                <a class="prev" rel="prev" href="/2020/11/09/BFC/">BFC</a>
             
-            
-            <a class="next" rel="next" href="/2020/09/19/HTTP/">HTTP</a>
+            <a class="next" rel="next" href="/2020/09/24/Promise/">Promise</a>
             
         </section>
 
