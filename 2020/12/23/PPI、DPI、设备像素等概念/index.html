@@ -202,8 +202,13 @@
         </header>
 
         <div class="post-content">
-            <h3 id="PPI定义"><a href="#PPI定义" class="headerlink" title="PPI定义"></a>PPI定义</h3><p>PPI指的是每英寸上物理像素数数目，即“像素密度”。PPI的数值越大，屏幕效果越好。不过PPI是物理上的概念，是客观存在不会改变的值，跟开发中的DPI是完全不同。</p>
-<h3 id="DPI-定义"><a href="#DPI-定义" class="headerlink" title="DPI 定义"></a>DPI 定义</h3><p>DPI是指每英寸上有多少个点</p>
+            <h3 id="PPI定义（物理像素）"><a href="#PPI定义（物理像素）" class="headerlink" title="PPI定义（物理像素）"></a>PPI定义（物理像素）</h3><p>PPI指的是每英寸上物理像素数数目，即“像素密度”。PPI的数值越大，屏幕效果越好。不过PPI是物理上的概念，是客观存在不会改变的值，跟开发中的DPI是完全不同。<br>物理像素又称为设备像素，是显示设备中的一个最小的的物理部件。每个像素可以根据操作系统设置自己的颜色和亮度</p>
+<h3 id="DPI-定义（设备独立像素）"><a href="#DPI-定义（设备独立像素）" class="headerlink" title="DPI 定义（设备独立像素）"></a>DPI 定义（设备独立像素）</h3><p>DPI是指图像每英寸长度内的像素点数</p>
+<h3 id="visual-viewport"><a href="#visual-viewport" class="headerlink" title="visual viewport"></a>visual viewport</h3><p>显示网页内容的区域，可以通过js命令获取</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">window</span>.innerWidth</span><br><span class="line"><span class="built_in">window</span>.innerHeight</span><br></pre></td></tr></table></figure>
+<h3 id="layout-viewport"><a href="#layout-viewport" class="headerlink" title="layout viewport"></a>layout viewport</h3><p>网页布局的区域，它是html标签的父容器，很多时候浏览器窗口不能完全显示layout viewport的全貌，需要通过滚动条查看页面</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">document</span>.documentElement.clientWidth</span><br><span class="line"><span class="built_in">document</span>.document.clientHeight</span><br></pre></td></tr></table></figure>
+<h3 id="ideal-viewport"><a href="#ideal-viewport" class="headerlink" title="ideal viewport"></a>ideal viewport</h3><p>它与手机屏幕大小的相同，确切来说，等于visual viewport的大小。把页面渲染到这个ideal viewport里面，就能在visual viewport中完美显示</p>
 
         </div>
 
