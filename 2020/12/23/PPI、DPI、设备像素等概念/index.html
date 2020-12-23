@@ -12,7 +12,7 @@
 
 
 
-<title>BFC | </title>
+<title>PPI、DPI、设备像素等概念及自适应布局方案 | </title>
 
 
 
@@ -177,7 +177,7 @@
     
     <article class="post-wrap">
         <header class="post-header">
-            <h1 class="post-title">BFC</h1>
+            <h1 class="post-title">PPI、DPI、设备像素等概念及自适应布局方案</h1>
             
                 <div class="post-meta">
                     
@@ -186,7 +186,7 @@
 
                     
                         <span class="post-time">
-                        Date: <a href="#">November 9, 2020&nbsp;&nbsp;19:32:13</a>
+                        Date: <a href="#">December 23, 2020&nbsp;&nbsp;11:12:25</a>
                         </span>
                     
                     
@@ -202,12 +202,8 @@
         </header>
 
         <div class="post-content">
-            <h3 id="BFC定义"><a href="#BFC定义" class="headerlink" title="BFC定义"></a>BFC定义</h3> <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">BFC(Block Formatting Context)块级格式化上下文。它是一个独立的渲染区域，只有Block-level box 参与，它规定了内部的Block-level Box的布局，并且与这个区域的外部不相干。</span><br></pre></td></tr></table></figure>
-
-<h3 id="如何创建BFC"><a href="#如何创建BFC" class="headerlink" title="如何创建BFC"></a>如何创建BFC</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">1. 浮动元素：float的不为none</span><br><span class="line">2. 绝对定位元素：position的值为absolute 或 fixed</span><br><span class="line">3. overflow的值不为visible</span><br><span class="line">4. 非块级盒子的块级容器：display的值是inline-block、table-cell、flex、table-caption或者inline-flex、flow-root</span><br><span class="line">5. 根元素或其它包含它的元素</span><br><span class="line">除了兼容性问题，用display: flow-root来触发BFC最佳,不会产生任何副作用</span><br></pre></td></tr></table></figure>
-
-<h3 id="BFC布局场景"><a href="#BFC布局场景" class="headerlink" title="BFC布局场景"></a>BFC布局场景</h3> <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">1.在BFC区域中不会与float浮动元素重叠</span><br><span class="line">2.在同一个BFC区域中的相邻的块级元素之间的间隔取决于margin会发生重叠</span><br><span class="line">3.浮动元素造成了父级元素高度塌陷：父元素的高度取决于子元素的高度，当子元素变为浮动元素时就会造成父元素高度塌陷</span><br><span class="line">4.父子元素之间的margin重叠</span><br></pre></td></tr></table></figure>
- <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;div id=<span class="string">&quot;app&quot;</span> style=<span class="string">&quot;height: 100Px;width: 100px;background-color: blue;margin-bottom: 10px;&quot;</span>&gt;&lt;/div&gt;</span><br><span class="line">  &lt;div style=<span class="string">&quot;display:flow-root;border: 1px solid black;&quot;</span>&gt;</span><br><span class="line">      &lt;div id=<span class="string">&quot;addnumber&quot;</span> style=<span class="string">&quot;height: 100Px;width: 100px;background-color: brown;margin-top: 10px;float: left;&quot;</span>&gt;+&lt;/div&gt;</span><br><span class="line">      &lt;div id=<span class="string">&quot;addnumber&quot;</span> style=<span class="string">&quot;background-color:burlywood;margin-top: 10px;display:flow-root;&quot;</span>&gt;+&lt;/div&gt;</span><br><span class="line">  &lt;/div&gt;</span><br><span class="line"> </span><br></pre></td></tr></table></figure>
+            <h3 id="PPI定义"><a href="#PPI定义" class="headerlink" title="PPI定义"></a>PPI定义</h3><p>PPI指的是每英寸上物理像素数数目，即“像素密度”。PPI的数值越大，屏幕效果越好。不过PPI是物理上的概念，是客观存在不会改变的值，跟开发中的DPI是完全不同。</p>
+<h3 id="DPI-定义"><a href="#DPI-定义" class="headerlink" title="DPI 定义"></a>DPI 定义</h3><p>DPI是指每英寸上有多少个点</p>
 
         </div>
 
@@ -222,7 +218,7 @@
                 
                     <p class="copyright-item">
                         <span>Permalink:</span>
-                        <span><a href="http://example.com/2020/11/09/BFC/">http://example.com/2020/11/09/BFC/</a></span>
+                        <span><a href="http://example.com/2020/12/23/PPI%E3%80%81DPI%E3%80%81%E8%AE%BE%E5%A4%87%E5%83%8F%E7%B4%A0%E7%AD%89%E6%A6%82%E5%BF%B5/">http://example.com/2020/12/23/PPI%E3%80%81DPI%E3%80%81%E8%AE%BE%E5%A4%87%E5%83%8F%E7%B4%A0%E7%AD%89%E6%A6%82%E5%BF%B5/</a></span>
                     </p>
                 
                 
@@ -246,7 +242,7 @@
                 <span class="tag">
                     
                     
-                        <a href="/tags/BFC/"># BFC</a>
+                        <a href="/tags/%E5%83%8F%E7%B4%A0/"># 像素</a>
                     
                         
                 </span>
@@ -259,10 +255,8 @@
         </section>
         <section class="post-nav">
             
-                <a class="prev" rel="prev" href="/2020/12/23/PPI%E3%80%81DPI%E3%80%81%E8%AE%BE%E5%A4%87%E5%83%8F%E7%B4%A0%E7%AD%89%E6%A6%82%E5%BF%B5/">PPI、DPI、设备像素等概念及自适应布局方案</a>
             
-            
-            <a class="next" rel="next" href="/2020/09/24/Promise/">Promise</a>
+            <a class="next" rel="next" href="/2020/11/09/BFC/">BFC</a>
             
         </section>
 
