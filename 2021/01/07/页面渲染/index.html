@@ -12,7 +12,7 @@
 
 
 
-<title>PPI、DPI、设备像素等概念及自适应布局方案 | </title>
+<title>页面渲染 | </title>
 
 
 
@@ -177,7 +177,7 @@
     
     <article class="post-wrap">
         <header class="post-header">
-            <h1 class="post-title">PPI、DPI、设备像素等概念及自适应布局方案</h1>
+            <h1 class="post-title">页面渲染</h1>
             
                 <div class="post-meta">
                     
@@ -186,14 +186,16 @@
 
                     
                         <span class="post-time">
-                        Date: <a href="#">December 23, 2020&nbsp;&nbsp;11:12:25</a>
+                        Date: <a href="#">January 7, 2021&nbsp;&nbsp;15:19:28</a>
                         </span>
                     
                     
                         <span class="post-category">
                     Category:
                             
-                                <a href="/categories/HTML/">HTML</a>
+                                <a href="/categories/%E6%B8%B2%E6%9F%93/">渲染</a>
+                            
+                                <a href="/categories/%E6%B8%B2%E6%9F%93/HTML/">HTML</a>
                             
                         </span>
                     
@@ -202,13 +204,29 @@
         </header>
 
         <div class="post-content">
-            <h3 id="PPI定义（物理像素）"><a href="#PPI定义（物理像素）" class="headerlink" title="PPI定义（物理像素）"></a>PPI定义（物理像素）</h3><p>PPI指的是每英寸上物理像素数数目，即“像素密度”。PPI的数值越大，屏幕效果越好。不过PPI是物理上的概念，是客观存在不会改变的值，跟开发中的DPI是完全不同。<br>物理像素又称为设备像素，是显示设备中的一个最小的的物理部件。每个像素可以根据操作系统设置自己的颜色和亮度</p>
-<h3 id="DPI-定义（设备独立像素）"><a href="#DPI-定义（设备独立像素）" class="headerlink" title="DPI 定义（设备独立像素）"></a>DPI 定义（设备独立像素）</h3><p>DPI是指图像每英寸长度内的像素点数</p>
-<h3 id="visual-viewport"><a href="#visual-viewport" class="headerlink" title="visual viewport"></a>visual viewport</h3><p>显示网页内容的区域，可以通过js命令获取</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">window</span>.innerWidth</span><br><span class="line"><span class="built_in">window</span>.innerHeight</span><br></pre></td></tr></table></figure>
-<h3 id="layout-viewport"><a href="#layout-viewport" class="headerlink" title="layout viewport"></a>layout viewport</h3><p>网页布局的区域，它是html标签的父容器，很多时候浏览器窗口不能完全显示layout viewport的全貌，需要通过滚动条查看页面</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">document</span>.documentElement.clientWidth</span><br><span class="line"><span class="built_in">document</span>.document.clientHeight</span><br></pre></td></tr></table></figure>
-<h3 id="ideal-viewport"><a href="#ideal-viewport" class="headerlink" title="ideal viewport"></a>ideal viewport</h3><p>它与手机屏幕大小的相同，确切来说，等于visual viewport的大小。把页面渲染到这个ideal viewport里面，就能在visual viewport中完美显示</p>
+            <h3 id="页面的渲染过程"><a href="#页面的渲染过程" class="headerlink" title="页面的渲染过程"></a>页面的渲染过程</h3><ol>
+<li>将HTML构建成一个DOM树(DOM=Document object model 文档对象模型)，DOM的构建是一个深度遍历的过程：当前节点的所有子节点都构建好了才会去构建下一个兄弟节点</li>
+<li>将CSS样式文件解析成 CSS Rule tree</li>
+<li>根据DOM树和CSS树来构建一个 Rendering tree(渲染树)。注意：Render Tree渲染树并不等于 DOM树，因为像一些dispaly：none的标签就每必要渲染出来放在渲染树中</li>
+<li>有了渲染树 Rendering Tree，浏览器能够知道页面的节点和节点的样式</li>
+<li>页面根据 Rendering Tree 开始计算出每个节点的具体位置</li>
+<li>开始绘制，遍历Rendering Tree 使用浏览器后端层绘制每个节点</li>
+</ol>
+<h3 id="回流-Reflow-和重绘-Repaint"><a href="#回流-Reflow-和重绘-Repaint" class="headerlink" title="回流(Reflow)和重绘(Repaint)"></a>回流(Reflow)和重绘(Repaint)</h3><p>回流/重排(Reflow): 页面的某个部分发生了变化影响了布局，渲染树需要重新计算<br>重绘(Repaint):  改变了某个元素的背景颜色、文字颜色等，不影响页面的布局或者元素周围，只会引起浏览器的重绘(repaint)</p>
+<h3 id="如何减少回流-Reflow"><a href="#如何减少回流-Reflow" class="headerlink" title="如何减少回流(Reflow)"></a>如何减少回流(Reflow)</h3><ol>
+<li>第一次的页面加载必定会触发依次回流/重排和重绘</li>
+<li>触发重绘不一定会触发回流/重排，但是回流/重绘必定会触发重绘</li>
+</ol>
+<h4 id="触发回流的原因"><a href="#触发回流的原因" class="headerlink" title="触发回流的原因"></a>触发回流的原因</h4><ol>
+<li>元素在视图中的位置和大小发生改变</li>
+<li>删除或者添加元素</li>
+<li>浏览器的视图大小发生改变</li>
+</ol>
+<h3 id="CSS和JS的阻塞规则"><a href="#CSS和JS的阻塞规则" class="headerlink" title="CSS和JS的阻塞规则"></a>CSS和JS的阻塞规则</h3><ol>
+<li>CSS不会阻塞DOM的解析，但会阻塞DOM渲染</li>
+<li>JS阻塞DOM解析，但是浏览器会“偷看”DOM，预先下载相关资源</li>
+<li>浏览器遇到且没有defer或async属性的 标签时，可能会触发页面渲染，因此如果前面的CSS资源尚未加载完成，浏览器会等待完它加载完毕再执行脚本</li>
+</ol>
 
         </div>
 
@@ -223,7 +241,7 @@
                 
                     <p class="copyright-item">
                         <span>Permalink:</span>
-                        <span><a href="http://example.com/2020/12/23/PPI%E3%80%81DPI%E3%80%81%E8%AE%BE%E5%A4%87%E5%83%8F%E7%B4%A0%E7%AD%89%E6%A6%82%E5%BF%B5/">http://example.com/2020/12/23/PPI%E3%80%81DPI%E3%80%81%E8%AE%BE%E5%A4%87%E5%83%8F%E7%B4%A0%E7%AD%89%E6%A6%82%E5%BF%B5/</a></span>
+                        <span><a href="http://example.com/2021/01/07/%E9%A1%B5%E9%9D%A2%E6%B8%B2%E6%9F%93/">http://example.com/2021/01/07/%E9%A1%B5%E9%9D%A2%E6%B8%B2%E6%9F%93/</a></span>
                     </p>
                 
                 
@@ -247,7 +265,9 @@
                 <span class="tag">
                     
                     
-                        <a href="/tags/%E5%83%8F%E7%B4%A0/"># 像素</a>
+                        <a href="/tags/%E6%B8%B2%E6%9F%93/"># 渲染</a>
+                    
+                        <a href="/tags/HTML/"># HTML</a>
                     
                         
                 </span>
@@ -260,10 +280,8 @@
         </section>
         <section class="post-nav">
             
-                <a class="prev" rel="prev" href="/2021/01/07/%E9%A1%B5%E9%9D%A2%E6%B8%B2%E6%9F%93/">页面渲染</a>
             
-            
-            <a class="next" rel="next" href="/2020/11/09/BFC/">BFC</a>
+            <a class="next" rel="next" href="/2020/12/23/PPI%E3%80%81DPI%E3%80%81%E8%AE%BE%E5%A4%87%E5%83%8F%E7%B4%A0%E7%AD%89%E6%A6%82%E5%BF%B5/">PPI、DPI、设备像素等概念及自适应布局方案</a>
             
         </section>
 
