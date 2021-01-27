@@ -12,7 +12,7 @@
 
 
 
-<title>页面渲染 | </title>
+<title>export/import、require/exports | </title>
 
 
 
@@ -177,7 +177,7 @@
     
     <article class="post-wrap">
         <header class="post-header">
-            <h1 class="post-title">页面渲染</h1>
+            <h1 class="post-title">export/import、require/exports</h1>
             
                 <div class="post-meta">
                     
@@ -186,16 +186,16 @@
 
                     
                         <span class="post-time">
-                        Date: <a href="#">January 7, 2021&nbsp;&nbsp;15:19:28</a>
+                        Date: <a href="#">January 27, 2021&nbsp;&nbsp;13:29:42</a>
                         </span>
                     
                     
                         <span class="post-category">
                     Category:
                             
-                                <a href="/categories/%E6%B8%B2%E6%9F%93/">渲染</a>
+                                <a href="/categories/javascript/">javascript</a>
                             
-                                <a href="/categories/%E6%B8%B2%E6%9F%93/HTML/">HTML</a>
+                                <a href="/categories/javascript/CommonJS/">CommonJS</a>
                             
                         </span>
                     
@@ -204,29 +204,55 @@
         </header>
 
         <div class="post-content">
-            <h3 id="页面的渲染过程"><a href="#页面的渲染过程" class="headerlink" title="页面的渲染过程"></a>页面的渲染过程</h3><ol>
-<li>将HTML构建成一个DOM树(DOM=Document object model 文档对象模型)，DOM的构建是一个深度遍历的过程：当前节点的所有子节点都构建好了才会去构建下一个兄弟节点</li>
-<li>将CSS样式文件解析成 CSS Rule tree</li>
-<li>根据DOM树和CSS树来构建一个 Rendering tree(渲染树)。注意：Render Tree渲染树并不等于 DOM树，因为像一些dispaly：none的标签就每必要渲染出来放在渲染树中</li>
-<li>有了渲染树 Rendering Tree，浏览器能够知道页面的节点和节点的样式</li>
-<li>页面根据 Rendering Tree 开始计算出每个节点的具体位置</li>
-<li>开始绘制，遍历Rendering Tree 使用浏览器后端层绘制每个节点</li>
-</ol>
-<h3 id="回流-Reflow-和重绘-Repaint"><a href="#回流-Reflow-和重绘-Repaint" class="headerlink" title="回流(Reflow)和重绘(Repaint)"></a>回流(Reflow)和重绘(Repaint)</h3><p>回流/重排(Reflow): 页面的某个部分发生了变化影响了布局，渲染树需要重新计算<br>重绘(Repaint):  改变了某个元素的背景颜色、文字颜色等，不影响页面的布局或者元素周围，只会引起浏览器的重绘(repaint)</p>
-<h3 id="如何减少回流-Reflow"><a href="#如何减少回流-Reflow" class="headerlink" title="如何减少回流(Reflow)"></a>如何减少回流(Reflow)</h3><ol>
-<li>第一次的页面加载必定会触发依次回流/重排和重绘</li>
-<li>触发重绘不一定会触发回流/重排，但是回流/重绘必定会触发重绘</li>
-</ol>
-<h4 id="触发回流的原因"><a href="#触发回流的原因" class="headerlink" title="触发回流的原因"></a>触发回流的原因</h4><ol>
-<li>元素在视图中的位置和大小发生改变</li>
-<li>删除或者添加元素</li>
-<li>浏览器的视图大小发生改变</li>
-</ol>
-<h3 id="CSS和JS的阻塞规则"><a href="#CSS和JS的阻塞规则" class="headerlink" title="CSS和JS的阻塞规则"></a>CSS和JS的阻塞规则</h3><ol>
-<li>CSS不会阻塞DOM的解析，但会阻塞DOM渲染</li>
-<li>JS阻塞DOM解析，但是浏览器会“偷看”DOM，预先下载相关资源</li>
-<li>浏览器遇到且没有defer或async属性的 标签时，可能会触发页面渲染，因此如果前面的CSS资源尚未加载完成，浏览器会等待完它加载完毕再执行脚本</li>
-</ol>
+            <p><code> require</code> 和<code> import</code>是不同规范下引入模块的语句<br><code>require/exports</code> 是2009年 CommonJs规范下引入模块的的方式<br><code>import/export</code> 是2015年 es6 规范下引入模块的方式</p>
+<table>
+<thead>
+<tr>
+<th>类型</th>
+<th>require/exports</th>
+<th>import/export</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Node.js</td>
+<td>所有版本</td>
+<td>Node 9.0+（启动需加上 flag –experimental-modules Node 13.2+（直接启动）</td>
+</tr>
+<tr>
+<td>Chrome</td>
+<td>不支持</td>
+<td>61+</td>
+</tr>
+<tr>
+<td>Firefox</td>
+<td>不支持</td>
+<td>60+</td>
+</tr>
+<tr>
+<td>Safari</td>
+<td>不支持</td>
+<td>10.1+</td>
+</tr>
+<tr>
+<td>Edge</td>
+<td>不支持</td>
+<td>16+</td>
+</tr>
+</tbody></table>
+<p>CommonJs规范下的 <code> require/exports</code> 是针对于服务端开发的，服务器模块系统同步读取模块文件的内容，编译执行后得到模块接口（nodejs是CommonJs的实现）</p>
+<p>在浏览器端因为异步加载的特性，commonJs无法正常加载。所以出现了RequireJs，SeaJs的模块化设计方案</p>
+<ul>
+<li><code>import/export</code> 在浏览器中是无法使用的，需要在加载的模块的<code>&lt;script&gt;</code>标签中使用<code> type=&quot;module&quot;</code></li>
+<li>即使node 13.2+ 已经支持 <code>import/export </code>, Node官方不建议在正式环境使用，可以使用babel转化成CommonJs规范(具体实现还是require/exports)</li>
+</ul>
+<h3 id="require-exports-是运行时的动态加载，import-export-是静态编译"><a href="#require-exports-是运行时的动态加载，import-export-是静态编译" class="headerlink" title="require/exports 是运行时的动态加载，import/export 是静态编译"></a>require/exports 是运行时的动态加载，import/export 是静态编译</h3><p><code>CommonJs加载的是一个对象（即module.exports 属性）, 该对象只有在脚本运行完才会生成，而es6模块不是对象，它的对外接口只是一种静态定义，代码静态解析阶段就会生成</code></p>
+<ul>
+<li>es模块下 可以在import引用前使用，CommonJs则需要在require引用后使用</li>
+</ul>
+<h3 id="require-exports-输出的是一个值的拷贝，import-export输出的是一个值的引用"><a href="#require-exports-输出的是一个值的拷贝，import-export输出的是一个值的引用" class="headerlink" title="require/exports 输出的是一个值的拷贝，import/export输出的是一个值的引用"></a>require/exports 输出的是一个值的拷贝，import/export输出的是一个值的引用</h3><ul>
+<li>改变输出的值对于<code>require/exports</code>的模块内部不会造成影响，对于 <code>import/export</code> 的内部会造成影响</li>
+<li><code>import/export</code>的模块不允许重新赋值/定义</li>
+</ul>
 
         </div>
 
@@ -241,7 +267,7 @@
                 
                     <p class="copyright-item">
                         <span>Permalink:</span>
-                        <span><a href="http://example.com/2021/01/07/%E9%A1%B5%E9%9D%A2%E6%B8%B2%E6%9F%93/">http://example.com/2021/01/07/%E9%A1%B5%E9%9D%A2%E6%B8%B2%E6%9F%93/</a></span>
+                        <span><a href="http://example.com/2021/01/27/export-import%E3%80%81require-exports/">http://example.com/2021/01/27/export-import%E3%80%81require-exports/</a></span>
                     </p>
                 
                 
@@ -265,9 +291,9 @@
                 <span class="tag">
                     
                     
-                        <a href="/tags/%E6%B8%B2%E6%9F%93/"># 渲染</a>
+                        <a href="/tags/javascript/"># javascript</a>
                     
-                        <a href="/tags/HTML/"># HTML</a>
+                        <a href="/tags/CommonJS/"># CommonJS</a>
                     
                         
                 </span>
@@ -280,10 +306,8 @@
         </section>
         <section class="post-nav">
             
-                <a class="prev" rel="prev" href="/2021/01/27/export-import%E3%80%81require-exports/">export/import、require/exports</a>
             
-            
-            <a class="next" rel="next" href="/2020/12/23/PPI%E3%80%81DPI%E3%80%81%E8%AE%BE%E5%A4%87%E5%83%8F%E7%B4%A0%E7%AD%89%E6%A6%82%E5%BF%B5/">PPI、DPI、设备像素等概念及自适应布局方案</a>
+            <a class="next" rel="next" href="/2021/01/07/%E9%A1%B5%E9%9D%A2%E6%B8%B2%E6%9F%93/">页面渲染</a>
             
         </section>
 
