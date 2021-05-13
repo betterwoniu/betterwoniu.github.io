@@ -12,7 +12,7 @@
 
 
 
-<title>页面渲染 | </title>
+<title>盒模型 | </title>
 
 
 
@@ -177,7 +177,7 @@
     
     <article class="post-wrap">
         <header class="post-header">
-            <h1 class="post-title">页面渲染</h1>
+            <h1 class="post-title">盒模型</h1>
             
                 <div class="post-meta">
                     
@@ -186,16 +186,14 @@
 
                     
                         <span class="post-time">
-                        Date: <a href="#">January 7, 2021&nbsp;&nbsp;15:19:28</a>
+                        Date: <a href="#">May 13, 2021&nbsp;&nbsp;9:47:12</a>
                         </span>
                     
                     
                         <span class="post-category">
                     Category:
                             
-                                <a href="/categories/%E6%B8%B2%E6%9F%93/">渲染</a>
-                            
-                                <a href="/categories/%E6%B8%B2%E6%9F%93/HTML/">HTML</a>
+                                <a href="/categories/%E7%9B%92%E6%A8%A1%E5%9E%8B/">盒模型</a>
                             
                         </span>
                     
@@ -204,29 +202,9 @@
         </header>
 
         <div class="post-content">
-            <h3 id="页面的渲染过程"><a href="#页面的渲染过程" class="headerlink" title="页面的渲染过程"></a>页面的渲染过程</h3><ol>
-<li>将HTML构建成一个DOM树(DOM=Document object model 文档对象模型)，DOM的构建是一个深度遍历的过程：当前节点的所有子节点都构建好了才会去构建下一个兄弟节点</li>
-<li>将CSS样式文件解析成 CSS Rule tree</li>
-<li>根据DOM树和CSS树来构建一个 Rendering tree(渲染树)。注意：Render Tree渲染树并不等于 DOM树，因为像一些dispaly：none的标签就每必要渲染出来放在渲染树中</li>
-<li>有了渲染树 Rendering Tree，浏览器能够知道页面的节点和节点的样式</li>
-<li>页面根据 Rendering Tree 开始计算出每个节点的具体位置</li>
-<li>开始绘制，遍历Rendering Tree 使用浏览器后端层绘制每个节点</li>
-</ol>
-<h3 id="回流-Reflow-和重绘-Repaint"><a href="#回流-Reflow-和重绘-Repaint" class="headerlink" title="回流(Reflow)和重绘(Repaint)"></a>回流(Reflow)和重绘(Repaint)</h3><p>回流/重排(Reflow): 页面的某个部分发生了变化影响了布局，渲染树需要重新计算<br>重绘(Repaint):  改变了某个元素的背景颜色、文字颜色等，不影响页面的布局或者元素周围，只会引起浏览器的重绘(repaint)</p>
-<h3 id="如何减少回流-Reflow"><a href="#如何减少回流-Reflow" class="headerlink" title="如何减少回流(Reflow)"></a>如何减少回流(Reflow)</h3><ol>
-<li>第一次的页面加载必定会触发依次回流/重排和重绘</li>
-<li>触发重绘不一定会触发回流/重排，但是回流/重绘必定会触发重绘</li>
-</ol>
-<h4 id="触发回流的原因"><a href="#触发回流的原因" class="headerlink" title="触发回流的原因"></a>触发回流的原因</h4><ol>
-<li>元素在视图中的位置和大小发生改变</li>
-<li>删除或者添加元素</li>
-<li>浏览器的视图大小发生改变</li>
-</ol>
-<h3 id="CSS和JS的阻塞规则"><a href="#CSS和JS的阻塞规则" class="headerlink" title="CSS和JS的阻塞规则"></a>CSS和JS的阻塞规则</h3><ol>
-<li>CSS不会阻塞DOM的解析，但会阻塞DOM渲染</li>
-<li>JS阻塞DOM解析，但是浏览器会“偷看”DOM，预先下载相关资源</li>
-<li>浏览器遇到且没有defer或async属性的 标签时，可能会触发页面渲染，因此如果前面的CSS资源尚未加载完成，浏览器会等待完它加载完毕再执行脚本</li>
-</ol>
+            <h3 id="标准盒模型"><a href="#标准盒模型" class="headerlink" title="标准盒模型"></a>标准盒模型</h3><p>  标准的盒模型的范围包括<code>margin</code>、<code>border</code>、<code>padding</code>、<code>content</code>, <code>content</code>的范围只有他自己的高宽<br><img src="https://gitee.com/lbnbetter/images/raw/master/img/box.jpeg" alt="标准盒模型"></p>
+<h3 id="IE盒模型"><a href="#IE盒模型" class="headerlink" title="IE盒模型"></a>IE盒模型</h3><p>   IE的盒模型范围也 包括了<code>margin</code>、<code>border</code>、<code>padding</code>、<code>content</code>,但是不同的是IE盒模型的<code>content</code>的范围包括<code>border</code> 和 <code>padding</code><br><img src="https://gitee.com/lbnbetter/images/raw/master/img/IE-box-mode.jpeg" alt="IE标准盒模型"></p>
+<h3 id="盒边框"><a href="#盒边框" class="headerlink" title="盒边框"></a>盒边框</h3><p><img src="https://gitee.com/lbnbetter/images/raw/master/img/box-border.png" alt="盒边框"></p>
 
         </div>
 
@@ -241,7 +219,7 @@
                 
                     <p class="copyright-item">
                         <span>Permalink:</span>
-                        <span><a href="http://example.com/2021/01/07/%E9%A1%B5%E9%9D%A2%E6%B8%B2%E6%9F%93/">http://example.com/2021/01/07/%E9%A1%B5%E9%9D%A2%E6%B8%B2%E6%9F%93/</a></span>
+                        <span><a href="http://example.com/2021/05/13/%E7%9B%92%E6%A8%A1%E5%9E%8B/">http://example.com/2021/05/13/%E7%9B%92%E6%A8%A1%E5%9E%8B/</a></span>
                     </p>
                 
                 
@@ -265,9 +243,9 @@
                 <span class="tag">
                     
                     
-                        <a href="/tags/HTML/"># HTML</a>
+                        <a href="/tags/%E7%9B%92%E6%A8%A1%E5%9E%8B/"># 盒模型</a>
                     
-                        <a href="/tags/%E6%B8%B2%E6%9F%93/"># 渲染</a>
+                        <a href="/tags/HTML/"># HTML</a>
                     
                         
                 </span>
@@ -280,10 +258,8 @@
         </section>
         <section class="post-nav">
             
-                <a class="prev" rel="prev" href="/2021/01/27/export-import%E3%80%81require-exports/">export/import、require/exports</a>
             
-            
-            <a class="next" rel="next" href="/2020/12/23/PPI%E3%80%81DPI%E3%80%81%E8%AE%BE%E5%A4%87%E5%83%8F%E7%B4%A0%E7%AD%89%E6%A6%82%E5%BF%B5/">PPI、DPI、设备像素等概念及自适应布局方案</a>
+            <a class="next" rel="next" href="/2021/01/27/class%E7%B1%BB/">class类</a>
             
         </section>
 
