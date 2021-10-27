@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>export/import、require/exports | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="require 和 import是不同规范下引入模块的语句require&#x2F;exports 是2009年 CommonJs规范下引入模块的的方式import&#x2F;export 是2015年 es6 规范下引入模块的方式    类型 require&#x2F;exports import&#x2F;export    Node.js 所有版本 Node 9.0+（启动需加上 flag –experimental-modul">
+<meta property="og:type" content="article">
+<meta property="og:title" content="export&#x2F;import、require&#x2F;exports">
+<meta property="og:url" content="http://example.com/2021/01/27/export-import%E3%80%81require-exports/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="require 和 import是不同规范下引入模块的语句require&#x2F;exports 是2009年 CommonJs规范下引入模块的的方式import&#x2F;export 是2015年 es6 规范下引入模块的方式    类型 require&#x2F;exports import&#x2F;export    Node.js 所有版本 Node 9.0+（启动需加上 flag –experimental-modul">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2021-01-27T05:29:42.000Z">
+<meta property="article:modified_time" content="2021-09-08T09:13:05.000Z">
+<meta property="article:author" content="John Doe">
+<meta property="article:tag" content="javascript">
+<meta property="article:tag" content="CommonJS">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
+
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-export-import、require-exports" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2021/01/27/export-import%E3%80%81require-exports/" class="article-date">
+  <time class="dt-published" datetime="2021-01-27T05:29:42.000Z" itemprop="datePublished">2021-01-27</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/javascript/">javascript</a>►<a class="article-category-link" href="/categories/javascript/CommonJS/">CommonJS</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      export/import、require/exports
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p><code> require</code> 和<code> import</code>是不同规范下引入模块的语句<br><code>require/exports</code> 是2009年 CommonJs规范下引入模块的的方式<br><code>import/export</code> 是2015年 es6 规范下引入模块的方式</p>
+<table>
+<thead>
+<tr>
+<th>类型</th>
+<th>require/exports</th>
+<th>import/export</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Node.js</td>
+<td>所有版本</td>
+<td>Node 9.0+（启动需加上 flag –experimental-modules Node 13.2+（直接启动）</td>
+</tr>
+<tr>
+<td>Chrome</td>
+<td>不支持</td>
+<td>61+</td>
+</tr>
+<tr>
+<td>Firefox</td>
+<td>不支持</td>
+<td>60+</td>
+</tr>
+<tr>
+<td>Safari</td>
+<td>不支持</td>
+<td>10.1+</td>
+</tr>
+<tr>
+<td>Edge</td>
+<td>不支持</td>
+<td>16+</td>
+</tr>
+</tbody></table>
+<p>CommonJs规范下的 <code> require/exports</code> 是针对于服务端开发的，服务器模块系统同步读取模块文件的内容，编译执行后得到模块接口（nodejs是CommonJs的实现）</p>
+<p>在浏览器端因为异步加载的特性，commonJs无法正常加载。所以出现了RequireJs，SeaJs的模块化设计方案</p>
+<ul>
+<li><code>import/export</code> 在浏览器中是无法使用的，需要在加载的模块的<code>&lt;script&gt;</code>标签中使用<code> type=&quot;module&quot;</code></li>
+<li>即使node 13.2+ 已经支持 <code>import/export </code>, Node官方不建议在正式环境使用，可以使用babel转化成CommonJs规范(具体实现还是require/exports)</li>
+</ul>
+<h3 id="require-exports-是运行时的动态加载，import-export-是静态编译"><a href="#require-exports-是运行时的动态加载，import-export-是静态编译" class="headerlink" title="require/exports 是运行时的动态加载，import/export 是静态编译"></a>require/exports 是运行时的动态加载，import/export 是静态编译</h3><p><code>CommonJs加载的是一个对象（即module.exports 属性）, 该对象只有在脚本运行完才会生成，而es6模块不是对象，它的对外接口只是一种静态定义，代码静态解析阶段就会生成</code></p>
+<ul>
+<li>es模块下 可以在import引用前使用，CommonJs则需要在require引用后使用</li>
+</ul>
+<h3 id="require-exports-输出的是一个值的拷贝，import-export输出的是一个值的引用"><a href="#require-exports-输出的是一个值的拷贝，import-export输出的是一个值的引用" class="headerlink" title="require/exports 输出的是一个值的拷贝，import/export输出的是一个值的引用"></a>require/exports 输出的是一个值的拷贝，import/export输出的是一个值的引用</h3><ul>
+<li>改变输出的值对于<code>require/exports</code>的模块内部不会造成影响，对于 <code>import/export</code> 的内部会造成影响</li>
+<li><code>import/export</code>的模块不允许重新赋值/定义</li>
+</ul>
+<h3 id="exports-和-module-exports-的区别（commonjs）"><a href="#exports-和-module-exports-的区别（commonjs）" class="headerlink" title="exports 和 module.exports 的区别（commonjs）"></a>exports 和 module.exports 的区别（commonjs）</h3><ul>
+<li>不可以以直接对exports直接赋值 （exports.hello = hello; function hello(){ console.log(hello)}）,使用module.exports 可以直接赋值</li>
+<li>node 加载模块的时候 会将模块放入包装函数load中执行，在执行load函数前 将会定义一个变量<br>var module = {<br>id:’hello’,<br>exports:{}<br>}<br>load 函数最终返回的是 exports；<br>如果输出的是一个对象或者数组的话就要使用module.exports<br>所以做好使用module.exports输出模块变量<h3 id="export-和-export-defult-区别-es6"><a href="#export-和-export-defult-区别-es6" class="headerlink" title="export 和 export defult 区别(es6)"></a>export 和 export defult 区别(es6)</h3></li>
+<li>exports defult 默认导出的数据</li>
+<li>exports 是导出指定的数据</li>
+</ul>
+<h3 id="垃圾处理机制"><a href="#垃圾处理机制" class="headerlink" title="垃圾处理机制"></a>垃圾处理机制</h3><ul>
+<li>新生代</li>
+<li>老生代</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2021/01/27/export-import%E3%80%81require-exports/" data-id="ckv8v31g3000f40fy1fwz1axb" data-title="export/import、require/exports" class="article-share-link">Share</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/CommonJS/" rel="tag">CommonJS</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javascript/" rel="tag">javascript</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2021/01/27/class%E7%B1%BB/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          class类
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2021/01/07/%E9%A1%B5%E9%9D%A2%E6%B8%B2%E6%9F%93/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">页面渲染</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/HTML/">HTML</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/HTTP/">HTTP</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/javascript/">javascript</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/javascript/CommonJS/">CommonJS</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/javascript/angular/">angular</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/javascript/class/">class</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/javascript/rxjs/">rxjs</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/javascript/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">设计模式</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/promise/">promise</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/promise/angular/">angular</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/typescript/">typescript</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%8E%9F%E5%9E%8B%E9%93%BE/">原型链</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%B8%B2%E6%9F%93/">渲染</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%B8%B2%E6%9F%93/HTML/">HTML</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%9B%92%E6%A8%A1%E5%9E%8B/">盒模型</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%BC%93%E5%AD%98/">缓存</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/BFC/" rel="tag">BFC</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CommonJS/" rel="tag">CommonJS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTML/" rel="tag">HTML</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTTP/" rel="tag">HTTP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/angular/" rel="tag">angular</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/class/" rel="tag">class</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/javascript/" rel="tag">javascript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/promise/" rel="tag">promise</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/rxjs/" rel="tag">rxjs</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/typescript/" rel="tag">typescript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%83%8F%E7%B4%A0/" rel="tag">像素</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%8E%9F%E5%9E%8B%E9%93%BE/" rel="tag">原型链</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%B8%B2%E6%9F%93/" rel="tag">渲染</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%9B%92%E6%A8%A1%E5%9E%8B/" rel="tag">盒模型</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BC%93%E5%AD%98/" rel="tag">缓存</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" rel="tag">设计模式</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/BFC/" style="font-size: 10px;">BFC</a> <a href="/tags/CommonJS/" style="font-size: 10px;">CommonJS</a> <a href="/tags/HTML/" style="font-size: 15px;">HTML</a> <a href="/tags/HTTP/" style="font-size: 10px;">HTTP</a> <a href="/tags/angular/" style="font-size: 10px;">angular</a> <a href="/tags/class/" style="font-size: 10px;">class</a> <a href="/tags/javascript/" style="font-size: 20px;">javascript</a> <a href="/tags/promise/" style="font-size: 10px;">promise</a> <a href="/tags/rxjs/" style="font-size: 10px;">rxjs</a> <a href="/tags/typescript/" style="font-size: 10px;">typescript</a> <a href="/tags/%E5%83%8F%E7%B4%A0/" style="font-size: 10px;">像素</a> <a href="/tags/%E5%8E%9F%E5%9E%8B%E9%93%BE/" style="font-size: 10px;">原型链</a> <a href="/tags/%E6%B8%B2%E6%9F%93/" style="font-size: 10px;">渲染</a> <a href="/tags/%E7%9B%92%E6%A8%A1%E5%9E%8B/" style="font-size: 10px;">盒模型</a> <a href="/tags/%E7%BC%93%E5%AD%98/" style="font-size: 10px;">缓存</a> <a href="/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" style="font-size: 10px;">设计模式</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/10/">October 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/06/">June 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/05/">May 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/01/">January 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/12/">December 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/11/">November 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/09/">September 2020</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2021/10/15/React/">React</a>
+          </li>
+        
+          <li>
+            <a href="/2021/10/15/webpack/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2021/06/22/vue%E7%BB%84%E4%BB%B6%E5%92%8C%E8%B7%AF%E7%94%B1/">vue组件和路由</a>
+          </li>
+        
+          <li>
+            <a href="/2021/05/13/%E7%9B%92%E6%A8%A1%E5%9E%8B/">盒模型</a>
+          </li>
+        
+          <li>
+            <a href="/2021/01/27/class%E7%B1%BB/">class类</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2021 John Doe<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.4.1.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>

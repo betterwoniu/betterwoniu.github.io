@@ -1,0 +1,851 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta property="og:type" content="website">
+<meta property="og:title" content="Hexo">
+<meta property="og:url" content="http://example.com/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:locale" content="en_US">
+<meta property="article:author" content="John Doe">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
+
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main">
+  
+    <article id="post-React" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2021/10/15/React/" class="article-date">
+  <time class="dt-published" datetime="2021-10-15T06:19:07.000Z" itemprop="datePublished">2021-10-15</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2021/10/15/React/">React</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h3 id="函数组件和类组件"><a href="#函数组件和类组件" class="headerlink" title="函数组件和类组件"></a>函数组件和类组件</h3><h3 id="组件实例属性-state"><a href="#组件实例属性-state" class="headerlink" title="组件实例属性 - state"></a>组件实例属性 - state</h3><h3 id="组件实例属性-props"><a href="#组件实例属性-props" class="headerlink" title="组件实例属性 - props"></a>组件实例属性 - props</h3><ul>
+<li>定义prop的属性类型</li>
+<li><h3 id="ref"><a href="#ref" class="headerlink" title="ref"></a>ref</h3></li>
+<li>Refs 提供了一种方式，允许我们访问 DOM 节点或在 render 方法中创建的 React 元素</li>
+<li>字符串形式使用ref（废弃）<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;div onClick=&#123;<span class="built_in">this</span>.getRef&#125; ref=<span class="string">&quot;personRef&quot;</span>&gt;hello &#123;<span class="built_in">this</span>.props.name&#125; It is &#123;<span class="built_in">this</span>.state.date.toLocaleTimeString()&#125;&lt;/div&gt;</span><br></pre></td></tr></table></figure></li>
+<li>内联回调形式使用ref<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;div onClick=&#123;<span class="built_in">this</span>.getRef&#125; ref=&#123;<span class="function"><span class="params">c</span>=&gt;</span><span class="built_in">this</span>.personRef = c&#125;&gt;hello &#123;<span class="built_in">this</span>.props.name&#125; It is &#123;<span class="built_in">this</span>.state.date.toLocaleTimeString()&#125;&lt;/div&gt;</span><br></pre></td></tr></table></figure></li>
+<li>class绑定形式回调形式使用ref<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;div onClick=&#123;<span class="built_in">this</span>.getRef&#125; ref=&#123;<span class="built_in">this</span>.saveref&#125;&gt;hello &#123;<span class="built_in">this</span>.props.name&#125; It is &#123;<span class="built_in">this</span>.state.date.toLocaleTimeString()&#125;&lt;/div&gt;</span><br><span class="line">  saveref=<span class="function">(<span class="params">c</span>)=&gt;</span>&#123;</span><br><span class="line"> <span class="built_in">this</span>.personRef = c;</span><br><span class="line"> <span class="built_in">console</span>.log(<span class="built_in">this</span>.personRef);</span><br><span class="line"></span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure></li>
+<li>React.createRef() 创建<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">personRef = React.createRef();</span><br><span class="line"><span class="function"><span class="title">constructor</span>(<span class="params">props</span>)</span> &#123;</span><br><span class="line">  <span class="built_in">super</span>(props);</span><br><span class="line">  <span class="built_in">this</span>.state = &#123; <span class="attr">date</span>: <span class="keyword">new</span> <span class="built_in">Date</span>() &#125;;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="title">render</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line">  <span class="keyword">return</span> (</span><br><span class="line">    <span class="xml"><span class="tag">&lt;<span class="name">div</span> <span class="attr">name</span>=<span class="string">&quot;dom&quot;</span>&gt;</span></span></span><br><span class="line"><span class="xml">      <span class="tag">&lt;<span class="name">div</span> <span class="attr">onClick</span>=<span class="string">&#123;this.getRef&#125;</span> <span class="attr">ref</span>=<span class="string">&#123;this.personRef&#125;</span>&gt;</span>hello &#123;this.props.name&#125; It is &#123;this.state.date.toLocaleTimeString()&#125;<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line"><span class="xml">      <span class="tag">&lt;<span class="name">Person</span> <span class="attr">name</span>=<span class="string">&quot;siri&quot;</span> &gt;</span> <span class="tag">&lt;/<span class="name">Person</span>&gt;</span></span></span><br><span class="line"><span class="xml">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line">  )</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h3 id="React-生命周期函数"><a href="#React-生命周期函数" class="headerlink" title="React 生命周期函数"></a>React 生命周期函数</h3><ul>
+<li>组件挂载时：constructor、componentDidMount、</li>
+<li>组件更新时：render、componentDidUpdate</li>
+<li>组件卸载时：componentWillUnmont</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2021/10/15/React/" data-id="ckv8v31fx000640fyhgc736a6" data-title="React" class="article-share-link">Share</a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-webpack" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2021/10/15/webpack/" class="article-date">
+  <time class="dt-published" datetime="2021-10-15T01:42:19.000Z" itemprop="datePublished">2021-10-15</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h3 id="webpack是什么"><a href="#webpack是什么" class="headerlink" title="webpack是什么"></a>webpack是什么</h3><ul>
+<li>webpack将前端的资源文件(js/json/css/less/img…)都将作为模块处理，它根据模块的依赖关系进行静态分析，打包生成对应的静态资源</li>
+</ul>
+<h3 id="webpack核心模块1-entry"><a href="#webpack核心模块1-entry" class="headerlink" title="webpack核心模块1:entry"></a>webpack核心模块1:entry</h3><ul>
+<li>入口：webpack打包从那个文件开始，创建内部依赖图</li>
+</ul>
+<h3 id="webpack核心模块2-output"><a href="#webpack核心模块2-output" class="headerlink" title="webpack核心模块2:output"></a>webpack核心模块2:output</h3><ul>
+<li>出口：打包生成的文件存放的地址</li>
+</ul>
+<h3 id="webpack核心模块3-loader（module）"><a href="#webpack核心模块3-loader（module）" class="headerlink" title="webpack核心模块3:loader（module）"></a>webpack核心模块3:loader（module）</h3><ul>
+<li>laoder用于将源代码转换成可直接在浏览器运行的代码</li>
+<li>预处理文件</li>
+<li>将不通的语言转换成js，或者使用加载的样式文件、图片等</li>
+<li>可以允许配置多个loader，从下到上（从右到左）执行<br><code> css-loader、less-loader、eslint-loader、postcss-loader、url-loader、babel-loader</code></li>
+</ul>
+<h3 id="webpack-核心模块4：plugins"><a href="#webpack-核心模块4：plugins" class="headerlink" title="webpack 核心模块4：plugins"></a>webpack 核心模块4：plugins</h3><ul>
+<li>plugins 的目的在于解决loader无法实现的事情</li>
+<li>使用的时候是向plugin创建一个new实例，可以传入参数</li>
+</ul>
+<p><code> minicssextractplugin、htmlwebpackplugin</code></p>
+<h3 id="webpack-核心模块5：mode"><a href="#webpack-核心模块5：mode" class="headerlink" title="webpack 核心模块5：mode"></a>webpack 核心模块5：mode</h3><ul>
+<li>告知 webpack 使用相应环境的内置优化</li>
+<li>可能的值有：none, development 或 production（默认）</li>
+</ul>
+<h3 id="webpack-核心模块6：浏览器兼容"><a href="#webpack-核心模块6：浏览器兼容" class="headerlink" title="webpack 核心模块6：浏览器兼容"></a>webpack 核心模块6：浏览器兼容</h3><h3 id="webpack性能优化"><a href="#webpack性能优化" class="headerlink" title="webpack性能优化"></a>webpack性能优化</h3><ul>
+<li>开发环境</li>
+<li>生产环境</li>
+</ul>
+<h4 id="开发环境优化"><a href="#开发环境优化" class="headerlink" title="开发环境优化"></a>开发环境优化</h4><ul>
+<li>优化打包构建速度</li>
+<li>优化代码调试</li>
+</ul>
+<h4 id="生产环境优化"><a href="#生产环境优化" class="headerlink" title="生产环境优化"></a>生产环境优化</h4><ul>
+<li>优化打包速度</li>
+<li>优化运行速度</li>
+</ul>
+<h4 id="优化打包构建速度"><a href="#优化打包构建速度" class="headerlink" title="优化打包构建速度"></a>优化打包构建速度</h4><ul>
+<li>缓存 ：1.cacheDirectory  开启babel缓存 2. 静态资源缓存：hash：每次构建的时候都会生成一个hash值（重新打包会导致缓存失效）；chunkhash：根据chunk生成的hash值，如果打包来源来自同一个chunk，那么hash值就一样；contenthash：根据文件的内容生成hash值，不同的文件hash值不同</li>
+<li>tree shaking（es6代码，production生产环境）: 去除无用代码</li>
+<li>code split   1. 多入口文件 2. optimization :{splitChunks:{chunks:’all’}}</li>
+<li>懒加载、预加载   1. 使用import语法懒加载 2. prefetch 预加载，使用之前提前加载 ，等待其他资源加载完毕之后再去预先加载</li>
+</ul>
+<h3 id="devsrver模块配置"><a href="#devsrver模块配置" class="headerlink" title="devsrver模块配置"></a>devsrver模块配置</h3><ul>
+<li>contentbase: 运行代码目录</li>
+<li>compress: 启动gzip压缩</li>
+<li>port：端口</li>
+<li>host：localhost</li>
+<li>open: 默认启动打开浏览器</li>
+<li>hot:true  开启HMR功能</li>
+<li>clientLogLevel:  日志级别</li>
+<li>watchOption：忽略监听的文件</li>
+<li>proxy：开发跨域代理 <code> &#39;/api&#39;:&#123;target:&#39;http://127.0.0.1:9000&#39;,&#125;</code></li>
+</ul>
+<h3 id="optiization-模块配置"><a href="#optiization-模块配置" class="headerlink" title="optiization 模块配置"></a>optiization 模块配置</h3><ul>
+<li>必须要在生产环境下 （mode：production）<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">optimization:&#123;</span><br><span class="line"> <span class="attr">splitChunks</span>:&#123;</span><br><span class="line">   <span class="attr">chunks</span>:<span class="string">&#x27;all&#x27;</span>,</span><br><span class="line">   <span class="attr">minSize</span>: <span class="number">30</span>*<span class="number">1024</span>  <span class="comment">// 最小分割代码</span></span><br><span class="line"> &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h3 id="webpack-优化之HRM"><a href="#webpack-优化之HRM" class="headerlink" title="webpack 优化之HRM"></a>webpack 优化之HRM</h3><ul>
+<li>用于开发环境，在重新运行期间，替换、删除、修改文件的时候，无需重新加载整个程序<h3 id="webpack-优化之-tree-shaking"><a href="#webpack-优化之-tree-shaking" class="headerlink" title="webpack 优化之 tree shaking"></a>webpack 优化之 tree shaking</h3></li>
+<li>通常用于描述移除 JavaScript 上下文中的未引用代码(dead-code)</li>
+<li>开发环境下配置<code> optimization: &#123;usedExports: true &#125;</code></li>
+<li>生产环境下配置 <code> &quot;sideEffects&quot;: false(所有文件都是必须的)  &quot;sideEffects&quot;: [, &quot;*.css&quot;] (css 文件无需受到tree shaking 影响)</code>  </li>
+</ul>
+<h3 id="webpack优化之-代码分离"><a href="#webpack优化之-代码分离" class="headerlink" title="webpack优化之 代码分离"></a>webpack优化之 代码分离</h3>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2021/10/15/webpack/" data-id="ckv8v31gd000s40fybxiv503q" data-title="" class="article-share-link">Share</a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-vue组件和路由" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2021/06/22/vue%E7%BB%84%E4%BB%B6%E5%92%8C%E8%B7%AF%E7%94%B1/" class="article-date">
+  <time class="dt-published" datetime="2021-06-22T01:54:00.000Z" itemprop="datePublished">2021-06-22</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2021/06/22/vue%E7%BB%84%E4%BB%B6%E5%92%8C%E8%B7%AF%E7%94%B1/">vue组件和路由</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h3 id="1、命名视图"><a href="#1、命名视图" class="headerlink" title="1、命名视图"></a>1、命名视图</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">在router 的配置中使用components 可以当前路由中渲染多个组件视图，通过name来渲染对应的组件（未命名name的默认为default）</span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> router = <span class="keyword">new</span> VueRouter(&#123;</span><br><span class="line">  <span class="attr">routes</span>: [</span><br><span class="line">    &#123;</span><br><span class="line">      <span class="attr">path</span>: <span class="string">&#x27;/&#x27;</span>,</span><br><span class="line">      <span class="attr">components</span>: &#123;</span><br><span class="line">        <span class="attr">default</span>: Foo,</span><br><span class="line">        <span class="attr">a</span>: Bar,</span><br><span class="line">        <span class="attr">b</span>: Baz</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  ]</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">router-view</span> <span class="attr">class</span>=<span class="string">&quot;view one&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">router-view</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">router-view</span> <span class="attr">class</span>=<span class="string">&quot;view two&quot;</span> <span class="attr">name</span>=<span class="string">&quot;a&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">router-view</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">router-view</span> <span class="attr">class</span>=<span class="string">&quot;view three&quot;</span> <span class="attr">name</span>=<span class="string">&quot;b&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">router-view</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h3 id="2-路由组件传参"><a href="#2-路由组件传参" class="headerlink" title="2.路由组件传参"></a>2.路由组件传参</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> User = &#123;</span><br><span class="line">  <span class="attr">props</span>: [<span class="string">&#x27;id&#x27;</span>],</span><br><span class="line">  <span class="attr">template</span>: <span class="string">&#x27;&lt;div&gt;User &#123;&#123; id &#125;&#125;&lt;/div&gt;&#x27;</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">const</span> router = <span class="keyword">new</span> VueRouter(&#123;</span><br><span class="line">  <span class="attr">routes</span>: [</span><br><span class="line">    &#123; <span class="attr">path</span>: <span class="string">&#x27;/user/:id&#x27;</span>, <span class="attr">component</span>: User, <span class="attr">props</span>: <span class="literal">true</span> &#125;,</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 对于包含命名视图的路由，你必须分别为每个命名视图添加 `props` 选项：</span></span><br><span class="line">    &#123;</span><br><span class="line">      <span class="attr">path</span>: <span class="string">&#x27;/user/:id&#x27;</span>,</span><br><span class="line">      <span class="attr">components</span>: &#123; <span class="attr">default</span>: User, <span class="attr">sidebar</span>: Sidebar &#125;,</span><br><span class="line">      <span class="attr">props</span>: &#123; <span class="attr">default</span>: <span class="literal">true</span>, <span class="attr">sidebar</span>: <span class="literal">false</span> &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  ]</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<h4 id="对象模式传参"><a href="#对象模式传参" class="headerlink" title="对象模式传参"></a>对象模式传参</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> router = <span class="keyword">new</span> VueRouter(&#123;</span><br><span class="line">  <span class="attr">routes</span>: [</span><br><span class="line">    &#123;</span><br><span class="line">      <span class="attr">path</span>: <span class="string">&#x27;/promotion/from-newsletter&#x27;</span>,</span><br><span class="line">      <span class="attr">component</span>: Promotion,</span><br><span class="line">      <span class="attr">props</span>: &#123; <span class="attr">newsletterPopup</span>: <span class="literal">false</span> &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  ]</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<h4 id="函数模式传参"><a href="#函数模式传参" class="headerlink" title="函数模式传参"></a>函数模式传参</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> router = <span class="keyword">new</span> VueRouter(&#123;</span><br><span class="line">  <span class="attr">routes</span>: [</span><br><span class="line">    &#123;</span><br><span class="line">      <span class="attr">path</span>: <span class="string">&#x27;/search&#x27;</span>,</span><br><span class="line">      <span class="attr">component</span>: SearchUser,</span><br><span class="line">      <span class="attr">props</span>: <span class="function"><span class="params">route</span> =&gt;</span> (&#123; <span class="attr">query</span>: route.query.q &#125;)</span><br><span class="line">    &#125;</span><br><span class="line">  ]</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+
+<h3 id="关于actived和deactivated的组件生命周期函数"><a href="#关于actived和deactivated的组件生命周期函数" class="headerlink" title="关于actived和deactivated的组件生命周期函数"></a>关于actived和deactivated的组件生命周期函数</h3><p>只有该组件被<code>&lt;keep-alive&gt;</code>标签包裹才会触发actived和deactived两个钩子函数，表示该组件将会被缓存下来；<br>注意，<keep-alive> 是用在其一个直属的子组件被开关的情形。如果你在其中有 v-for 则不会工作。如果有上述的多个条件性的子元素，<keep-alive> 要求同时只有一个子元素被渲染。<br>include（只有名称匹配的组件会被缓存） 和 exclude（任何名称匹配的组件都不会被缓存） prop 允许组件有条件地缓存。二者都可以用逗号分隔字符串、正则表达式或一个数组来表示；<br>匹配首先检查组件自身的 name 选项，如果 name 选项不可用，则匹配它的局部注册名称 (父组件 components 选项的键值)。匿名组件不能被匹配。<br>max - 数字。最多可以缓存多少组件实例，最多可以缓存多少组件实例。一旦这个数字达到了，在新实例被创建之前，已缓存组件中最久没有被访问的实例会被销毁掉。</p>
+<h3 id="插槽"><a href="#插槽" class="headerlink" title="插槽"></a>插槽</h3><p>组件标签中的内容（可以是任何模版代码）将会在渲染的时候渲染在<code>&lt;slot&gt;</code> 的位置，如果不存在<code>&lt;slot&gt;</code>，将会抛弃组件标签中的内容</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- 父组件引入pageheader 子组件  该子组件的name为curRouter, 父组件接口的数据为tdata --&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">pageheader</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">template</span> #<span class="attr">curRouter</span>=<span class="string">&quot;&#123;tdata=&#123;row:&#x27;课程视频&#x27;&#125;&#125;&quot;</span>&gt;</span></span><br><span class="line">        &#123;&#123;tdata.row&#125;&#125;</span><br><span class="line">      <span class="tag">&lt;/<span class="name">template</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">pageheader</span>&gt;</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">&lt;!-- 子组件   子组件使用自己的数据pagename数据，传给父组件的数据格式为&#123;&quot;row&quot;:pagename&#125; --&gt;</span></span><br><span class="line">     <span class="tag">&lt;<span class="name">slot</span> <span class="attr">v-bind:row</span>=<span class="string">&quot;pagename&quot;</span> <span class="attr">name</span>=<span class="string">&quot;curRouter&quot;</span>&gt;</span></span><br><span class="line">        &#123;&#123;pagename&#125;&#125;</span><br><span class="line">      <span class="tag">&lt;/<span class="name">slot</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="vue双向数据绑定原理"><a href="#vue双向数据绑定原理" class="headerlink" title="vue双向数据绑定原理"></a>vue双向数据绑定原理</h3><ol>
+<li>通过<code> Object.defineProperty</code> 来实现：</li>
+<li>1 在vue实例加载的时候，会先使用<code> Object.defineProperty</code>来监听data的数据</li>
+<li>2 监听数据完毕之后开始使用编译器处理页面中使用data中数据的地方，使用data数据的地方会创建一个观察者</li>
+<li>3 当使用该数据的时候就会触发<code> Object.defineProperty</code>中的get的回调方法，并将改观察者放入依赖收集器中，等待数据变化的时候触发</li>
+<li>4 当数据变化的时候就会触发<code> Object.defineProperty</code>中的set的回调方法，回调方法中存储的该数据的编译方法就会将新的值传进去，更新该数据的视图</li>
+</ol>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2021/06/22/vue%E7%BB%84%E4%BB%B6%E5%92%8C%E8%B7%AF%E7%94%B1/" data-id="ckv8v31gc000r40fydotf7o3e" data-title="vue组件和路由" class="article-share-link">Share</a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-盒模型" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2021/05/13/%E7%9B%92%E6%A8%A1%E5%9E%8B/" class="article-date">
+  <time class="dt-published" datetime="2021-05-13T01:47:12.000Z" itemprop="datePublished">2021-05-13</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E7%9B%92%E6%A8%A1%E5%9E%8B/">盒模型</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2021/05/13/%E7%9B%92%E6%A8%A1%E5%9E%8B/">盒模型</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h3 id="标准盒模型"><a href="#标准盒模型" class="headerlink" title="标准盒模型"></a>标准盒模型</h3><p>  标准的盒模型的范围包括<code>margin</code>、<code>border</code>、<code>padding</code>、<code>content</code>, <code>content</code>的范围只有他自己的高宽<br><img src="https://gitee.com/lbnbetter/images/raw/master/img/box.jpeg" alt="标准盒模型"></p>
+<h3 id="IE盒模型"><a href="#IE盒模型" class="headerlink" title="IE盒模型"></a>IE盒模型</h3><p>   IE的盒模型范围也 包括了<code>margin</code>、<code>border</code>、<code>padding</code>、<code>content</code>,但是不同的是IE盒模型的<code>content</code>的范围包括<code>border</code> 和 <code>padding</code><br><img src="https://gitee.com/lbnbetter/images/raw/master/img/IE-box-mode.jpeg" alt="IE标准盒模型"></p>
+<h3 id="盒边框"><a href="#盒边框" class="headerlink" title="盒边框"></a>盒边框</h3><p><img src="https://gitee.com/lbnbetter/images/raw/master/img/box-border.png" alt="盒边框"></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2021/05/13/%E7%9B%92%E6%A8%A1%E5%9E%8B/" data-id="ckv8v31gg000x40fy24slcsym" data-title="盒模型" class="article-share-link">Share</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/HTML/" rel="tag">HTML</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%9B%92%E6%A8%A1%E5%9E%8B/" rel="tag">盒模型</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-class类" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2021/01/27/class%E7%B1%BB/" class="article-date">
+  <time class="dt-published" datetime="2021-01-27T07:47:57.000Z" itemprop="datePublished">2021-01-27</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/javascript/">javascript</a>►<a class="article-category-link" href="/categories/javascript/class/">class</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2021/01/27/class%E7%B1%BB/">class类</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// es5 实现类</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Point</span>(<span class="params">x,y</span>)</span>&#123;</span><br><span class="line">    <span class="built_in">this</span>.x = x;</span><br><span class="line">    <span class="built_in">this</span>.y = y;</span><br><span class="line">&#125;</span><br><span class="line">Point.prototype.toString =<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> x+<span class="string">&#x27;,&#x27;</span>+y;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> ponit = <span class="keyword">new</span> Point(<span class="number">1</span>,<span class="number">2</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// es6 的语法糖</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Ponit</span>()</span>&#123;</span><br><span class="line">   <span class="function"><span class="title">constructor</span>(<span class="params">x,y</span>)</span>&#123;</span><br><span class="line">      <span class="built_in">this</span>.x = x;</span><br><span class="line">      <span class="built_in">this</span>.y = y;</span><br><span class="line">   &#125;</span><br><span class="line"></span><br><span class="line">   <span class="function"><span class="title">toString</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">       <span class="keyword">return</span> <span class="built_in">this</span>.x+<span class="string">&#x27;,&#x27;</span>+<span class="built_in">this</span>.y;</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>类不存在变量提升</li>
+<li><code>this</code> 的指向问题<br>类的方法中this默认指向类的实例，但是如果单独使用就会造成错误，this就会指向当时运行的环境<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Logger</span></span>&#123;</span><br><span class="line">  <span class="function"><span class="title">print</span>(<span class="params">text</span>)</span>&#123;</span><br><span class="line">      <span class="built_in">console</span>.log(text)</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="function"><span class="title">printName</span>(<span class="params">text = <span class="string">&#x27;text&#x27;</span></span>)</span>&#123;</span><br><span class="line">      <span class="built_in">this</span>.print(text);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">const</span> logger = <span class="keyword">new</span> Logger();</span><br><span class="line"><span class="keyword">let</span> &#123;printName&#125; = logger;</span><br><span class="line">printName();</span><br></pre></td></tr></table></figure>
+解决方案：</li>
+<li>在构造方法中绑定this的指向<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Logger</span></span>&#123;</span><br><span class="line">    <span class="function"><span class="title">constructor</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        <span class="built_in">this</span>.printName = <span class="built_in">this</span>.printName.bind(<span class="built_in">this</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li>使用箭头函数(在箭头函数中，this的指向为定义时所在的对象)<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Logger</span></span>&#123;</span><br><span class="line">    <span class="function"><span class="title">constructor</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        <span class="built_in">this</span>.printName = <span class="function">()=&gt;</span> <span class="built_in">this</span>;</span><br><span class="line">    &#125;</span><br><span class="line">   </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li>使用proxy，获取方法的时候自动绑定this<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">selfish</span> (<span class="params">target</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">const</span> cache = <span class="keyword">new</span> <span class="built_in">WeakMap</span>();</span><br><span class="line">  <span class="keyword">const</span> handler = &#123;</span><br><span class="line">    get (target, key) &#123;</span><br><span class="line">      <span class="keyword">const</span> value = <span class="built_in">Reflect</span>.get(target, key);</span><br><span class="line">      <span class="keyword">if</span> (<span class="keyword">typeof</span> value !== <span class="string">&#x27;function&#x27;</span>) &#123;</span><br><span class="line">        <span class="keyword">return</span> value;</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="keyword">if</span> (!cache.has(value)) &#123;</span><br><span class="line">        cache.set(value, value.bind(target));</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="keyword">return</span> cache.get(value);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;;</span><br><span class="line">  <span class="keyword">const</span> proxy = <span class="keyword">new</span> <span class="built_in">Proxy</span>(target, handler);</span><br><span class="line">  <span class="keyword">return</span> proxy;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> logger = selfish(<span class="keyword">new</span> Logger());</span><br></pre></td></tr></table></figure>
+<h3 id="静态方法"><a href="#静态方法" class="headerlink" title="静态方法"></a>静态方法</h3></li>
+<li>加上关键字<code>static</code> 的静态方法是不可以被实例继承的，而是通过类直接调用。(如果静态方法中使用this，那么这个this指向的就是类,而不是实例)</li>
+<li>父类的静态方法可以被子类继承</li>
+<li>实例属性定义可以放在类的顶层<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">foo</span> </span>&#123;</span><br><span class="line">  bar = <span class="string">&#x27;hello&#x27;</span>;<span class="comment">// &lt;&lt;---</span></span><br><span class="line">  baz = <span class="string">&#x27;world&#x27;</span>;<span class="comment">// &lt;&lt;---</span></span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="title">constructor</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line">    <span class="comment">// ...</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h3 id="私有方法和私有属性"><a href="#私有方法和私有属性" class="headerlink" title="私有方法和私有属性"></a>私有方法和私有属性</h3><p>私有方法和私有属性只能在类的内部使用，不能在外部访问</p>
+<ul>
+<li><p>定义的方法名上加以区分</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Wiget</span></span>&#123;</span><br><span class="line">    <span class="comment">// 公有方法</span></span><br><span class="line">    <span class="function"><span class="title">foo</span>(<span class="params">baz</span>)</span>&#123;</span><br><span class="line">        <span class="built_in">this</span>._baz(baz);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 私有方法</span></span><br><span class="line">    <span class="function"><span class="title">_baz</span>(<span class="params">baz</span>)</span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">this</span>.text = baz;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li><p> 通过<code> call()</code> 绑定,从而达到私有方法的目的</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Wiget</span></span>&#123;</span><br><span class="line">    <span class="comment">// 公有方法</span></span><br><span class="line">    <span class="function"><span class="title">foo</span>(<span class="params">baz</span>)</span>&#123;</span><br><span class="line">        bar.call(<span class="built_in">this</span>,baz)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">bar</span>(<span class="params">baz</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">this</span>.text = baz;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li><p>使用<code> Symbol</code> 的唯一性(但是通过Reflect.ownKeys()依然可以从外部使用)</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> bar = <span class="built_in">Symbol</span>(<span class="string">&#x27;bar&#x27;</span>);</span><br><span class="line"><span class="keyword">const</span> text = <span class="built_in">Symbol</span>(<span class="string">&#x27;bar&#x27;</span>);</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Wight</span></span>&#123;</span><br><span class="line">    <span class="function"><span class="title">foo</span>(<span class="params">baz</span>)</span>&#123;</span><br><span class="line">      <span class="built_in">this</span>[bar](baz);</span><br><span class="line">    &#125;</span><br><span class="line">    [bar](baz)&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">this</span>[text]= baz</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h3 id="new-target-属性"><a href="#new-target-属性" class="headerlink" title="new target 属性"></a>new target 属性</h3></li>
+<li><p>es6 引入了 <code>new.target</code>属性，该属性一般用于构造函数中。创建实例如果不是通过<code>new </code> 或<code> Reflect.constructor()</code>调用的，那么<code>new.target</code> 返回的就是<code>undefine</code>.因此该属性是可以确定构造函数是怎么调用的。</p>
+</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 方法判断</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Foo</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(<span class="keyword">new</span>.target == Foo)&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">&#x27;this is use new&#x27;</span>)</span><br><span class="line">    &#125;<span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">&#x27;this is not new &#x27;</span>)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> foo = <span class="keyword">new</span> Foo();</span><br><span class="line"><span class="keyword">let</span> foo2 = Foo.call(foo);</span><br><span class="line"><span class="keyword">var</span> foo1 = <span class="built_in">Reflect</span>.construct(Foo,[<span class="string">&#x27;rnew&#x27;</span>])</span><br><span class="line"></span><br><span class="line"><span class="comment">// 类判断</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Foo</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="title">constructor</span>(<span class="params">name</span>)</span> &#123;</span><br><span class="line">        <span class="keyword">if</span> (<span class="keyword">new</span>.target == Foo) &#123;</span><br><span class="line">            <span class="built_in">console</span>.log(<span class="string">&#x27;this is use new&#x27;</span>);</span><br><span class="line">            <span class="built_in">this</span>.name = name;</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="built_in">console</span>.log(<span class="string">&#x27;this is not user&#x27;</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="built_in">this</span>.name)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> foo = <span class="keyword">new</span> Foo(<span class="string">&#x27;new&#x27;</span>);</span><br></pre></td></tr></table></figure>
+<ul>
+<li>可以创建一个必须继承才能使用的类<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Shape</span> </span>&#123;</span><br><span class="line">  <span class="function"><span class="title">constructor</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> (<span class="keyword">new</span>.target === Shape) &#123;</span><br><span class="line">      <span class="keyword">throw</span> <span class="keyword">new</span> <span class="built_in">Error</span>(<span class="string">&#x27;本类不能实例化&#x27;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Rectangle</span> <span class="keyword">extends</span> <span class="title">Shape</span> </span>&#123;</span><br><span class="line">  <span class="function"><span class="title">constructor</span>(<span class="params">length, width</span>)</span> &#123;</span><br><span class="line">    <span class="built_in">super</span>();</span><br><span class="line">    <span class="comment">// ...</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> x = <span class="keyword">new</span> Shape();  <span class="comment">// 报错</span></span><br><span class="line"><span class="keyword">var</span> y = <span class="keyword">new</span> Rectangle(<span class="number">3</span>, <span class="number">4</span>); </span><br></pre></td></tr></table></figure></li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2021/01/27/class%E7%B1%BB/" data-id="ckv8v31g0000b40fy9j7k3cyf" data-title="class类" class="article-share-link">Share</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/class/" rel="tag">class</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javascript/" rel="tag">javascript</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-export-import、require-exports" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2021/01/27/export-import%E3%80%81require-exports/" class="article-date">
+  <time class="dt-published" datetime="2021-01-27T05:29:42.000Z" itemprop="datePublished">2021-01-27</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/javascript/">javascript</a>►<a class="article-category-link" href="/categories/javascript/CommonJS/">CommonJS</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2021/01/27/export-import%E3%80%81require-exports/">export/import、require/exports</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p><code> require</code> 和<code> import</code>是不同规范下引入模块的语句<br><code>require/exports</code> 是2009年 CommonJs规范下引入模块的的方式<br><code>import/export</code> 是2015年 es6 规范下引入模块的方式</p>
+<table>
+<thead>
+<tr>
+<th>类型</th>
+<th>require/exports</th>
+<th>import/export</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Node.js</td>
+<td>所有版本</td>
+<td>Node 9.0+（启动需加上 flag –experimental-modules Node 13.2+（直接启动）</td>
+</tr>
+<tr>
+<td>Chrome</td>
+<td>不支持</td>
+<td>61+</td>
+</tr>
+<tr>
+<td>Firefox</td>
+<td>不支持</td>
+<td>60+</td>
+</tr>
+<tr>
+<td>Safari</td>
+<td>不支持</td>
+<td>10.1+</td>
+</tr>
+<tr>
+<td>Edge</td>
+<td>不支持</td>
+<td>16+</td>
+</tr>
+</tbody></table>
+<p>CommonJs规范下的 <code> require/exports</code> 是针对于服务端开发的，服务器模块系统同步读取模块文件的内容，编译执行后得到模块接口（nodejs是CommonJs的实现）</p>
+<p>在浏览器端因为异步加载的特性，commonJs无法正常加载。所以出现了RequireJs，SeaJs的模块化设计方案</p>
+<ul>
+<li><code>import/export</code> 在浏览器中是无法使用的，需要在加载的模块的<code>&lt;script&gt;</code>标签中使用<code> type=&quot;module&quot;</code></li>
+<li>即使node 13.2+ 已经支持 <code>import/export </code>, Node官方不建议在正式环境使用，可以使用babel转化成CommonJs规范(具体实现还是require/exports)</li>
+</ul>
+<h3 id="require-exports-是运行时的动态加载，import-export-是静态编译"><a href="#require-exports-是运行时的动态加载，import-export-是静态编译" class="headerlink" title="require/exports 是运行时的动态加载，import/export 是静态编译"></a>require/exports 是运行时的动态加载，import/export 是静态编译</h3><p><code>CommonJs加载的是一个对象（即module.exports 属性）, 该对象只有在脚本运行完才会生成，而es6模块不是对象，它的对外接口只是一种静态定义，代码静态解析阶段就会生成</code></p>
+<ul>
+<li>es模块下 可以在import引用前使用，CommonJs则需要在require引用后使用</li>
+</ul>
+<h3 id="require-exports-输出的是一个值的拷贝，import-export输出的是一个值的引用"><a href="#require-exports-输出的是一个值的拷贝，import-export输出的是一个值的引用" class="headerlink" title="require/exports 输出的是一个值的拷贝，import/export输出的是一个值的引用"></a>require/exports 输出的是一个值的拷贝，import/export输出的是一个值的引用</h3><ul>
+<li>改变输出的值对于<code>require/exports</code>的模块内部不会造成影响，对于 <code>import/export</code> 的内部会造成影响</li>
+<li><code>import/export</code>的模块不允许重新赋值/定义</li>
+</ul>
+<h3 id="exports-和-module-exports-的区别（commonjs）"><a href="#exports-和-module-exports-的区别（commonjs）" class="headerlink" title="exports 和 module.exports 的区别（commonjs）"></a>exports 和 module.exports 的区别（commonjs）</h3><ul>
+<li>不可以以直接对exports直接赋值 （exports.hello = hello; function hello(){ console.log(hello)}）,使用module.exports 可以直接赋值</li>
+<li>node 加载模块的时候 会将模块放入包装函数load中执行，在执行load函数前 将会定义一个变量<br>var module = {<br>id:’hello’,<br>exports:{}<br>}<br>load 函数最终返回的是 exports；<br>如果输出的是一个对象或者数组的话就要使用module.exports<br>所以做好使用module.exports输出模块变量<h3 id="export-和-export-defult-区别-es6"><a href="#export-和-export-defult-区别-es6" class="headerlink" title="export 和 export defult 区别(es6)"></a>export 和 export defult 区别(es6)</h3></li>
+<li>exports defult 默认导出的数据</li>
+<li>exports 是导出指定的数据</li>
+</ul>
+<h3 id="垃圾处理机制"><a href="#垃圾处理机制" class="headerlink" title="垃圾处理机制"></a>垃圾处理机制</h3><ul>
+<li>新生代</li>
+<li>老生代</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2021/01/27/export-import%E3%80%81require-exports/" data-id="ckv8v31g3000f40fy1fwz1axb" data-title="export/import、require/exports" class="article-share-link">Share</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/CommonJS/" rel="tag">CommonJS</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javascript/" rel="tag">javascript</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-页面渲染" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2021/01/07/%E9%A1%B5%E9%9D%A2%E6%B8%B2%E6%9F%93/" class="article-date">
+  <time class="dt-published" datetime="2021-01-07T07:19:28.000Z" itemprop="datePublished">2021-01-07</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E6%B8%B2%E6%9F%93/">渲染</a>►<a class="article-category-link" href="/categories/%E6%B8%B2%E6%9F%93/HTML/">HTML</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2021/01/07/%E9%A1%B5%E9%9D%A2%E6%B8%B2%E6%9F%93/">页面渲染</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h3 id="页面的渲染过程"><a href="#页面的渲染过程" class="headerlink" title="页面的渲染过程"></a>页面的渲染过程</h3><ol>
+<li>将HTML构建成一个DOM树(DOM=Document object model 文档对象模型)，DOM的构建是一个深度遍历的过程：当前节点的所有子节点都构建好了才会去构建下一个兄弟节点</li>
+<li>将CSS样式文件解析成 CSS Rule tree</li>
+<li>根据DOM树和CSS树来构建一个 Rendering tree(渲染树)。注意：Render Tree渲染树并不等于 DOM树，因为像一些dispaly：none的标签就每必要渲染出来放在渲染树中</li>
+<li>有了渲染树 Rendering Tree，浏览器能够知道页面的节点和节点的样式</li>
+<li>页面根据 Rendering Tree 开始计算出每个节点的具体位置</li>
+<li>开始绘制，遍历Rendering Tree 使用浏览器后端层绘制每个节点</li>
+</ol>
+<h3 id="回流-Reflow-和重绘-Repaint"><a href="#回流-Reflow-和重绘-Repaint" class="headerlink" title="回流(Reflow)和重绘(Repaint)"></a>回流(Reflow)和重绘(Repaint)</h3><p>回流/重排(Reflow): 页面的某个部分发生了变化影响了布局，渲染树需要重新计算<br>重绘(Repaint):  改变了某个元素的背景颜色、文字颜色等，不影响页面的布局或者元素周围，只会引起浏览器的重绘(repaint)</p>
+<h3 id="如何减少回流-Reflow"><a href="#如何减少回流-Reflow" class="headerlink" title="如何减少回流(Reflow)"></a>如何减少回流(Reflow)</h3><ol>
+<li>第一次的页面加载必定会触发依次回流/重排和重绘</li>
+<li>触发重绘不一定会触发回流/重排，但是回流/重绘必定会触发重绘</li>
+</ol>
+<h4 id="触发回流的原因"><a href="#触发回流的原因" class="headerlink" title="触发回流的原因"></a>触发回流的原因</h4><ol>
+<li>元素在视图中的位置和大小发生改变</li>
+<li>删除或者添加元素</li>
+<li>浏览器的视图大小发生改变</li>
+</ol>
+<h3 id="CSS和JS的阻塞规则"><a href="#CSS和JS的阻塞规则" class="headerlink" title="CSS和JS的阻塞规则"></a>CSS和JS的阻塞规则</h3><ol>
+<li>CSS不会阻塞DOM的解析，但会阻塞DOM渲染</li>
+<li>JS阻塞DOM解析，但是浏览器会“偷看”DOM，预先下载相关资源</li>
+<li>浏览器遇到且没有defer或async属性的 标签时，可能会触发页面渲染，因此如果前面的CSS资源尚未加载完成，浏览器会等待完它加载完毕再执行脚本</li>
+</ol>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2021/01/07/%E9%A1%B5%E9%9D%A2%E6%B8%B2%E6%9F%93/" data-id="ckv8v31gj001240fyb84ahiz3" data-title="页面渲染" class="article-share-link">Share</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/HTML/" rel="tag">HTML</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%B8%B2%E6%9F%93/" rel="tag">渲染</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-PPI、DPI、设备像素等概念" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2020/12/23/PPI%E3%80%81DPI%E3%80%81%E8%AE%BE%E5%A4%87%E5%83%8F%E7%B4%A0%E7%AD%89%E6%A6%82%E5%BF%B5/" class="article-date">
+  <time class="dt-published" datetime="2020-12-23T03:12:25.000Z" itemprop="datePublished">2020-12-23</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/HTML/">HTML</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2020/12/23/PPI%E3%80%81DPI%E3%80%81%E8%AE%BE%E5%A4%87%E5%83%8F%E7%B4%A0%E7%AD%89%E6%A6%82%E5%BF%B5/">PPI、DPI、设备像素等概念及自适应布局方案</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h3 id="PPI定义（物理像素）"><a href="#PPI定义（物理像素）" class="headerlink" title="PPI定义（物理像素）"></a>PPI定义（物理像素）</h3><p>PPI指的是每英寸上物理像素数数目，即“像素密度”。PPI的数值越大，屏幕效果越好。不过PPI是物理上的概念，是客观存在不会改变的值，跟开发中的DPI是完全不同。<br>物理像素又称为设备像素，是显示设备中的一个最小的的物理部件。每个像素可以根据操作系统设置自己的颜色和亮度</p>
+<h3 id="DPI-定义（设备独立像素）"><a href="#DPI-定义（设备独立像素）" class="headerlink" title="DPI 定义（设备独立像素）"></a>DPI 定义（设备独立像素）</h3><p>DPI是指图像每英寸长度内的像素点数</p>
+<h3 id="visual-viewport"><a href="#visual-viewport" class="headerlink" title="visual viewport"></a>visual viewport</h3><p>显示网页内容的区域，可以通过js命令获取</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">window</span>.innerWidth</span><br><span class="line"><span class="built_in">window</span>.innerHeight</span><br></pre></td></tr></table></figure>
+<h3 id="layout-viewport"><a href="#layout-viewport" class="headerlink" title="layout viewport"></a>layout viewport</h3><p>网页布局的区域，它是html标签的父容器，很多时候浏览器窗口不能完全显示layout viewport的全貌，需要通过滚动条查看页面</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">document</span>.documentElement.clientWidth</span><br><span class="line"><span class="built_in">document</span>.document.clientHeight</span><br></pre></td></tr></table></figure>
+<h3 id="ideal-viewport"><a href="#ideal-viewport" class="headerlink" title="ideal viewport"></a>ideal viewport</h3><p>它与手机屏幕大小的相同，确切来说，等于visual viewport的大小。把页面渲染到这个ideal viewport里面，就能在visual viewport中完美显示</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2020/12/23/PPI%E3%80%81DPI%E3%80%81%E8%AE%BE%E5%A4%87%E5%83%8F%E7%B4%A0%E7%AD%89%E6%A6%82%E5%BF%B5/" data-id="ckv8v31fu000440fyc4oaeq60" data-title="PPI、DPI、设备像素等概念及自适应布局方案" class="article-share-link">Share</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%83%8F%E7%B4%A0/" rel="tag">像素</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-BFC" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2020/11/09/BFC/" class="article-date">
+  <time class="dt-published" datetime="2020-11-09T11:32:13.000Z" itemprop="datePublished">2020-11-09</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/HTML/">HTML</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2020/11/09/BFC/">BFC</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h3 id="BFC定义"><a href="#BFC定义" class="headerlink" title="BFC定义"></a>BFC定义</h3> <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">BFC(Block Formatting Context)块级格式化上下文。它是一个独立的渲染区域，只有Block-level box 参与，它规定了内部的Block-level Box的布局，并且与这个区域的外部不相干。</span><br></pre></td></tr></table></figure>
+
+<h3 id="如何创建BFC"><a href="#如何创建BFC" class="headerlink" title="如何创建BFC"></a>如何创建BFC</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">1. 浮动元素：float的不为none</span><br><span class="line">2. 绝对定位元素：position的值为absolute 或 fixed</span><br><span class="line">3. overflow的值不为visible</span><br><span class="line">4. 非块级盒子的块级容器：display的值是inline-block、table-cell、flex、table-caption或者inline-flex、flow-root</span><br><span class="line">5. 根元素或其它包含它的元素</span><br><span class="line">除了兼容性问题，用display: flow-root来触发BFC最佳,不会产生任何副作用</span><br></pre></td></tr></table></figure>
+
+<h3 id="BFC布局场景"><a href="#BFC布局场景" class="headerlink" title="BFC布局场景"></a>BFC布局场景</h3> <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">1.在BFC区域中不会与float浮动元素重叠</span><br><span class="line">2.在同一个BFC区域中的相邻的块级元素之间的间隔取决于margin会发生重叠</span><br><span class="line">3.浮动元素造成了父级元素高度塌陷：父元素的高度取决于子元素的高度，当子元素变为浮动元素时就会造成父元素高度塌陷</span><br><span class="line">4.父子元素之间的margin重叠</span><br></pre></td></tr></table></figure>
+ <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;div id=<span class="string">&quot;app&quot;</span> style=<span class="string">&quot;height: 100Px;width: 100px;background-color: blue;margin-bottom: 10px;&quot;</span>&gt;&lt;/div&gt;</span><br><span class="line">  <span class="xml"><span class="tag">&lt;<span class="name">div</span> <span class="attr">style</span>=<span class="string">&quot;display:flow-root;border: 1px solid black;&quot;</span>&gt;</span></span></span><br><span class="line"><span class="xml">      <span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">&quot;addnumber&quot;</span> <span class="attr">style</span>=<span class="string">&quot;height: 100Px;width: 100px;background-color: brown;margin-top: 10px;float: left;&quot;</span>&gt;</span>+<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line"><span class="xml">      <span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">&quot;addnumber&quot;</span> <span class="attr">style</span>=<span class="string">&quot;background-color:burlywood;margin-top: 10px;display:flow-root;&quot;</span>&gt;</span>+<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line"><span class="xml">  <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line"> </span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2020/11/09/BFC/" data-id="ckv8v31fj000040fy6fmn086b" data-title="BFC" class="article-share-link">Share</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/BFC/" rel="tag">BFC</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-Promise" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2020/09/24/Promise/" class="article-date">
+  <time class="dt-published" datetime="2020-09-24T04:01:47.000Z" itemprop="datePublished">2020-09-24</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/promise/">promise</a>►<a class="article-category-link" href="/categories/promise/angular/">angular</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2020/09/24/Promise/">Promise</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h4 id="promise的含义"><a href="#promise的含义" class="headerlink" title="promise的含义"></a>promise的含义</h4><p>promise是一种异步编程的解决方案，promise是一个对象，保存着某个未来才会结束的异步操作事件的结果。promise的对象状态不受外界的影响，有三种状态：<code>pending</code> 、<code>fulfilled</code> 、<code>rejected</code> ，只有异步操作的结果可以决定是哪一种状态，任何其他的操作都不能改变其状态；一旦promise的状态发生改变就不会再变化。</p>
+<h3 id="promise-then"><a href="#promise-then" class="headerlink" title="promise.then()"></a>promise.then()</h3><p>then()方法是定义在原型对象 promise.protype上的，该方法的作用是状态改变的回调函数。then方法的第一个参数是resolved状态的回调函数，第二哥参数是rejected状态的回调函数。then方法返回的是一个新的promise实例，因此可以采用链式写法;链式结构的中then方法return的结果将作为参数传入给下一个then方法</p>
+<h3 id="Promise-prototype-catch"><a href="#Promise-prototype-catch" class="headerlink" title="Promise.prototype.catch()"></a>Promise.prototype.catch()</h3><p>catch()方法是用于指定发生错误的回调函数，当promise的状态改变为rejected的时候就不会调用then方法而是回调catch方法</p>
+<h3 id="Promise-prototype-finally"><a href="#Promise-prototype-finally" class="headerlink" title="Promise.prototype.finally()"></a>Promise.prototype.finally()</h3><p>finally() 方法用于指定不管promise对象最后状态如何都会执行的操作</p>
+<h3 id="Promise-all"><a href="#Promise-all" class="headerlink" title="Promise.all()"></a>Promise.all()</h3><p>all()方法用于将多个promise实例包装成一个新的promise实例，返回一个数组存放各个promise的返回值。当多个primise的状态都变为filfilled，此时才返回值；当其中有一个被reject，新的promise的状态也会被reject</p>
+<h3 id="promise-缓存"><a href="#promise-缓存" class="headerlink" title="promise 缓存"></a>promise 缓存</h3><h4 id="场景1：将封装一个方法，将参数作为参数，每次调用的时候都进行异步请求查询"><a href="#场景1：将封装一个方法，将参数作为参数，每次调用的时候都进行异步请求查询" class="headerlink" title="场景1：将封装一个方法，将参数作为参数，每次调用的时候都进行异步请求查询"></a>场景1：将封装一个方法，将参数作为参数，每次调用的时候都进行异步请求查询</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> userCache = <span class="keyword">new</span> <span class="built_in">Map</span>&lt;string,User&gt;();</span><br><span class="line"><span class="keyword">const</span> getUserById = <span class="keyword">async</span> (userId:string):<span class="built_in">Promise</span>&lt;User&gt;=&gt;&#123;</span><br><span class="line">   <span class="keyword">if</span>(!userCache.has(userId))&#123;</span><br><span class="line">       <span class="keyword">const</span> user = <span class="keyword">await</span> request.get(<span class="string">`https://users-service/<span class="subst">$&#123;userId&#125;</span>`</span>);</span><br><span class="line">       usersCache.set(userId, user);</span><br><span class="line">   &#125;</span><br><span class="line">   <span class="keyword">return</span> usersCache.get(userId);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="场景2：场景1可能会导致导致请求过于频繁，对于请求接口造成压力。所以，场景2采用缓存查询的promise来解决这问题"><a href="#场景2：场景1可能会导致导致请求过于频繁，对于请求接口造成压力。所以，场景2采用缓存查询的promise来解决这问题" class="headerlink" title="场景2：场景1可能会导致导致请求过于频繁，对于请求接口造成压力。所以，场景2采用缓存查询的promise来解决这问题"></a>场景2：场景1可能会导致导致请求过于频繁，对于请求接口造成压力。所以，场景2采用缓存查询的promise来解决这问题</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> userCache = <span class="keyword">new</span> <span class="built_in">Map</span>&lt;string,<span class="built_in">Promise</span>&gt;:user();</span><br><span class="line"><span class="keyword">const</span> getUserById = <span class="keyword">async</span>(userid:string):<span class="built_in">Promise</span>&lt;user&gt; =&gt;&#123;</span><br><span class="line">    <span class="keyword">if</span>(!userCache.has(userId))&#123;</span><br><span class="line">        <span class="keyword">const</span> userPromise = request.get(<span class="string">`https://users-service/<span class="subst">$&#123;userId&#125;</span>`</span>);</span><br><span class="line">        userPromisesCache.set(userId, userPromise);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> userPromisesCache.get(userId);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="借助memoizee-https-www-npmjs-com-package-memoizee-库来完善最后一个方案"><a href="#借助memoizee-https-www-npmjs-com-package-memoizee-库来完善最后一个方案" class="headerlink" title="借助memoizee(https://www.npmjs.com/package/memoizee) 库来完善最后一个方案"></a>借助memoizee(<a target="_blank" rel="noopener" href="https://www.npmjs.com/package/memoizee">https://www.npmjs.com/package/memoizee</a>) 库来完善最后一个方案</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> memoize <span class="keyword">from</span> <span class="string">&#x27;memoizee&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> getUserById = memoize(<span class="keyword">async</span> (userId: string): <span class="built_in">Promise</span>&lt;User&gt; =&gt; &#123;</span><br><span class="line">  <span class="keyword">const</span> user = <span class="keyword">await</span> request.get(<span class="string">`https://users-service/<span class="subst">$&#123;userId&#125;</span>`</span>);</span><br><span class="line">  <span class="keyword">return</span> user;</span><br><span class="line">&#125;, &#123; <span class="attr">promise</span>: <span class="literal">true</span>&#125;);</span><br></pre></td></tr></table></figure>
+
+
+<h3 id="单例模式Promise"><a href="#单例模式Promise" class="headerlink" title="单例模式Promise"></a>单例模式Promise</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">Class <span class="function"><span class="title">singletonpromise</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    private connectionPromise:<span class="built_in">Promise</span>&lt;T&gt; | <span class="literal">null</span>;</span><br><span class="line">    <span class="function"><span class="title">constructor</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        <span class="built_in">this</span>.connectionPromise = <span class="literal">null</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    private <span class="keyword">async</span> <span class="function"><span class="title">connnet</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(!<span class="built_in">this</span>.connectionPromise)&#123;</span><br><span class="line">            <span class="built_in">this</span>.connectionPromise = connectToDatabase(); <span class="comment">// connectToDatabase代指一个连接数据库操作的异步操作的promise</span></span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">this</span>.connectionPromise;</span><br><span class="line">    &#125;</span><br><span class="line">    public <span class="keyword">async</span> <span class="function"><span class="title">getRecord</span>(<span class="params">id:string</span>)</span>&#123;</span><br><span class="line">        <span class="keyword">await</span> <span class="built_in">this</span>.connnet();</span><br><span class="line">        <span class="keyword">return</span> getByIdPromise(id); <span class="comment">// getByIdPromise 获取信息操作</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="async-await-函数"><a href="#async-await-函数" class="headerlink" title="async/await 函数"></a>async/await 函数</h3><p>async 函数是解决异步方案，它是generator函数的语法糖，定义函数使用async关键字，await 命令后一般是一个promise对象，函数体中使用await 紧跟表达式需要等待的结果，并且async函数返回的是promise 对象。</p>
+<p>async 函数返回一个promise 对象，函数内部返回的值，将成为 then方法中的参数。<br>async 函数内部抛出的错误，会使返回的promise对象的状态变为reject状态，抛出的错误会被catch方法捕捉到。<br>async 函数返回的是一个promise对象，必须要等到函数体内的 await 后的promise 对象执行完才会状态发生改变，或者return 语句或发生错误。只有async 函数体内中的异步操作执行完，才会执行then方法指定的回调函数。</p>
+<p>async 错误处理机制：1.在函数体中使用 try…catch 捕捉错误；2.async函数使用catch方法捕捉错误</p>
+<h3 id="Generator-函数"><a href="#Generator-函数" class="headerlink" title="Generator 函数"></a>Generator 函数</h3><p>generator函数是es6 提供的一种异步解决方案。<br>1.语法上generator函数是一个状态机，封装着多个内部状态<br>2.执行generator函数会返回一个遍历对象，所以generator函数也是一个遍历生成函数，返回的遍历对象可以依次遍历generator函数的每一个状态<br>3.generator函数定义的关键字是一个*，函数体内部使用yield表达式，遍历该函数对象通过该函数的next()方法，返回的是一个对象{ value: ‘hello’, done: false },当done的值为true时该遍历对象遍历结束。<br>4 任意一个对象的Symbol.iterator方法，等于该对象的遍历器生成函数，调用该函数会返回该对象的一个遍历器对象。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> myiterator = &#123;&#125;;</span><br><span class="line">myiterator[<span class="built_in">Symbol</span>.iterator] = <span class="function"><span class="keyword">function</span> *(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">yield</span> <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">yield</span> <span class="number">2</span>;</span><br><span class="line">    <span class="keyword">yield</span> <span class="number">3</span>;</span><br><span class="line">&#125;</span><br><span class="line">[...myIterable] <span class="comment">// [1, 2, 3]</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>5.yield方法本身没有返回值，next方法可以带一个参数作为上一个yield表达式的值<br>6.for…of循环可以自动遍历generator函数运行生成的iterator对象，而不需要使用next方法<br>7.Generator.prototype.return()是可以给定参数，并终结该generator函数，如果return()方法不提供参数则返回value的值为undefined，如果generator函数体内存在try…finally，且正在执行try代码块，那么return方法就会进入finally代码块中，执行完毕，整个函数才会结束。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2020/09/24/Promise/" data-id="ckv8v31fv000540fy9eke8849" data-title="Promise" class="article-share-link">Share</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javascript/" rel="tag">javascript</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/promise/" rel="tag">promise</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+
+
+  <nav id="page-nav">
+    
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
+  </nav>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/HTML/">HTML</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/HTTP/">HTTP</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/javascript/">javascript</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/javascript/CommonJS/">CommonJS</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/javascript/angular/">angular</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/javascript/class/">class</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/javascript/rxjs/">rxjs</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/javascript/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">设计模式</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/promise/">promise</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/promise/angular/">angular</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/typescript/">typescript</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%8E%9F%E5%9E%8B%E9%93%BE/">原型链</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%B8%B2%E6%9F%93/">渲染</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%B8%B2%E6%9F%93/HTML/">HTML</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%9B%92%E6%A8%A1%E5%9E%8B/">盒模型</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%BC%93%E5%AD%98/">缓存</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/BFC/" rel="tag">BFC</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CommonJS/" rel="tag">CommonJS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTML/" rel="tag">HTML</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTTP/" rel="tag">HTTP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/angular/" rel="tag">angular</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/class/" rel="tag">class</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/javascript/" rel="tag">javascript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/promise/" rel="tag">promise</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/rxjs/" rel="tag">rxjs</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/typescript/" rel="tag">typescript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%83%8F%E7%B4%A0/" rel="tag">像素</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%8E%9F%E5%9E%8B%E9%93%BE/" rel="tag">原型链</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%B8%B2%E6%9F%93/" rel="tag">渲染</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%9B%92%E6%A8%A1%E5%9E%8B/" rel="tag">盒模型</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BC%93%E5%AD%98/" rel="tag">缓存</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" rel="tag">设计模式</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/BFC/" style="font-size: 10px;">BFC</a> <a href="/tags/CommonJS/" style="font-size: 10px;">CommonJS</a> <a href="/tags/HTML/" style="font-size: 15px;">HTML</a> <a href="/tags/HTTP/" style="font-size: 10px;">HTTP</a> <a href="/tags/angular/" style="font-size: 10px;">angular</a> <a href="/tags/class/" style="font-size: 10px;">class</a> <a href="/tags/javascript/" style="font-size: 20px;">javascript</a> <a href="/tags/promise/" style="font-size: 10px;">promise</a> <a href="/tags/rxjs/" style="font-size: 10px;">rxjs</a> <a href="/tags/typescript/" style="font-size: 10px;">typescript</a> <a href="/tags/%E5%83%8F%E7%B4%A0/" style="font-size: 10px;">像素</a> <a href="/tags/%E5%8E%9F%E5%9E%8B%E9%93%BE/" style="font-size: 10px;">原型链</a> <a href="/tags/%E6%B8%B2%E6%9F%93/" style="font-size: 10px;">渲染</a> <a href="/tags/%E7%9B%92%E6%A8%A1%E5%9E%8B/" style="font-size: 10px;">盒模型</a> <a href="/tags/%E7%BC%93%E5%AD%98/" style="font-size: 10px;">缓存</a> <a href="/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" style="font-size: 10px;">设计模式</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/10/">October 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/06/">June 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/05/">May 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/01/">January 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/12/">December 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/11/">November 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/09/">September 2020</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2021/10/15/React/">React</a>
+          </li>
+        
+          <li>
+            <a href="/2021/10/15/webpack/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2021/06/22/vue%E7%BB%84%E4%BB%B6%E5%92%8C%E8%B7%AF%E7%94%B1/">vue组件和路由</a>
+          </li>
+        
+          <li>
+            <a href="/2021/05/13/%E7%9B%92%E6%A8%A1%E5%9E%8B/">盒模型</a>
+          </li>
+        
+          <li>
+            <a href="/2021/01/27/class%E7%B1%BB/">class类</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2021 John Doe<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.4.1.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>

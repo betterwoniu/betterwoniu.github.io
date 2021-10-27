@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>页面渲染 | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="页面的渲染过程 将HTML构建成一个DOM树(DOM&#x3D;Document object model 文档对象模型)，DOM的构建是一个深度遍历的过程：当前节点的所有子节点都构建好了才会去构建下一个兄弟节点 将CSS样式文件解析成 CSS Rule tree 根据DOM树和CSS树来构建一个 Rendering tree(渲染树)。注意：Render Tree渲染树并不等于 DOM树，因为像一些dis">
+<meta property="og:type" content="article">
+<meta property="og:title" content="页面渲染">
+<meta property="og:url" content="http://example.com/2021/01/07/%E9%A1%B5%E9%9D%A2%E6%B8%B2%E6%9F%93/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="页面的渲染过程 将HTML构建成一个DOM树(DOM&#x3D;Document object model 文档对象模型)，DOM的构建是一个深度遍历的过程：当前节点的所有子节点都构建好了才会去构建下一个兄弟节点 将CSS样式文件解析成 CSS Rule tree 根据DOM树和CSS树来构建一个 Rendering tree(渲染树)。注意：Render Tree渲染树并不等于 DOM树，因为像一些dis">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2021-01-07T07:19:28.000Z">
+<meta property="article:modified_time" content="2021-06-23T03:49:35.000Z">
+<meta property="article:author" content="John Doe">
+<meta property="article:tag" content="HTML">
+<meta property="article:tag" content="渲染">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
+
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-页面渲染" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2021/01/07/%E9%A1%B5%E9%9D%A2%E6%B8%B2%E6%9F%93/" class="article-date">
+  <time class="dt-published" datetime="2021-01-07T07:19:28.000Z" itemprop="datePublished">2021-01-07</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E6%B8%B2%E6%9F%93/">渲染</a>►<a class="article-category-link" href="/categories/%E6%B8%B2%E6%9F%93/HTML/">HTML</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      页面渲染
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h3 id="页面的渲染过程"><a href="#页面的渲染过程" class="headerlink" title="页面的渲染过程"></a>页面的渲染过程</h3><ol>
+<li>将HTML构建成一个DOM树(DOM=Document object model 文档对象模型)，DOM的构建是一个深度遍历的过程：当前节点的所有子节点都构建好了才会去构建下一个兄弟节点</li>
+<li>将CSS样式文件解析成 CSS Rule tree</li>
+<li>根据DOM树和CSS树来构建一个 Rendering tree(渲染树)。注意：Render Tree渲染树并不等于 DOM树，因为像一些dispaly：none的标签就每必要渲染出来放在渲染树中</li>
+<li>有了渲染树 Rendering Tree，浏览器能够知道页面的节点和节点的样式</li>
+<li>页面根据 Rendering Tree 开始计算出每个节点的具体位置</li>
+<li>开始绘制，遍历Rendering Tree 使用浏览器后端层绘制每个节点</li>
+</ol>
+<h3 id="回流-Reflow-和重绘-Repaint"><a href="#回流-Reflow-和重绘-Repaint" class="headerlink" title="回流(Reflow)和重绘(Repaint)"></a>回流(Reflow)和重绘(Repaint)</h3><p>回流/重排(Reflow): 页面的某个部分发生了变化影响了布局，渲染树需要重新计算<br>重绘(Repaint):  改变了某个元素的背景颜色、文字颜色等，不影响页面的布局或者元素周围，只会引起浏览器的重绘(repaint)</p>
+<h3 id="如何减少回流-Reflow"><a href="#如何减少回流-Reflow" class="headerlink" title="如何减少回流(Reflow)"></a>如何减少回流(Reflow)</h3><ol>
+<li>第一次的页面加载必定会触发依次回流/重排和重绘</li>
+<li>触发重绘不一定会触发回流/重排，但是回流/重绘必定会触发重绘</li>
+</ol>
+<h4 id="触发回流的原因"><a href="#触发回流的原因" class="headerlink" title="触发回流的原因"></a>触发回流的原因</h4><ol>
+<li>元素在视图中的位置和大小发生改变</li>
+<li>删除或者添加元素</li>
+<li>浏览器的视图大小发生改变</li>
+</ol>
+<h3 id="CSS和JS的阻塞规则"><a href="#CSS和JS的阻塞规则" class="headerlink" title="CSS和JS的阻塞规则"></a>CSS和JS的阻塞规则</h3><ol>
+<li>CSS不会阻塞DOM的解析，但会阻塞DOM渲染</li>
+<li>JS阻塞DOM解析，但是浏览器会“偷看”DOM，预先下载相关资源</li>
+<li>浏览器遇到且没有defer或async属性的 标签时，可能会触发页面渲染，因此如果前面的CSS资源尚未加载完成，浏览器会等待完它加载完毕再执行脚本</li>
+</ol>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2021/01/07/%E9%A1%B5%E9%9D%A2%E6%B8%B2%E6%9F%93/" data-id="ckv8v31gj001240fyb84ahiz3" data-title="页面渲染" class="article-share-link">Share</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/HTML/" rel="tag">HTML</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%B8%B2%E6%9F%93/" rel="tag">渲染</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2021/01/27/export-import%E3%80%81require-exports/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          export/import、require/exports
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2020/12/23/PPI%E3%80%81DPI%E3%80%81%E8%AE%BE%E5%A4%87%E5%83%8F%E7%B4%A0%E7%AD%89%E6%A6%82%E5%BF%B5/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">PPI、DPI、设备像素等概念及自适应布局方案</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/HTML/">HTML</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/HTTP/">HTTP</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/javascript/">javascript</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/javascript/CommonJS/">CommonJS</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/javascript/angular/">angular</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/javascript/class/">class</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/javascript/rxjs/">rxjs</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/javascript/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">设计模式</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/promise/">promise</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/promise/angular/">angular</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/typescript/">typescript</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%8E%9F%E5%9E%8B%E9%93%BE/">原型链</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%B8%B2%E6%9F%93/">渲染</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%B8%B2%E6%9F%93/HTML/">HTML</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%9B%92%E6%A8%A1%E5%9E%8B/">盒模型</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%BC%93%E5%AD%98/">缓存</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/BFC/" rel="tag">BFC</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CommonJS/" rel="tag">CommonJS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTML/" rel="tag">HTML</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTTP/" rel="tag">HTTP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/angular/" rel="tag">angular</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/class/" rel="tag">class</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/javascript/" rel="tag">javascript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/promise/" rel="tag">promise</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/rxjs/" rel="tag">rxjs</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/typescript/" rel="tag">typescript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%83%8F%E7%B4%A0/" rel="tag">像素</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%8E%9F%E5%9E%8B%E9%93%BE/" rel="tag">原型链</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%B8%B2%E6%9F%93/" rel="tag">渲染</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%9B%92%E6%A8%A1%E5%9E%8B/" rel="tag">盒模型</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BC%93%E5%AD%98/" rel="tag">缓存</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" rel="tag">设计模式</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/BFC/" style="font-size: 10px;">BFC</a> <a href="/tags/CommonJS/" style="font-size: 10px;">CommonJS</a> <a href="/tags/HTML/" style="font-size: 15px;">HTML</a> <a href="/tags/HTTP/" style="font-size: 10px;">HTTP</a> <a href="/tags/angular/" style="font-size: 10px;">angular</a> <a href="/tags/class/" style="font-size: 10px;">class</a> <a href="/tags/javascript/" style="font-size: 20px;">javascript</a> <a href="/tags/promise/" style="font-size: 10px;">promise</a> <a href="/tags/rxjs/" style="font-size: 10px;">rxjs</a> <a href="/tags/typescript/" style="font-size: 10px;">typescript</a> <a href="/tags/%E5%83%8F%E7%B4%A0/" style="font-size: 10px;">像素</a> <a href="/tags/%E5%8E%9F%E5%9E%8B%E9%93%BE/" style="font-size: 10px;">原型链</a> <a href="/tags/%E6%B8%B2%E6%9F%93/" style="font-size: 10px;">渲染</a> <a href="/tags/%E7%9B%92%E6%A8%A1%E5%9E%8B/" style="font-size: 10px;">盒模型</a> <a href="/tags/%E7%BC%93%E5%AD%98/" style="font-size: 10px;">缓存</a> <a href="/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" style="font-size: 10px;">设计模式</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/10/">October 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/06/">June 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/05/">May 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/01/">January 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/12/">December 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/11/">November 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/09/">September 2020</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2021/10/15/React/">React</a>
+          </li>
+        
+          <li>
+            <a href="/2021/10/15/webpack/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2021/06/22/vue%E7%BB%84%E4%BB%B6%E5%92%8C%E8%B7%AF%E7%94%B1/">vue组件和路由</a>
+          </li>
+        
+          <li>
+            <a href="/2021/05/13/%E7%9B%92%E6%A8%A1%E5%9E%8B/">盒模型</a>
+          </li>
+        
+          <li>
+            <a href="/2021/01/27/class%E7%B1%BB/">class类</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2021 John Doe<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.4.1.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>

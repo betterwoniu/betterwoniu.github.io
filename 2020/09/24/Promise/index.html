@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>Promise | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="promise的含义promise是一种异步编程的解决方案，promise是一个对象，保存着某个未来才会结束的异步操作事件的结果。promise的对象状态不受外界的影响，有三种状态：pending 、fulfilled 、rejected ，只有异步操作的结果可以决定是哪一种状态，任何其他的操作都不能改变其状态；一旦promise的状态发生改变就不会再变化。 promise.then()then(">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Promise">
+<meta property="og:url" content="http://example.com/2020/09/24/Promise/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="promise的含义promise是一种异步编程的解决方案，promise是一个对象，保存着某个未来才会结束的异步操作事件的结果。promise的对象状态不受外界的影响，有三种状态：pending 、fulfilled 、rejected ，只有异步操作的结果可以决定是哪一种状态，任何其他的操作都不能改变其状态；一旦promise的状态发生改变就不会再变化。 promise.then()then(">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2020-09-24T04:01:47.000Z">
+<meta property="article:modified_time" content="2021-01-27T07:12:59.000Z">
+<meta property="article:author" content="John Doe">
+<meta property="article:tag" content="promise">
+<meta property="article:tag" content="javascript">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
+
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-Promise" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2020/09/24/Promise/" class="article-date">
+  <time class="dt-published" datetime="2020-09-24T04:01:47.000Z" itemprop="datePublished">2020-09-24</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/promise/">promise</a>►<a class="article-category-link" href="/categories/promise/angular/">angular</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      Promise
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h4 id="promise的含义"><a href="#promise的含义" class="headerlink" title="promise的含义"></a>promise的含义</h4><p>promise是一种异步编程的解决方案，promise是一个对象，保存着某个未来才会结束的异步操作事件的结果。promise的对象状态不受外界的影响，有三种状态：<code>pending</code> 、<code>fulfilled</code> 、<code>rejected</code> ，只有异步操作的结果可以决定是哪一种状态，任何其他的操作都不能改变其状态；一旦promise的状态发生改变就不会再变化。</p>
+<h3 id="promise-then"><a href="#promise-then" class="headerlink" title="promise.then()"></a>promise.then()</h3><p>then()方法是定义在原型对象 promise.protype上的，该方法的作用是状态改变的回调函数。then方法的第一个参数是resolved状态的回调函数，第二哥参数是rejected状态的回调函数。then方法返回的是一个新的promise实例，因此可以采用链式写法;链式结构的中then方法return的结果将作为参数传入给下一个then方法</p>
+<h3 id="Promise-prototype-catch"><a href="#Promise-prototype-catch" class="headerlink" title="Promise.prototype.catch()"></a>Promise.prototype.catch()</h3><p>catch()方法是用于指定发生错误的回调函数，当promise的状态改变为rejected的时候就不会调用then方法而是回调catch方法</p>
+<h3 id="Promise-prototype-finally"><a href="#Promise-prototype-finally" class="headerlink" title="Promise.prototype.finally()"></a>Promise.prototype.finally()</h3><p>finally() 方法用于指定不管promise对象最后状态如何都会执行的操作</p>
+<h3 id="Promise-all"><a href="#Promise-all" class="headerlink" title="Promise.all()"></a>Promise.all()</h3><p>all()方法用于将多个promise实例包装成一个新的promise实例，返回一个数组存放各个promise的返回值。当多个primise的状态都变为filfilled，此时才返回值；当其中有一个被reject，新的promise的状态也会被reject</p>
+<h3 id="promise-缓存"><a href="#promise-缓存" class="headerlink" title="promise 缓存"></a>promise 缓存</h3><h4 id="场景1：将封装一个方法，将参数作为参数，每次调用的时候都进行异步请求查询"><a href="#场景1：将封装一个方法，将参数作为参数，每次调用的时候都进行异步请求查询" class="headerlink" title="场景1：将封装一个方法，将参数作为参数，每次调用的时候都进行异步请求查询"></a>场景1：将封装一个方法，将参数作为参数，每次调用的时候都进行异步请求查询</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> userCache = <span class="keyword">new</span> <span class="built_in">Map</span>&lt;string,User&gt;();</span><br><span class="line"><span class="keyword">const</span> getUserById = <span class="keyword">async</span> (userId:string):<span class="built_in">Promise</span>&lt;User&gt;=&gt;&#123;</span><br><span class="line">   <span class="keyword">if</span>(!userCache.has(userId))&#123;</span><br><span class="line">       <span class="keyword">const</span> user = <span class="keyword">await</span> request.get(<span class="string">`https://users-service/<span class="subst">$&#123;userId&#125;</span>`</span>);</span><br><span class="line">       usersCache.set(userId, user);</span><br><span class="line">   &#125;</span><br><span class="line">   <span class="keyword">return</span> usersCache.get(userId);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="场景2：场景1可能会导致导致请求过于频繁，对于请求接口造成压力。所以，场景2采用缓存查询的promise来解决这问题"><a href="#场景2：场景1可能会导致导致请求过于频繁，对于请求接口造成压力。所以，场景2采用缓存查询的promise来解决这问题" class="headerlink" title="场景2：场景1可能会导致导致请求过于频繁，对于请求接口造成压力。所以，场景2采用缓存查询的promise来解决这问题"></a>场景2：场景1可能会导致导致请求过于频繁，对于请求接口造成压力。所以，场景2采用缓存查询的promise来解决这问题</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> userCache = <span class="keyword">new</span> <span class="built_in">Map</span>&lt;string,<span class="built_in">Promise</span>&gt;:user();</span><br><span class="line"><span class="keyword">const</span> getUserById = <span class="keyword">async</span>(userid:string):<span class="built_in">Promise</span>&lt;user&gt; =&gt;&#123;</span><br><span class="line">    <span class="keyword">if</span>(!userCache.has(userId))&#123;</span><br><span class="line">        <span class="keyword">const</span> userPromise = request.get(<span class="string">`https://users-service/<span class="subst">$&#123;userId&#125;</span>`</span>);</span><br><span class="line">        userPromisesCache.set(userId, userPromise);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> userPromisesCache.get(userId);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="借助memoizee-https-www-npmjs-com-package-memoizee-库来完善最后一个方案"><a href="#借助memoizee-https-www-npmjs-com-package-memoizee-库来完善最后一个方案" class="headerlink" title="借助memoizee(https://www.npmjs.com/package/memoizee) 库来完善最后一个方案"></a>借助memoizee(<a target="_blank" rel="noopener" href="https://www.npmjs.com/package/memoizee">https://www.npmjs.com/package/memoizee</a>) 库来完善最后一个方案</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> memoize <span class="keyword">from</span> <span class="string">&#x27;memoizee&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> getUserById = memoize(<span class="keyword">async</span> (userId: string): <span class="built_in">Promise</span>&lt;User&gt; =&gt; &#123;</span><br><span class="line">  <span class="keyword">const</span> user = <span class="keyword">await</span> request.get(<span class="string">`https://users-service/<span class="subst">$&#123;userId&#125;</span>`</span>);</span><br><span class="line">  <span class="keyword">return</span> user;</span><br><span class="line">&#125;, &#123; <span class="attr">promise</span>: <span class="literal">true</span>&#125;);</span><br></pre></td></tr></table></figure>
+
+
+<h3 id="单例模式Promise"><a href="#单例模式Promise" class="headerlink" title="单例模式Promise"></a>单例模式Promise</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">Class <span class="function"><span class="title">singletonpromise</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    private connectionPromise:<span class="built_in">Promise</span>&lt;T&gt; | <span class="literal">null</span>;</span><br><span class="line">    <span class="function"><span class="title">constructor</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        <span class="built_in">this</span>.connectionPromise = <span class="literal">null</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    private <span class="keyword">async</span> <span class="function"><span class="title">connnet</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(!<span class="built_in">this</span>.connectionPromise)&#123;</span><br><span class="line">            <span class="built_in">this</span>.connectionPromise = connectToDatabase(); <span class="comment">// connectToDatabase代指一个连接数据库操作的异步操作的promise</span></span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">this</span>.connectionPromise;</span><br><span class="line">    &#125;</span><br><span class="line">    public <span class="keyword">async</span> <span class="function"><span class="title">getRecord</span>(<span class="params">id:string</span>)</span>&#123;</span><br><span class="line">        <span class="keyword">await</span> <span class="built_in">this</span>.connnet();</span><br><span class="line">        <span class="keyword">return</span> getByIdPromise(id); <span class="comment">// getByIdPromise 获取信息操作</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="async-await-函数"><a href="#async-await-函数" class="headerlink" title="async/await 函数"></a>async/await 函数</h3><p>async 函数是解决异步方案，它是generator函数的语法糖，定义函数使用async关键字，await 命令后一般是一个promise对象，函数体中使用await 紧跟表达式需要等待的结果，并且async函数返回的是promise 对象。</p>
+<p>async 函数返回一个promise 对象，函数内部返回的值，将成为 then方法中的参数。<br>async 函数内部抛出的错误，会使返回的promise对象的状态变为reject状态，抛出的错误会被catch方法捕捉到。<br>async 函数返回的是一个promise对象，必须要等到函数体内的 await 后的promise 对象执行完才会状态发生改变，或者return 语句或发生错误。只有async 函数体内中的异步操作执行完，才会执行then方法指定的回调函数。</p>
+<p>async 错误处理机制：1.在函数体中使用 try…catch 捕捉错误；2.async函数使用catch方法捕捉错误</p>
+<h3 id="Generator-函数"><a href="#Generator-函数" class="headerlink" title="Generator 函数"></a>Generator 函数</h3><p>generator函数是es6 提供的一种异步解决方案。<br>1.语法上generator函数是一个状态机，封装着多个内部状态<br>2.执行generator函数会返回一个遍历对象，所以generator函数也是一个遍历生成函数，返回的遍历对象可以依次遍历generator函数的每一个状态<br>3.generator函数定义的关键字是一个*，函数体内部使用yield表达式，遍历该函数对象通过该函数的next()方法，返回的是一个对象{ value: ‘hello’, done: false },当done的值为true时该遍历对象遍历结束。<br>4 任意一个对象的Symbol.iterator方法，等于该对象的遍历器生成函数，调用该函数会返回该对象的一个遍历器对象。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> myiterator = &#123;&#125;;</span><br><span class="line">myiterator[<span class="built_in">Symbol</span>.iterator] = <span class="function"><span class="keyword">function</span> *(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">yield</span> <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">yield</span> <span class="number">2</span>;</span><br><span class="line">    <span class="keyword">yield</span> <span class="number">3</span>;</span><br><span class="line">&#125;</span><br><span class="line">[...myIterable] <span class="comment">// [1, 2, 3]</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>5.yield方法本身没有返回值，next方法可以带一个参数作为上一个yield表达式的值<br>6.for…of循环可以自动遍历generator函数运行生成的iterator对象，而不需要使用next方法<br>7.Generator.prototype.return()是可以给定参数，并终结该generator函数，如果return()方法不提供参数则返回value的值为undefined，如果generator函数体内存在try…finally，且正在执行try代码块，那么return方法就会进入finally代码块中，执行完毕，整个函数才会结束。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2020/09/24/Promise/" data-id="ckv8v31fv000540fy9eke8849" data-title="Promise" class="article-share-link">Share</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javascript/" rel="tag">javascript</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/promise/" rel="tag">promise</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2020/11/09/BFC/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          BFC
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2020/09/19/HTTP/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">HTTP</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/HTML/">HTML</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/HTTP/">HTTP</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/javascript/">javascript</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/javascript/CommonJS/">CommonJS</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/javascript/angular/">angular</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/javascript/class/">class</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/javascript/rxjs/">rxjs</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/javascript/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">设计模式</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/promise/">promise</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/promise/angular/">angular</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/typescript/">typescript</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%8E%9F%E5%9E%8B%E9%93%BE/">原型链</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%B8%B2%E6%9F%93/">渲染</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%B8%B2%E6%9F%93/HTML/">HTML</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%9B%92%E6%A8%A1%E5%9E%8B/">盒模型</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%BC%93%E5%AD%98/">缓存</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/BFC/" rel="tag">BFC</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CommonJS/" rel="tag">CommonJS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTML/" rel="tag">HTML</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTTP/" rel="tag">HTTP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/angular/" rel="tag">angular</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/class/" rel="tag">class</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/javascript/" rel="tag">javascript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/promise/" rel="tag">promise</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/rxjs/" rel="tag">rxjs</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/typescript/" rel="tag">typescript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%83%8F%E7%B4%A0/" rel="tag">像素</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%8E%9F%E5%9E%8B%E9%93%BE/" rel="tag">原型链</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%B8%B2%E6%9F%93/" rel="tag">渲染</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%9B%92%E6%A8%A1%E5%9E%8B/" rel="tag">盒模型</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BC%93%E5%AD%98/" rel="tag">缓存</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" rel="tag">设计模式</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/BFC/" style="font-size: 10px;">BFC</a> <a href="/tags/CommonJS/" style="font-size: 10px;">CommonJS</a> <a href="/tags/HTML/" style="font-size: 15px;">HTML</a> <a href="/tags/HTTP/" style="font-size: 10px;">HTTP</a> <a href="/tags/angular/" style="font-size: 10px;">angular</a> <a href="/tags/class/" style="font-size: 10px;">class</a> <a href="/tags/javascript/" style="font-size: 20px;">javascript</a> <a href="/tags/promise/" style="font-size: 10px;">promise</a> <a href="/tags/rxjs/" style="font-size: 10px;">rxjs</a> <a href="/tags/typescript/" style="font-size: 10px;">typescript</a> <a href="/tags/%E5%83%8F%E7%B4%A0/" style="font-size: 10px;">像素</a> <a href="/tags/%E5%8E%9F%E5%9E%8B%E9%93%BE/" style="font-size: 10px;">原型链</a> <a href="/tags/%E6%B8%B2%E6%9F%93/" style="font-size: 10px;">渲染</a> <a href="/tags/%E7%9B%92%E6%A8%A1%E5%9E%8B/" style="font-size: 10px;">盒模型</a> <a href="/tags/%E7%BC%93%E5%AD%98/" style="font-size: 10px;">缓存</a> <a href="/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" style="font-size: 10px;">设计模式</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/10/">October 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/06/">June 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/05/">May 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/01/">January 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/12/">December 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/11/">November 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/09/">September 2020</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2021/10/15/React/">React</a>
+          </li>
+        
+          <li>
+            <a href="/2021/10/15/webpack/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2021/06/22/vue%E7%BB%84%E4%BB%B6%E5%92%8C%E8%B7%AF%E7%94%B1/">vue组件和路由</a>
+          </li>
+        
+          <li>
+            <a href="/2021/05/13/%E7%9B%92%E6%A8%A1%E5%9E%8B/">盒模型</a>
+          </li>
+        
+          <li>
+            <a href="/2021/01/27/class%E7%B1%BB/">class类</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2021 John Doe<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.4.1.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>
