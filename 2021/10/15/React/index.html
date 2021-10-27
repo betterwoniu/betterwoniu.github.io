@@ -14,10 +14,10 @@
 <meta property="og:description" content="函数组件和类组件组件实例属性 - state组件实例属性 - props 定义prop的属性类型 ref Refs 提供了一种方式，允许我们访问 DOM 节点或在 render 方法中创建的 React 元素 字符串形式使用ref（废弃）1&lt;div onClick&#x3D;&amp;#123;this.getRef&amp;#125; ref&#x3D;&quot;personRef&quot;&gt;hello &amp;#123">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2021-10-15T06:19:07.000Z">
-<meta property="article:modified_time" content="2021-10-27T01:54:32.650Z">
+<meta property="article:modified_time" content="2021-10-27T09:00:16.165Z">
 <meta property="article:author" content="John Doe">
-<meta property="article:tag" content="javascript">
 <meta property="article:tag" content="React">
+<meta property="article:tag" content="javascript">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
@@ -110,16 +110,26 @@
 <li>class绑定形式回调形式使用ref<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;div onClick=&#123;<span class="built_in">this</span>.getRef&#125; ref=&#123;<span class="built_in">this</span>.saveref&#125;&gt;hello &#123;<span class="built_in">this</span>.props.name&#125; It is &#123;<span class="built_in">this</span>.state.date.toLocaleTimeString()&#125;&lt;/div&gt;</span><br><span class="line">  saveref=<span class="function">(<span class="params">c</span>)=&gt;</span>&#123;</span><br><span class="line"> <span class="built_in">this</span>.personRef = c;</span><br><span class="line"> <span class="built_in">console</span>.log(<span class="built_in">this</span>.personRef);</span><br><span class="line"></span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure></li>
 <li>React.createRef() 创建<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">personRef = React.createRef();</span><br><span class="line"><span class="function"><span class="title">constructor</span>(<span class="params">props</span>)</span> &#123;</span><br><span class="line">  <span class="built_in">super</span>(props);</span><br><span class="line">  <span class="built_in">this</span>.state = &#123; <span class="attr">date</span>: <span class="keyword">new</span> <span class="built_in">Date</span>() &#125;;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="title">render</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line">  <span class="keyword">return</span> (</span><br><span class="line">    <span class="xml"><span class="tag">&lt;<span class="name">div</span> <span class="attr">name</span>=<span class="string">&quot;dom&quot;</span>&gt;</span></span></span><br><span class="line"><span class="xml">      <span class="tag">&lt;<span class="name">div</span> <span class="attr">onClick</span>=<span class="string">&#123;this.getRef&#125;</span> <span class="attr">ref</span>=<span class="string">&#123;this.personRef&#125;</span>&gt;</span>hello &#123;this.props.name&#125; It is &#123;this.state.date.toLocaleTimeString()&#125;<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line"><span class="xml">      <span class="tag">&lt;<span class="name">Person</span> <span class="attr">name</span>=<span class="string">&quot;siri&quot;</span> &gt;</span> <span class="tag">&lt;/<span class="name">Person</span>&gt;</span></span></span><br><span class="line"><span class="xml">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line">  )</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
 </ul>
-<h3 id="React-生命周期函数"><a href="#React-生命周期函数" class="headerlink" title="React 生命周期函数"></a>React 生命周期函数</h3><ul>
-<li>组件挂载时：constructor、componentDidMount、</li>
-<li>组件更新时：render、componentDidUpdate</li>
-<li>组件卸载时：componentWillUnmont</li>
+<h3 id="React-生命周期函数"><a href="#React-生命周期函数" class="headerlink" title="React 生命周期函数"></a>React 生命周期函数</h3><h4 id="生命周期函数（旧）"><a href="#生命周期函数（旧）" class="headerlink" title="生命周期函数（旧）"></a>生命周期函数（旧）</h4><ul>
+<li>组件挂载时：constructor（组件创建）、componentWillMount(组件将要挂载)、render(组件渲染)、componentDidMount(组件已经挂载)</li>
+<li>组件更新时：shouldComponentUpdate(判断组件是否应该被更新，如果返回false，后续的render等渲染操作将不会被执行，如果返回true，则正常执行)、render、componentWillUpdate(组件将要更新)、componentDidUpdate（组件更新完毕）、componentWillReceiveprops(组件即将接受props的钩子函数)</li>
+<li>组件卸载时：componentWillUnmont（组建将要卸载)<h4 id="生命周期函数（新）"><a href="#生命周期函数（新）" class="headerlink" title="生命周期函数（新）"></a>生命周期函数（新）</h4></li>
+<li>组件挂载时：constructor、componentDidMount(组建挂载完毕)、render(组件渲染)、getDerivedStateFromprops(在Render函数执行前调用，参数接受props<code> 删除了componentWillMount(组件将要挂载)钩子函数</code>)</li>
+<li>组件更新时：shouldComponentUpdate(判断组件是否应该被更新，如果返回false，后续的render等渲染操作将不会被执行，如果返回true，则正常执行)、render、、getSnapshotBeforeUpdate(`最近一次的渲染前调用，<code>删除了componentWillUpdate(组件将要更新)生命周期函数</code>)、componentDidUpdate（组件更新完毕）、<code> 删除了componentWillReceiveprops(组件即将接受props的钩子函数)</code></li>
+<li>组件卸载时：componentWillUnmont（组建将要卸载）</li>
+<li><strong>新添加的钩子函数不会在第一次组件渲染的时候被调用</strong></li>
+</ul>
+<h3 id="虚拟DOM和differ算法"><a href="#虚拟DOM和differ算法" class="headerlink" title="虚拟DOM和differ算法"></a>虚拟DOM和differ算法</h3><ul>
+<li>virtual dom(虚拟dom)：virtual dom是一种编程概念，将dom以虚拟的形式存放在内存中，并通过ReactDom等库使之于真实的dom同步</li>
+<li>增量渲染：</li>
+<li>diff算法：在页面遍历更新数据的时候，diff算法会将新生成的虚拟dom和更新前的虚拟dom进行比较，比较的标识是每个标签的index，如果index一样的话，就会比较标签中的内容，如果都一样的话，就不更新真实的dom，如果不一样的话，就将新生成的虚拟dom更新到真实的dom中。</li>
+<li>为什么不能用数组下标作为标识：如果使用数组下标作为每个dom的标识的话，在数组顺序发生改变的时候就会造成相同的标签需要重新进行渲染，如果使用数据的唯一标识作为index的话，不论数据发生怎样的改变都不会影响到原始真实dom的频繁更新。</li>
 </ul>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2021/10/15/React/" data-id="ckv8v7u8i00068lfy7vuqhkyt" data-title="React" class="article-share-link">Share</a>
+      <a data-url="http://example.com/2021/10/15/React/" data-id="ckv9b48qd0004unfyc04y4m24" data-title="React" class="article-share-link">Share</a>
       
       
       
