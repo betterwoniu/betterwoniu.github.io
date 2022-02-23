@@ -71,6 +71,57 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-uni-app" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2021/12/11/uni-app/" class="article-date">
+  <time class="dt-published" datetime="2021-12-11T15:38:07.000Z" itemprop="datePublished">2021-12-11</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2021/12/11/uni-app/">uni-app.md</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h3 id="uni-app-的基础组件"><a href="#uni-app-的基础组件" class="headerlink" title="uni-app 的基础组件"></a>uni-app 的基础组件</h3><ol>
+<li>view 视图容器，类似于html中的div</li>
+<li>scroll-view 可滚动视图</li>
+<li>swiper 滑块视图容器，轮播banner</li>
+<li>match-media 屏幕适配组件，比如窄屏幕不显示某些内容</li>
+<li>movable-area 可拖动区域</li>
+<li>movable-view 可移动视图容器，在页面可以缩放拖动 该组件必须在 movable-view中</li>
+<li>cover-view 盖在原生组件上的文本组件</li>
+<li>cover-image 可覆盖在原生组件上的图片组件</li>
+</ol>
+<h3 id="easycom组件规范"><a href="#easycom组件规范" class="headerlink" title="easycom组件规范"></a>easycom组件规范</h3><ul>
+<li>只要在项目的componments目录下或uni-modules目录下的组件，并符合 <code> componments/组件名称/组件名称.vue</code> 的目录结构，就可以不用引用注册，直接在页面中使用</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2021/12/11/uni-app/" data-id="ckzz09y7v00178pqsex6dbyre" data-title="uni-app.md" class="article-share-link">Share</a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
     <article id="post-vue3" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
     <a href="/2021/10/28/vue3/" class="article-date">
@@ -122,7 +173,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2021/10/28/vue3/" data-id="ckx1z0byq00132dqs9q7xf5uw" data-title="vue3" class="article-share-link">Share</a>
+      <a data-url="http://example.com/2021/10/28/vue3/" data-id="ckzz09y7h000q8pqsc8dr5uri" data-title="vue3" class="article-share-link">Share</a>
       
       
       
@@ -160,9 +211,38 @@
     
     <div class="e-content article-entry" itemprop="articleBody">
       
-        <h3 id="函数组件和类组件"><a href="#函数组件和类组件" class="headerlink" title="函数组件和类组件"></a>函数组件和类组件</h3><h3 id="组件实例属性-state"><a href="#组件实例属性-state" class="headerlink" title="组件实例属性 - state"></a>组件实例属性 - state</h3><h3 id="组件实例属性-props"><a href="#组件实例属性-props" class="headerlink" title="组件实例属性 - props"></a>组件实例属性 - props</h3><ul>
+        <h3 id="React-事件机制"><a href="#React-事件机制" class="headerlink" title="React 事件机制"></a>React 事件机制</h3><ul>
+<li>react的事件监听不是绑定在真实的dom上的，而是通过document监听事件，当事件发生并冒泡到document的时候，react将事件内容封装转交给真正的处理函数进行。react是通过自己合成事件(syntheticEvent)，因此停止冒泡事件的方法应该是event.preventDefault()而不是event.stopProppagation()</li>
+</ul>
+<h3 id="jsx"><a href="#jsx" class="headerlink" title="jsx"></a>jsx</h3><ul>
+<li>jsx 是javascript的扩展，类似于模版语法，但是具有javascript的能力</li>
+<li>jsx 是将dom转化为 react.createElement()生成的dom</li>
+<li>babel将jsx的代码转化，再调用React.createElement 和ReactElement 创建虚拟dom ，再通过render方法转化为真实dom</li>
+</ul>
+<h3 id="React-和普通html-区别"><a href="#React-和普通html-区别" class="headerlink" title="React 和普通html 区别"></a>React 和普通html 区别</h3><ul>
+<li>事件名称命名方式：html小写 react 小驼峰</li>
+<li>事件函数处理语法：html事件名为字符串，react 事件为函数</li>
+<li>react只能通过preventDefult() 阻止事件默认行为<br>避免原生事件和react的合成事件混合使用</li>
+</ul>
+<h3 id="React组件中如何做的事件代理"><a href="#React组件中如何做的事件代理" class="headerlink" title="React组件中如何做的事件代理"></a>React组件中如何做的事件代理</h3><h3 id="函数组件和类组件"><a href="#函数组件和类组件" class="headerlink" title="函数组件和类组件"></a>函数组件和类组件</h3><ul>
+<li><p> 函数式组件是接收唯一的参数props并返回一个react元素，本质上是一个js函数；在函数组件中并不能够使用生命周期函数</p>
+</li>
+<li><p> 类式组件 通过继承 react.component 的类，该类中通过render方法返回一个react元素，在其构造函数中可以通过父类接收props、并直接使用state，可以在该类中直接使用生命周期函数</p>
+</li>
+<li><p>函数组件对比类式组件来说性能更高，因为函数式组件只需要直接调用，而类式组件需要创建实例</p>
+</li>
+</ul>
+<h3 id="组件实例属性-state"><a href="#组件实例属性-state" class="headerlink" title="组件实例属性 - state"></a>组件实例属性 - state</h3><ul>
+<li>定义：</li>
+<li>使用：state 是一个k-v的对象式的数据，修改时不能直接去修改，需要借助setState()传入需要更改数据的对象式数据</li>
+<li></li>
+<li>state的更新可能是异步的, 为了解决异步更新的问题，可以在setState()方法中传递一个函数</li>
+</ul>
+<h3 id="组件实例属性-props"><a href="#组件实例属性-props" class="headerlink" title="组件实例属性 - props"></a>组件实例属性 - props</h3><ul>
 <li>定义prop的属性类型</li>
-<li><h3 id="ref"><a href="#ref" class="headerlink" title="ref"></a>ref</h3></li>
+<li></li>
+</ul>
+<h3 id="refs"><a href="#refs" class="headerlink" title="refs"></a>refs</h3><ul>
 <li>Refs 提供了一种方式，允许我们访问 DOM 节点或在 render 方法中创建的 React 元素</li>
 <li>字符串形式使用ref（废弃）<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;div onClick=&#123;<span class="built_in">this</span>.getRef&#125; ref=<span class="string">&quot;personRef&quot;</span>&gt;hello &#123;<span class="built_in">this</span>.props.name&#125; It is &#123;<span class="built_in">this</span>.state.date.toLocaleTimeString()&#125;&lt;/div&gt;</span><br></pre></td></tr></table></figure></li>
 <li>内联回调形式使用ref<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;div onClick=&#123;<span class="built_in">this</span>.getRef&#125; ref=&#123;<span class="function"><span class="params">c</span>=&gt;</span><span class="built_in">this</span>.personRef = c&#125;&gt;hello &#123;<span class="built_in">this</span>.props.name&#125; It is &#123;<span class="built_in">this</span>.state.date.toLocaleTimeString()&#125;&lt;/div&gt;</span><br></pre></td></tr></table></figure></li>
@@ -206,9 +286,17 @@
 <li>修改state中的数据，通过setState()传入一个对象更新数据</li>
 <li>修改state中的数据，通过setState()传入一个函数来更新数据，该函数的参数时state和props</li>
 </ol>
+<h3 id="useState-hook"><a href="#useState-hook" class="headerlink" title="useState hook"></a>useState hook</h3><ul>
+<li>允许在函数式组件中使用state的方式  </li>
+<li><code>const [count, setCount] = useState(0);</code> </li>
+<li>通过使用useState 返回 定义的变量和改变变量的方法</li>
+</ul>
 <h3 id="effect-hook"><a href="#effect-hook" class="headerlink" title="effect hook"></a>effect hook</h3><ul>
-<li>可以让你在函数组件中执行副作用操作(1.ajax请求；2.设置订阅/定时器 3.操作dom元素)</li>
+<li>可以让你在函数组件中执行 生命周期函数</li>
 <li>effect hook函数可以看作 componentDidMount、componentDidUpdate、componentWillUnmont三个函数的组合</li>
+<li><code>useEffect(() =&gt; &#123;document.title = `You clicked $&#123;count&#125; times`;&#125;, [count]);</code></li>
+<li>通过useEffect 的第二个参数数组函数来监听数组中对应数据的变化，等价于componentDidUpdate函数,参数数组为空，则不监听任何数据的变化，除了第一次组件挂载的时候 等价于componentDidMount函数</li>
+<li>useEffect 第一个函数中返回回调函数，监听的是组件卸载的时候执行的动作  等价 componentWillUnmont函数</li>
 </ul>
 <h3 id="pureComponment"><a href="#pureComponment" class="headerlink" title="pureComponment"></a>pureComponment</h3><ul>
 <li>react中的生命周期函数shouldComponentUpdate的返回值可以控制dom的更新与否</li>
@@ -219,11 +307,15 @@
 <li>上级组件使用privoder标签包裹下级组件，并同时使用value属性传递数据</li>
 <li>下级组件通过static contextType = myContext 接收数据</li>
 </ul>
+<h3 id="React-在路由层实现用户鉴权"><a href="#React-在路由层实现用户鉴权" class="headerlink" title="React 在路由层实现用户鉴权"></a>React 在路由层实现用户鉴权</h3><ol>
+<li>创建一个各个组件之间共享用户信息的Context </li>
+<li>使用该Context的provider组件的value属性传递该context的值</li>
+</ol>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2021/10/15/React/" data-id="ckx1z0bxm00062dqsbuux2v8t" data-title="React" class="article-share-link">Share</a>
+      <a data-url="http://example.com/2021/10/15/React/" data-id="ckzz09y7000058pqscror86g4" data-title="React" class="article-share-link">Share</a>
       
       
       
@@ -315,7 +407,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2021/10/15/webpack/" data-id="ckx1z0byi000s2dqs0ohl919h" data-title="" class="article-share-link">Share</a>
+      <a data-url="http://example.com/2021/10/15/webpack/" data-id="ckzz09y7n000v8pqs5rtn17g4" data-title="" class="article-share-link">Share</a>
       
       
       
@@ -377,7 +469,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2021/06/22/vue%E7%BB%84%E4%BB%B6%E5%92%8C%E8%B7%AF%E7%94%B1/" data-id="ckx1z0byg000r2dqs7ta24ez6" data-title="vue组件和路由、vuex" class="article-share-link">Share</a>
+      <a data-url="http://example.com/2021/06/22/vue%E7%BB%84%E4%BB%B6%E5%92%8C%E8%B7%AF%E7%94%B1/" data-id="ckzz09y7l000s8pqset95cr7a" data-title="vue组件和路由、vuex" class="article-share-link">Share</a>
       
       
       
@@ -422,7 +514,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2021/05/13/%E7%9B%92%E6%A8%A1%E5%9E%8B/" data-id="ckx1z0byl000x2dqsd6gdehqj" data-title="盒模型" class="article-share-link">Share</a>
+      <a data-url="http://example.com/2021/05/13/%E7%9B%92%E6%A8%A1%E5%9E%8B/" data-id="ckzz09y7q000y8pqs7wn78p5o" data-title="盒模型" class="article-share-link">Share</a>
       
       
       
@@ -495,7 +587,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2021/01/27/class%E7%B1%BB/" data-id="ckx1z0bxp000b2dqs7rgidmjj" data-title="class类" class="article-share-link">Share</a>
+      <a data-url="http://example.com/2021/01/27/class%E7%B1%BB/" data-id="ckzz09y76000b8pqs8dcs57hz" data-title="class类" class="article-share-link">Share</a>
       
       
       
@@ -598,7 +690,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2021/01/27/export-import%E3%80%81require-exports/" data-id="ckx1z0bxw000f2dqs9y5z705j" data-title="export/import、require/exports" class="article-share-link">Share</a>
+      <a data-url="http://example.com/2021/01/27/export-import%E3%80%81require-exports/" data-id="ckzz09y7200068pqsecqabamh" data-title="export/import、require/exports" class="article-share-link">Share</a>
       
       
       
@@ -665,7 +757,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2021/01/07/%E9%A1%B5%E9%9D%A2%E6%B8%B2%E6%9F%93/" data-id="ckx1z0byp00122dqsddkbgnoa" data-title="页面渲染" class="article-share-link">Share</a>
+      <a data-url="http://example.com/2021/01/07/%E9%A1%B5%E9%9D%A2%E6%B8%B2%E6%9F%93/" data-id="ckzz09y7u00148pqs5cf5710d" data-title="页面渲染" class="article-share-link">Share</a>
       
       
       
@@ -716,61 +808,11 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2020/12/23/PPI%E3%80%81DPI%E3%80%81%E8%AE%BE%E5%A4%87%E5%83%8F%E7%B4%A0%E7%AD%89%E6%A6%82%E5%BF%B5/" data-id="ckx1z0bxh00042dqs9s20cthb" data-title="PPI、DPI、设备像素等概念及自适应布局方案" class="article-share-link">Share</a>
+      <a data-url="http://example.com/2020/12/23/PPI%E3%80%81DPI%E3%80%81%E8%AE%BE%E5%A4%87%E5%83%8F%E7%B4%A0%E7%AD%89%E6%A6%82%E5%BF%B5/" data-id="ckzz09y6y00048pqselpyhyg6" data-title="PPI、DPI、设备像素等概念及自适应布局方案" class="article-share-link">Share</a>
       
       
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%83%8F%E7%B4%A0/" rel="tag">像素</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-BFC" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2020/11/09/BFC/" class="article-date">
-  <time class="dt-published" datetime="2020-11-09T11:32:13.000Z" itemprop="datePublished">2020-11-09</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/HTML/">HTML</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2020/11/09/BFC/">BFC</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <h3 id="BFC定义"><a href="#BFC定义" class="headerlink" title="BFC定义"></a>BFC定义</h3> <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">BFC(Block Formatting Context)块级格式化上下文。它是一个独立的渲染区域，只有Block-level box 参与，它规定了内部的Block-level Box的布局，并且与这个区域的外部不相干。</span><br></pre></td></tr></table></figure>
-
-<h3 id="如何创建BFC"><a href="#如何创建BFC" class="headerlink" title="如何创建BFC"></a>如何创建BFC</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">1. 浮动元素：float的不为none</span><br><span class="line">2. 绝对定位元素：position的值为absolute 或 fixed</span><br><span class="line">3. overflow的值不为visible</span><br><span class="line">4. 非块级盒子的块级容器：display的值是inline-block、table-cell、flex、table-caption或者inline-flex、flow-root</span><br><span class="line">5. 根元素或其它包含它的元素</span><br><span class="line">除了兼容性问题，用display: flow-root来触发BFC最佳,不会产生任何副作用</span><br></pre></td></tr></table></figure>
-
-<h3 id="BFC布局场景"><a href="#BFC布局场景" class="headerlink" title="BFC布局场景"></a>BFC布局场景</h3> <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">1.在BFC区域中不会与float浮动元素重叠</span><br><span class="line">2.在同一个BFC区域中的相邻的块级元素之间的间隔取决于margin会发生重叠</span><br><span class="line">3.浮动元素造成了父级元素高度塌陷：父元素的高度取决于子元素的高度，当子元素变为浮动元素时就会造成父元素高度塌陷</span><br><span class="line">4.父子元素之间的margin重叠</span><br></pre></td></tr></table></figure>
- <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;div id=<span class="string">&quot;app&quot;</span> style=<span class="string">&quot;height: 100Px;width: 100px;background-color: blue;margin-bottom: 10px;&quot;</span>&gt;&lt;/div&gt;</span><br><span class="line">  <span class="xml"><span class="tag">&lt;<span class="name">div</span> <span class="attr">style</span>=<span class="string">&quot;display:flow-root;border: 1px solid black;&quot;</span>&gt;</span></span></span><br><span class="line"><span class="xml">      <span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">&quot;addnumber&quot;</span> <span class="attr">style</span>=<span class="string">&quot;height: 100Px;width: 100px;background-color: brown;margin-top: 10px;float: left;&quot;</span>&gt;</span>+<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line"><span class="xml">      <span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">&quot;addnumber&quot;</span> <span class="attr">style</span>=<span class="string">&quot;background-color:burlywood;margin-top: 10px;display:flow-root;&quot;</span>&gt;</span>+<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line"><span class="xml">  <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line"> </span><br></pre></td></tr></table></figure>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2020/11/09/BFC/" data-id="ckx1z0bx200002dqs5q11hu42" data-title="BFC" class="article-share-link">Share</a>
-      
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/BFC/" rel="tag">BFC</a></li></ul>
 
     </footer>
   </div>
@@ -824,7 +866,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/10/">October 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/06/">June 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/05/">May 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/01/">January 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/12/">December 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/11/">November 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/09/">September 2020</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/12/">December 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/10/">October 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/06/">June 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/05/">May 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/01/">January 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/12/">December 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/11/">November 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/09/">September 2020</a></li></ul>
     </div>
   </div>
 
@@ -835,6 +877,10 @@
     <h3 class="widget-title">Recent Posts</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2021/12/11/uni-app/">uni-app.md</a>
+          </li>
         
           <li>
             <a href="/2021/10/28/vue3/">vue3</a>
@@ -852,10 +898,6 @@
             <a href="/2021/06/22/vue%E7%BB%84%E4%BB%B6%E5%92%8C%E8%B7%AF%E7%94%B1/">vue组件和路由、vuex</a>
           </li>
         
-          <li>
-            <a href="/2021/05/13/%E7%9B%92%E6%A8%A1%E5%9E%8B/">盒模型</a>
-          </li>
-        
       </ul>
     </div>
   </div>
@@ -869,7 +911,7 @@
   <div class="outer">
     <div id="footer-info" class="inner">
       
-      &copy; 2021 John Doe<br>
+      &copy; 2022 John Doe<br>
       Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
     </div>
   </div>
