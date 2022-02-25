@@ -14,7 +14,7 @@
 <meta property="og:description" content="HTTPhttp协议是基于tcp协议的无状态，无连接的超文本协议 三次握手 客户端首先向服务器端发送联机请求（发送syn（联机确认）的数据包）,并进入syn_send状态，登台服务器端确认 服务器端收到客户端发送的联机请求的syn的数据包，但是服务端还需要确认客户端的syn（即ack）数据包，同时也向服务端发送一个syn包，即syn和ack数据包，此时服务器进入syn_recv状态 客户端收到服务">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2020-09-19T11:02:13.000Z">
-<meta property="article:modified_time" content="2021-09-15T08:47:13.000Z">
+<meta property="article:modified_time" content="2022-02-24T08:21:57.431Z">
 <meta property="article:author" content="John Doe">
 <meta property="article:tag" content="HTTP">
 <meta name="twitter:card" content="summary">
@@ -130,11 +130,11 @@
 <h3 id="get和post请求区别"><a href="#get和post请求区别" class="headerlink" title="get和post请求区别"></a>get和post请求区别</h3><p>1.get请求的参数会在地址栏中显示出来，post请求的参数是放在请求体中的</p>
 <p>2.get请求的浏览器和服务器对url访问地址长度有限制，post请求由于不是通过地址传参，理论上不受长度限制，但是服务器端也对请求体的参数大小有限制</p>
 <p>3.post请求的安全性高于get请求</p>
-
+<h3 id="HTTP-的缓存策略"><a href="#HTTP-的缓存策略" class="headerlink" title="HTTP 的缓存策略"></a>HTTP 的缓存策略</h3>
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2020/09/19/HTTP/" data-id="cl00cl4ee000147fy9yj7em8c" data-title="HTTP" class="article-share-link">Share</a>
+      <a data-url="http://example.com/2020/09/19/HTTP/" data-id="cl01rnvs90000pxfy28clejkj" data-title="HTTP" class="article-share-link">Share</a>
       
       
       
@@ -204,7 +204,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/12/">December 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/10/">October 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/06/">June 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/05/">May 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/01/">January 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/12/">December 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/11/">November 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/09/">September 2020</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/02/">February 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/12/">December 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/10/">October 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/06/">June 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/05/">May 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/01/">January 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/12/">December 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/11/">November 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/09/">September 2020</a></li></ul>
     </div>
   </div>
 
@@ -215,6 +215,10 @@
     <h3 class="widget-title">Recent Posts</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2022/02/24/%E6%B5%8F%E8%A7%88%E5%99%A8/">浏览器</a>
+          </li>
         
           <li>
             <a href="/2021/12/11/uni-app/">uni-app.md</a>
@@ -230,10 +234,6 @@
         
           <li>
             <a href="/2021/10/15/webpack/">(no title)</a>
-          </li>
-        
-          <li>
-            <a href="/2021/06/22/vue%E7%BB%84%E4%BB%B6%E5%92%8C%E8%B7%AF%E7%94%B1/">vue组件和路由、vuex</a>
           </li>
         
       </ul>

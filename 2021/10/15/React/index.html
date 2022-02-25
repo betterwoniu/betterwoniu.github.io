@@ -14,7 +14,7 @@
 <meta property="og:description" content="React 事件机制 react的事件监听不是绑定在真实的dom上的，而是通过document监听事件，当事件发生并冒泡到document的时候，react将事件内容封装转交给真正的处理函数进行。react是通过自己合成事件(syntheticEvent)，因此停止冒泡事件的方法应该是event.preventDefault()而不是event.stopProppagation()  jsx js">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2021-10-15T06:19:07.000Z">
-<meta property="article:modified_time" content="2022-02-23T02:28:51.600Z">
+<meta property="article:modified_time" content="2022-02-24T08:18:49.179Z">
 <meta property="article:author" content="John Doe">
 <meta property="article:tag" content="javascript">
 <meta property="article:tag" content="React">
@@ -201,11 +201,12 @@
 <li>创建一个各个组件之间共享用户信息的Context </li>
 <li>使用该Context的provider组件的value属性传递该context的值</li>
 </ol>
+<h3 id="React-优化"><a href="#React-优化" class="headerlink" title="React 优化"></a>React 优化</h3><p>-</p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2021/10/15/React/" data-id="cl00cl4ep000647fycgmxgo25" data-title="React" class="article-share-link">Share</a>
+      <a data-url="http://example.com/2021/10/15/React/" data-id="cl01rnvsx0006pxfyhyg1dmfv" data-title="React" class="article-share-link">Share</a>
       
       
       
@@ -275,7 +276,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/12/">December 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/10/">October 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/06/">June 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/05/">May 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/01/">January 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/12/">December 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/11/">November 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/09/">September 2020</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/02/">February 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/12/">December 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/10/">October 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/06/">June 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/05/">May 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/01/">January 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/12/">December 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/11/">November 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/09/">September 2020</a></li></ul>
     </div>
   </div>
 
@@ -286,6 +287,10 @@
     <h3 class="widget-title">Recent Posts</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2022/02/24/%E6%B5%8F%E8%A7%88%E5%99%A8/">浏览器</a>
+          </li>
         
           <li>
             <a href="/2021/12/11/uni-app/">uni-app.md</a>
@@ -301,10 +306,6 @@
         
           <li>
             <a href="/2021/10/15/webpack/">(no title)</a>
-          </li>
-        
-          <li>
-            <a href="/2021/06/22/vue%E7%BB%84%E4%BB%B6%E5%92%8C%E8%B7%AF%E7%94%B1/">vue组件和路由、vuex</a>
           </li>
         
       </ul>
