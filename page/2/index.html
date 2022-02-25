@@ -71,6 +71,73 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-页面渲染" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2021/01/07/%E9%A1%B5%E9%9D%A2%E6%B8%B2%E6%9F%93/" class="article-date">
+  <time class="dt-published" datetime="2021-01-07T07:19:28.000Z" itemprop="datePublished">2021-01-07</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E6%B8%B2%E6%9F%93/">渲染</a>►<a class="article-category-link" href="/categories/%E6%B8%B2%E6%9F%93/HTML/">HTML</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2021/01/07/%E9%A1%B5%E9%9D%A2%E6%B8%B2%E6%9F%93/">页面渲染</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h3 id="页面的渲染过程"><a href="#页面的渲染过程" class="headerlink" title="页面的渲染过程"></a>页面的渲染过程</h3><ol>
+<li>将HTML构建成一个DOM树(DOM=Document object model 文档对象模型)，DOM的构建是一个深度遍历的过程：当前节点的所有子节点都构建好了才会去构建下一个兄弟节点</li>
+<li>将CSS样式文件解析成 CSS Rule tree</li>
+<li>根据DOM树和CSS树来构建一个 Rendering tree(渲染树)。注意：Render Tree渲染树并不等于 DOM树，因为像一些dispaly：none的标签就每必要渲染出来放在渲染树中</li>
+<li>有了渲染树 Rendering Tree，浏览器能够知道页面的节点和节点的样式</li>
+<li>页面根据 Rendering Tree 开始计算出每个节点的具体位置</li>
+<li>开始绘制，遍历Rendering Tree 使用浏览器后端层绘制每个节点</li>
+</ol>
+<h3 id="回流-Reflow-和重绘-Repaint"><a href="#回流-Reflow-和重绘-Repaint" class="headerlink" title="回流(Reflow)和重绘(Repaint)"></a>回流(Reflow)和重绘(Repaint)</h3><p>回流/重排(Reflow): 页面的某个部分发生了变化影响了布局，渲染树需要重新计算<br>重绘(Repaint):  改变了某个元素的背景颜色、文字颜色等，不影响页面的布局或者元素周围，只会引起浏览器的重绘(repaint)</p>
+<h3 id="如何减少回流-Reflow"><a href="#如何减少回流-Reflow" class="headerlink" title="如何减少回流(Reflow)"></a>如何减少回流(Reflow)</h3><ol>
+<li>第一次的页面加载必定会触发依次回流/重排和重绘</li>
+<li>触发重绘不一定会触发回流/重排，但是回流/重绘必定会触发重绘</li>
+</ol>
+<h4 id="触发回流的原因"><a href="#触发回流的原因" class="headerlink" title="触发回流的原因"></a>触发回流的原因</h4><ol>
+<li>元素在视图中的位置和大小发生改变</li>
+<li>删除或者添加元素</li>
+<li>浏览器的视图大小发生改变</li>
+</ol>
+<h3 id="CSS和JS的阻塞规则"><a href="#CSS和JS的阻塞规则" class="headerlink" title="CSS和JS的阻塞规则"></a>CSS和JS的阻塞规则</h3><ol>
+<li>CSS不会阻塞DOM的解析，但会阻塞DOM渲染</li>
+<li>JS阻塞DOM解析，但是浏览器会“偷看”DOM，预先下载相关资源</li>
+<li>浏览器遇到且没有defer或async属性的 标签时，可能会触发页面渲染，因此如果前面的CSS资源尚未加载完成，浏览器会等待完它加载完毕再执行脚本</li>
+</ol>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2021/01/07/%E9%A1%B5%E9%9D%A2%E6%B8%B2%E6%9F%93/" data-id="cl02c6689001c4aqs2nfuahax" data-title="页面渲染" class="article-share-link">Share</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/HTML/" rel="tag">HTML</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%B8%B2%E6%9F%93/" rel="tag">渲染</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
     <article id="post-PPI、DPI、设备像素等概念" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
     <a href="/2020/12/23/PPI%E3%80%81DPI%E3%80%81%E8%AE%BE%E5%A4%87%E5%83%8F%E7%B4%A0%E7%AD%89%E6%A6%82%E5%BF%B5/" class="article-date">
@@ -108,7 +175,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2020/12/23/PPI%E3%80%81DPI%E3%80%81%E8%AE%BE%E5%A4%87%E5%83%8F%E7%B4%A0%E7%AD%89%E6%A6%82%E5%BF%B5/" data-id="cl022tv320004atfy4aid4jor" data-title="PPI、DPI、设备像素等概念及自适应布局方案" class="article-share-link">Share</a>
+      <a data-url="http://example.com/2020/12/23/PPI%E3%80%81DPI%E3%80%81%E8%AE%BE%E5%A4%87%E5%83%8F%E7%B4%A0%E7%AD%89%E6%A6%82%E5%BF%B5/" data-id="cl02c667700014aqs3xsq9xh7" data-title="PPI、DPI、设备像素等概念及自适应布局方案" class="article-share-link">Share</a>
       
       
       
@@ -158,7 +225,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2020/11/09/BFC/" data-id="cl022tv2p0000atfyfyan57ym" data-title="BFC" class="article-share-link">Share</a>
+      <a data-url="http://example.com/2020/11/09/BFC/" data-id="cl02c667100004aqs44pv3rdq" data-title="BFC" class="article-share-link">Share</a>
       
       
       
@@ -179,7 +246,7 @@
 </a>
     
   <div class="article-category">
-    <a class="article-category-link" href="/categories/promise/">promise</a>►<a class="article-category-link" href="/categories/promise/angular/">angular</a>
+    <a class="article-category-link" href="/categories/promise/">promise</a>►<a class="article-category-link" href="/categories/promise/javascript/">javascript</a>
   </div>
 
   </div>
@@ -223,7 +290,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2020/09/24/Promise/" data-id="cl022tv340005atfy02g21pho" data-title="Promise" class="article-share-link">Share</a>
+      <a data-url="http://example.com/2020/09/24/Promise/" data-id="cl02c667e00054aqscuv7gh6b" data-title="Promise" class="article-share-link">Share</a>
       
       
       
@@ -297,7 +364,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2020/09/19/HTTP/" data-id="cl022tv2w0001atfyghgrcfsu" data-title="HTTP" class="article-share-link">Share</a>
+      <a data-url="http://example.com/2020/09/19/HTTP/" data-id="cl02c667c00044aqs18bgelcm" data-title="HTTP" class="article-share-link">Share</a>
       
       
       
@@ -347,11 +414,60 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2020/09/19/%E5%8E%9F%E5%9E%8B%E9%93%BE/" data-id="cl022tv3s000zatfy85wacw4k" data-title="原型链" class="article-share-link">Share</a>
+      <a data-url="http://example.com/2020/09/19/%E5%8E%9F%E5%9E%8B%E9%93%BE/" data-id="cl02c668300124aqsg1cs3pm7" data-title="原型链" class="article-share-link">Share</a>
       
       
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%8E%9F%E5%9E%8B%E9%93%BE/" rel="tag">原型链</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-typescript" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2020/09/11/typescript/" class="article-date">
+  <time class="dt-published" datetime="2020-09-11T02:40:51.000Z" itemprop="datePublished">2020-09-11</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/typescript/">typescript</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2020/09/11/typescript/">typescript</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h3 id="泛型"><a href="#泛型" class="headerlink" title="泛型"></a>泛型</h3><ul>
+<li>定义函数或者类时就可以使用泛型<h3 id="高级类型"><a href="#高级类型" class="headerlink" title="高级类型"></a>高级类型</h3></li>
+<li>交叉类型：是将多个类型合并为一个类型;</li>
+<li></li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2020/09/11/typescript/" data-id="cl02c667r000l4aqs8ges7e5j" data-title="typescript" class="article-share-link">Share</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/typescript/" rel="tag">typescript</a></li></ul>
 
     </footer>
   </div>
@@ -403,60 +519,11 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2020/09/11/rxjs/" data-id="cl022tv3f000hatfy9sfdd9an" data-title="rxjs" class="article-share-link">Share</a>
+      <a data-url="http://example.com/2020/09/11/rxjs/" data-id="cl02c667v000r4aqse5r4bsfd" data-title="rxjs" class="article-share-link">Share</a>
       
       
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javascript/" rel="tag">javascript</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/rxjs/" rel="tag">rxjs</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-typescript" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2020/09/11/typescript/" class="article-date">
-  <time class="dt-published" datetime="2020-09-11T02:40:51.000Z" itemprop="datePublished">2020-09-11</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/typescript/">typescript</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2020/09/11/typescript/">typescript</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <h3 id="泛型"><a href="#泛型" class="headerlink" title="泛型"></a>泛型</h3><ul>
-<li>定义函数或者类时就可以使用泛型<h3 id="高级类型"><a href="#高级类型" class="headerlink" title="高级类型"></a>高级类型</h3></li>
-<li>交叉类型：是将多个类型合并为一个类型;</li>
-<li></li>
-</ul>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2020/09/11/typescript/" data-id="cl022tv3n000ratfy7hrx4rxj" data-title="typescript" class="article-share-link">Share</a>
-      
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/typescript/" rel="tag">typescript</a></li></ul>
 
     </footer>
   </div>
@@ -534,7 +601,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2020/09/09/angular/" data-id="cl022tv37000aatfy7npf5svp" data-title="angular" class="article-share-link">Share</a>
+      <a data-url="http://example.com/2020/09/09/angular/" data-id="cl02c667k000b4aqs6j6c0cip" data-title="angular" class="article-share-link">Share</a>
       
       
       
@@ -597,7 +664,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2020/09/09/%E7%BC%93%E5%AD%98/" data-id="cl022tv3w0013atfy7sen1fgy" data-title="缓存" class="article-share-link">Share</a>
+      <a data-url="http://example.com/2020/09/09/%E7%BC%93%E5%AD%98/" data-id="cl02c668700184aqs7p9m68dy" data-title="缓存" class="article-share-link">Share</a>
       
       
       
@@ -611,158 +678,11 @@
 
 
   
-    <article id="post-javascript" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2020/09/08/javascript/" class="article-date">
-  <time class="dt-published" datetime="2020-09-08T14:49:57.000Z" itemprop="datePublished">2020-09-08</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/javascript/">javascript</a>►<a class="article-category-link" href="/categories/javascript/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">设计模式</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2020/09/08/javascript/">javascript</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <h3 id="执行上下文"><a href="#执行上下文" class="headerlink" title="执行上下文"></a>执行上下文</h3><ul>
-<li>定义：当js引擎执行代码片段的时候就会先进行执行前的准备工作，这个准备工作就叫做执行上下文。所有执行上下文都会交给“执行上下文堆”，全局上下文会在该栈的最底部，每一个函数上下文执行的时候，就会将函数的执行上下文压入栈。但是栈的容量是有限制的，当容量超过限制的时候就会造成栈溢出。</li>
-<li>执行上下文中包含了：声明的变量（变量声明会触发变量和函数提升）、this指向、作用域链</li>
-<li>函数的内部执行会先访问本地变量，如果找不到就会通过作用域链去寻找上层变量</li>
-<li>this的指向取决于谁去调用它，apply、bind、call函数是可以改变this的指向</li>
-</ul>
-<h3 id="作用域-作用域链"><a href="#作用域-作用域链" class="headerlink" title="作用域/作用域链"></a>作用域/作用域链</h3><ul>
-<li>作用域定义：当前程序定义变量的区域，它决定了执行当前代码对变量访问的权限（分为全局作用域和函数作用域）</li>
-<li>作用域链定义：代码执行的之后会在本地寻找变量，如果有的话就返回，如果没有的话就向上级作用域去寻找，一直找到全局作用域</li>
-</ul>
-<h3 id="闭包"><a href="#闭包" class="headerlink" title="闭包"></a>闭包</h3><ul>
-<li>函数的内部返回一个内部函数，内部函数使用了函数内的变量，外部持有内部函数的引用，即形成了闭包</li>
-<li>闭包导致的内存泄漏问题：js的垃圾回收机制是，每一个变量被引用的时候就会在该变量的引用次数加1，当一个变量的引用次数为0的时候就会清除掉该变量，但是，在一个函数中使用另外一个函数的时候，该函数的引用次数始终为1，而在另外的函数中可能也会使用其他地方的变量，那么涉及到其他的变量就无法被销毁始终存在栈中，闭包使用过度就会造成内存无法被释放，这个就是闭包造成的内存泄漏</li>
-<li>内存泄漏方案：1.避免使用全局变量；2.谨慎使用dom绑定事件；3、尽量少使用闭包</li>
-<li>例如下面的节流和防抖就是在使用闭包：DOM元素触发的事件持有内部函数的引用，而内部函数中使用定义的timer定时器返回的timer变量</li>
-</ul>
-<h3 id="this-指向问题"><a href="#this-指向问题" class="headerlink" title="this 指向问题"></a>this 指向问题</h3><ul>
-<li>this的指向一般指的的是 当前作用域的触发的函数，由谁去触发这个函数，这个this就指向谁</li>
-<li>apply 、call和bind函数除外，他们的this指向是传入的第一个参数</li>
-</ul>
-<h3 id="原型-原型链"><a href="#原型-原型链" class="headerlink" title="原型/原型链"></a>原型/原型链</h3><ul>
-<li><p>原型：每一个实例对象通过__proto__指向实例原型，实例原型通过构造函数创建函数，函数通过new创建实例对象，函数通过prototype指向实例原型</p>
-</li>
-<li><p>原型链定义：每一个实例对象的都有__proto__将实例的原型链接起来，实例对象的原型同样也是另外一个实例原型的实例对象，__proto__作为指针一直将每一个实例原型链接，直到指向null</p>
-</li>
-</ul>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 原型链</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">func</span>(<span class="params"></span>) </span>&#123;&#125;</span><br><span class="line"><span class="keyword">let</span> f1 = <span class="keyword">new</span> func();</span><br><span class="line"></span><br><span class="line"><span class="comment">// console.log(func.prototype == f1.__proto__);  // true</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// console.log(func.prototype.__proto__ == Object.prototype);</span></span><br><span class="line"><span class="comment">// console.log(f1.__proto__.__proto__ === Object.prototype);</span></span><br><span class="line"><span class="comment">// console.log(Object.prototype.__proto__);</span></span><br><span class="line"> <span class="built_in">console</span>.log(f1.__proto__ ); <span class="comment">// func.prototype</span></span><br><span class="line"></span><br><span class="line"> <span class="built_in">console</span>.log(f1.__proto__.__proto__ ); <span class="comment">// Object.prototype</span></span><br><span class="line"> </span><br><span class="line"> <span class="built_in">console</span>.log(f1.__proto__.__proto__.__proto__ );  <span class="comment">// null</span></span><br><span class="line"> </span><br><span class="line"><span class="comment">/* </span></span><br><span class="line"><span class="comment">  实例的隐式原型对象指向 对象的显式原型对象</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">  console.log(func.prototype == f1.__proto__);  // true</span></span><br><span class="line"><span class="comment">  f1 作为func new 创建出来的实例，f1.__proto__ == func.prototype</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">  console.log(func.prototype.__proto__ == Object.prototype);  // true</span></span><br><span class="line"><span class="comment">  console.log(f1.__proto__.__proto__ === Object.prototype);  // true</span></span><br><span class="line"><span class="comment">  因为function 是 Object 的一个实例对象，所以func.prototype.__proto__ == Object.prototype </span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">  console.log(Object.prototype.__proto__); // null</span></span><br><span class="line"><span class="comment">  原型链的最终指向为 null</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">*/</span></span><br></pre></td></tr></table></figure>
-
-
-
-<h3 id="继承"><a href="#继承" class="headerlink" title="继承"></a>继承</h3><ul>
-<li>原型链继承</li>
-<li>组合继承</li>
-<li>寄生组合继承<h3 id="this"><a href="#this" class="headerlink" title="this"></a>this</h3></li>
-<li>定义：this的指向取决于使用它的对象</li>
-<li>bind、apply、call函数可以改变this的指向</li>
-<li>bind:bind将创建一个新的函数，参数类列表</li>
-<li>apply:apply可以将一个数组或者类数组对象传入作为参数，返回的是</li>
-<li>call:call 可以将参数列表作为参数<h3 id="类型判断"><a href="#类型判断" class="headerlink" title="类型判断"></a>类型判断</h3></li>
-<li>typeof定义：typeof返回的是 数据的类型名的字符串，typeof判断数组和对象的返回值都是<code>object</code>,typeof判断<code>null</code>的返回值是<code>object</code>;</li>
-<li>instanceof 定义：通常用于判断 instanceof 两端的数据类型是否一样； instanceof 对于数组和对象的是判断数据的类型一样的，对于函数的类型判断等于<code>Function</code>的<h3 id="类型转换"><a href="#类型转换" class="headerlink" title="类型转换"></a>类型转换</h3><h3 id="深浅拷贝"><a href="#深浅拷贝" class="headerlink" title="深浅拷贝"></a>深浅拷贝</h3></li>
-<li>浅拷贝定义：对于复杂的引用类型的数据(对象或者数组)拷贝来说，浅拷贝只是拷贝的这个值的内存地址，内存地址指向的值改变会影响到所有使用该内存地址的数据。</li>
-<li>深拷贝：对于复杂的引用类型的数据(对象或者数组)拷贝来说，深拷贝是将内存中存取的数据拷贝一份，存放到一个新的内存地址，修改内存中的数据不会相互影响。</li>
-<li>深拷贝解析：先根据源数据的类型进行判断，如果是基本数据类型直接返回；如果是正则或者日期数据类型，使用 <code>new Date()</code>或者<code>new Regex()</code>新创建一个；如果是对象或者数据，需要对数据进行递归循环，为了防止对象的属性间接或直接的引用了自身的情况，所以需要新创建一个空间来存储新拷贝的对象(新创建的数据类型满足的数据类型：1.key-value形式；2:因为数据的引用自身，所以key需要是引用类型。因为使用map是抢数据类型，不能被垃圾回收器回收(置空key后，map仍然对于引用数据类型的key存在强引用数据类型)，所以需要使用弱数据类型WeakMap)<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">const</span> target = &#123;</span><br><span class="line">    <span class="attr">field1</span>: <span class="number">1</span>,</span><br><span class="line">    <span class="attr">field2</span>: <span class="literal">undefined</span>,</span><br><span class="line">    <span class="attr">field3</span>: &#123;</span><br><span class="line">        <span class="attr">child</span>: <span class="string">&#x27;child&#x27;</span></span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="attr">field4</span>: [<span class="number">2</span>, <span class="number">4</span>, <span class="number">8</span>]</span><br><span class="line">&#125;;</span><br><span class="line">target.target = target;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">deepClone</span>(<span class="params">source, map = <span class="keyword">new</span> <span class="built_in">WeakMap</span>()</span>)</span>&#123;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">if</span> (source === <span class="literal">null</span>) <span class="keyword">return</span> source;</span><br><span class="line">  <span class="comment">// 先判断类型 正则，日期，创建一个新的</span></span><br><span class="line">  <span class="keyword">if</span>(source <span class="keyword">instanceof</span> <span class="built_in">Date</span>) <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Date</span>(source);</span><br><span class="line">  <span class="keyword">if</span>(source <span class="keyword">instanceof</span> <span class="built_in">RegExp</span>) <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">RegExp</span>(source);</span><br><span class="line">  <span class="comment">// 复杂引用类型 instanceof 判断对象和数组的类型都等于object</span></span><br><span class="line">  <span class="keyword">if</span>(source <span class="keyword">instanceof</span> <span class="built_in">Object</span>) &#123;</span><br><span class="line">    <span class="comment">// 判断数组或者对象</span></span><br><span class="line">    <span class="keyword">var</span> target = <span class="built_in">Array</span>.isArray(source)?[]:&#123;&#125;;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (map.get(source)) &#123;</span><br><span class="line">        <span class="keyword">return</span> map.get(source);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 将源数据存储到key中</span></span><br><span class="line">    map.set(source, target);</span><br><span class="line">    <span class="comment">// 遍历源数据</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">const</span> key <span class="keyword">in</span> source) &#123;</span><br><span class="line">      <span class="keyword">if</span> (source.hasOwnProperty(key)) &#123;</span><br><span class="line">        <span class="comment">// target = deepClone(source[key]);</span></span><br><span class="line">        <span class="comment">// 重新将target的值通过递归按照key来--对好</span></span><br><span class="line">        target[key] = deepClone(source[key],map)</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> target;</span><br><span class="line">  &#125;<span class="keyword">else</span> &#123;</span><br><span class="line">    <span class="comment">// 基本数据类型</span></span><br><span class="line">    <span class="keyword">return</span> source;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(deepClone(target));</span><br></pre></td></tr></table></figure>
-<h3 id="事件循环"><a href="#事件循环" class="headerlink" title="事件循环"></a>事件循环</h3></li>
-<li>定义：js执行过程中，除了依靠函数调用栈来确定函数的执行顺序外，还有任务队列来执行另外的一些代码。整个执行过程称为事件循环，任务队列分为宏任务和微任务，进入整体代码（宏任务）后，开始第一次循环，开始执行微任务，然后再去开始执行新的宏任务，</li>
-<li>宏任务：整体代码、settimeout、setInterval、IO、setImmediate、UI render</li>
-<li>微任务：promise、process.next()、async/await、MutationObserver</li>
-</ul>
-<h3 id="垃圾回收"><a href="#垃圾回收" class="headerlink" title="垃圾回收"></a>垃圾回收</h3><h3 id="内存泄露"><a href="#内存泄露" class="headerlink" title="内存泄露"></a>内存泄露</h3><h3 id="事件机制"><a href="#事件机制" class="headerlink" title="事件机制"></a>事件机制</h3><h3 id="事件流"><a href="#事件流" class="headerlink" title="事件流"></a>事件流</h3><ul>
-<li>元素节点和根节点之间按照特定的顺序传播，路径上所有的节点都会收到该事件，这个传播过程即DOM事件流</li>
-<li>捕捉阶段（从根到叶子，特定节点的顶级父节点向指定的节点传播）</li>
-<li>目标阶段</li>
-<li>冒泡阶段（特定的节点向父级节点一级一级的向上传播，即从DOM树的叶子到根）</li>
-</ul>
-<h3 id="节流和防抖"><a href="#节流和防抖" class="headerlink" title="节流和防抖"></a>节流和防抖</h3><ul>
-<li>节流定义：在指定的时间段内只能发送一次请求，如果在该时间段内发生多次，只有一次生效</li>
-<li>防抖：在第一次的触发的时候开始计时，如果在指定的时间内没有再次触发，就等到时间截止开始执行；如果在指定时间内又触发了2次或者两次以上，则从最后一次开始计时，等到指定时间后就执行<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"> <span class="comment">// 防抖 事件触发n秒之后执行 如果在n秒内再次出发，重新计时，也就是在指定时间段内 多次执行只执行最后一次</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">debounce</span>(<span class="params">fn, wait</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">let</span> timer = <span class="literal">null</span>;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    timers &amp;&amp; <span class="built_in">clearTimeout</span>(timer);</span><br><span class="line">    timer = <span class="built_in">setTimeout</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">      fn.apply(<span class="built_in">this</span>);</span><br><span class="line">      timer = <span class="literal">null</span>;</span><br><span class="line">    &#125;, wait);</span><br><span class="line">  &#125;;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 节流 在指定的时间端内只执行一次</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">ttrotle</span>(<span class="params">fn, wait</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">let</span> timer = <span class="literal">null</span>;</span><br><span class="line">  <span class="keyword">if</span> (timer) &#123;</span><br><span class="line">    timer = <span class="built_in">setTimeout</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">      fn.apply(<span class="built_in">this</span>);</span><br><span class="line">      timer = <span class="literal">null</span>;</span><br><span class="line">    &#125;, wait);</span><br><span class="line">  &#125;</span><br><span class="line">&#125; </span><br></pre></td></tr></table></figure></li>
-</ul>
-<h3 id="xss跨站脚本攻击-和-CSRF-跨站请求伪造"><a href="#xss跨站脚本攻击-和-CSRF-跨站请求伪造" class="headerlink" title="xss跨站脚本攻击 和 CSRF 跨站请求伪造"></a>xss跨站脚本攻击 和 CSRF 跨站请求伪造</h3><ul>
-<li><p>XSS 跨站脚本攻击：攻击者将恶意代码提交到被攻击网站数据库中，在其他用户登录使用该网站时，服务端将带有恶意代码的数据渲染到浏览器，浏览器将会执行恶意代码，恶意代码在执行的时候将会获取到用户信息，发送到攻击者指定的网站，或者冒充用户进行恶意操作</p>
-</li>
-<li><p>XSS预防方案:浏览器渲染数据的时候进行严格的输出编码，<br> 避免拼接HTML，v-html ejs中使用执行带有HTML的数据<br> 对于输入框的内容进行严格验证<br> 开启 Http Only cookie，禁止 JavaScript 读取某些敏感 Cookie<br> 对于浏览器请求的域名进行拦截，使用白名单</p>
-</li>
-<li><p>CSRF 跨站请求伪造：攻击者诱导用户进入第三方网站，在第三方网站中向被攻击网站发送请求，伪造用户操作</p>
-</li>
-<li><p>CSRF 预览方案：<br> 同源检测<br> 请求携带token或者cookie</p>
-</li>
-</ul>
-<h2 id="javascript-观察者模式和发布者模式"><a href="#javascript-观察者模式和发布者模式" class="headerlink" title="javascript 观察者模式和发布者模式"></a>javascript 观察者模式和发布者模式</h2><h3 id="观察者模式"><a href="#观察者模式" class="headerlink" title="观察者模式"></a>观察者模式</h3><h4 id="观察者模式是观察者监听着所观察的对象，当所观察的对象发生变化的时候，所有依赖于它的对象将会收到通知并进行相应的操作。观察者和所观察的对象是多对一的关系，一个被监听的对象对应着多个监听的对象。观察者和所观察的对象之间是相互交互的。"><a href="#观察者模式是观察者监听着所观察的对象，当所观察的对象发生变化的时候，所有依赖于它的对象将会收到通知并进行相应的操作。观察者和所观察的对象是多对一的关系，一个被监听的对象对应着多个监听的对象。观察者和所观察的对象之间是相互交互的。" class="headerlink" title="观察者模式是观察者监听着所观察的对象，当所观察的对象发生变化的时候，所有依赖于它的对象将会收到通知并进行相应的操作。观察者和所观察的对象是多对一的关系，一个被监听的对象对应着多个监听的对象。观察者和所观察的对象之间是相互交互的。"></a>观察者模式是观察者监听着所观察的对象，当所观察的对象发生变化的时候，所有依赖于它的对象将会收到通知并进行相应的操作。观察者和所观察的对象是多对一的关系，一个被监听的对象对应着多个监听的对象。观察者和所观察的对象之间是相互交互的。</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//有一家猎人工会，其中每个猎人都具有发布任务(publish)，订阅任务(subscribe)的功能</span></span><br><span class="line"><span class="comment">//他们都有一个订阅列表来记录谁订阅了自己</span></span><br><span class="line"><span class="comment">//定义一个猎人类</span></span><br><span class="line"><span class="comment">//包括姓名，级别，订阅列表</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Hunter</span>(<span class="params">name, level</span>)</span>&#123;</span><br><span class="line">	<span class="built_in">this</span>.name = name</span><br><span class="line">	<span class="built_in">this</span>.level = level</span><br><span class="line">	<span class="built_in">this</span>.list = []</span><br><span class="line">&#125;</span><br><span class="line">Hunter.prototype.publish = <span class="function"><span class="keyword">function</span> (<span class="params">money</span>)</span>&#123;</span><br><span class="line">	<span class="built_in">console</span>.log(<span class="built_in">this</span>.level + <span class="string">&#x27;猎人&#x27;</span> + <span class="built_in">this</span>.name + <span class="string">&#x27;寻求帮助&#x27;</span>)</span><br><span class="line">    <span class="built_in">this</span>.list.forEach(<span class="function"><span class="keyword">function</span>(<span class="params">item, index</span>)</span>&#123;</span><br><span class="line">    	item(money)</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;</span><br><span class="line">Hunter.prototype.subscribe = <span class="function"><span class="keyword">function</span> (<span class="params">targrt, fn</span>)</span>&#123;</span><br><span class="line">	<span class="built_in">console</span>.log(<span class="built_in">this</span>.level + <span class="string">&#x27;猎人&#x27;</span> + <span class="built_in">this</span>.name + <span class="string">&#x27;订阅了&#x27;</span> + targrt.name)</span><br><span class="line">    targrt.list.push(fn)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//猎人工会走来了几个猎人</span></span><br><span class="line"><span class="keyword">let</span> hunterMing = <span class="keyword">new</span> Hunter(<span class="string">&#x27;小明&#x27;</span>, <span class="string">&#x27;黄金&#x27;</span>)</span><br><span class="line"><span class="keyword">let</span> hunterJin = <span class="keyword">new</span> Hunter(<span class="string">&#x27;小金&#x27;</span>, <span class="string">&#x27;白银&#x27;</span>)</span><br><span class="line"><span class="keyword">let</span> hunterZhang = <span class="keyword">new</span> Hunter(<span class="string">&#x27;小张&#x27;</span>, <span class="string">&#x27;黄金&#x27;</span>)</span><br><span class="line"><span class="keyword">let</span> hunterPeter = <span class="keyword">new</span> Hunter(<span class="string">&#x27;Peter&#x27;</span>, <span class="string">&#x27;青铜&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">//Peter等级较低，可能需要帮助，所以小明，小金，小张都订阅了Peter</span></span><br><span class="line">hunterMing.subscribe(hunterPeter, <span class="function"><span class="keyword">function</span>(<span class="params">money</span>)</span>&#123;</span><br><span class="line">	<span class="built_in">console</span>.log(<span class="string">&#x27;小明表示：&#x27;</span> + (money &gt; <span class="number">200</span> ? <span class="string">&#x27;&#x27;</span> : <span class="string">&#x27;暂时很忙，不能&#x27;</span>) + <span class="string">&#x27;给予帮助&#x27;</span>)</span><br><span class="line">&#125;)</span><br><span class="line">hunterJin.subscribe(hunterPeter, <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">	<span class="built_in">console</span>.log(<span class="string">&#x27;小金表示：给予帮助&#x27;</span>)</span><br><span class="line">&#125;)</span><br><span class="line">hunterZhang.subscribe(hunterPeter, <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">	<span class="built_in">console</span>.log(<span class="string">&#x27;小金表示：给予帮助&#x27;</span>)</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="comment">//Peter遇到困难，赏金198寻求帮助</span></span><br><span class="line">hunterPeter.publish(<span class="number">198</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">//猎人们(观察者)关联他们感兴趣的猎人(目标对象)，如Peter，当Peter有困难时，会自动通知给他们（观察者）</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="发布者模式"><a href="#发布者模式" class="headerlink" title="发布者模式"></a>发布者模式</h3><h4 id="发布者模式是由调度中心监听发布者的变化，然后对依赖于它的所有订阅者进行相应的操作。发布者和订阅者之间是通过调度中心来交互的，一方面是解耦操作，另一方面是通过调度中心来进行更加细粒度的控制。"><a href="#发布者模式是由调度中心监听发布者的变化，然后对依赖于它的所有订阅者进行相应的操作。发布者和订阅者之间是通过调度中心来交互的，一方面是解耦操作，另一方面是通过调度中心来进行更加细粒度的控制。" class="headerlink" title="发布者模式是由调度中心监听发布者的变化，然后对依赖于它的所有订阅者进行相应的操作。发布者和订阅者之间是通过调度中心来交互的，一方面是解耦操作，另一方面是通过调度中心来进行更加细粒度的控制。"></a>发布者模式是由调度中心监听发布者的变化，然后对依赖于它的所有订阅者进行相应的操作。发布者和订阅者之间是通过调度中心来交互的，一方面是解耦操作，另一方面是通过调度中心来进行更加细粒度的控制。</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br></pre></td><td class="code"><pre><span class="line">  <span class="comment">//定义一家猎人工会</span></span><br><span class="line"><span class="comment">//主要功能包括任务发布大厅(topics)，以及订阅任务(subscribe)，发布任务(publish)</span></span><br><span class="line"><span class="keyword">let</span> HunterUnion = &#123;</span><br><span class="line">	<span class="attr">type</span>: <span class="string">&#x27;hunt&#x27;</span>,</span><br><span class="line">	<span class="attr">topics</span>: <span class="built_in">Object</span>.create(<span class="literal">null</span>),</span><br><span class="line">	<span class="attr">subscribe</span>: <span class="function"><span class="keyword">function</span> (<span class="params">topic, fn</span>)</span>&#123;</span><br><span class="line">	    <span class="keyword">if</span>(!<span class="built_in">this</span>.topics[topic])&#123;</span><br><span class="line">	      	<span class="built_in">this</span>.topics[topic] = [];</span><br><span class="line">	    &#125;</span><br><span class="line">	    <span class="built_in">this</span>.topics[topic].push(fn);</span><br><span class="line">	&#125;,</span><br><span class="line">	<span class="attr">publish</span>: <span class="function"><span class="keyword">function</span> (<span class="params">topic, money</span>)</span>&#123;</span><br><span class="line">	    <span class="keyword">if</span>(!<span class="built_in">this</span>.topics[topic])</span><br><span class="line">	      	<span class="keyword">return</span>;</span><br><span class="line">	    <span class="keyword">for</span>(<span class="keyword">let</span> fn <span class="keyword">of</span> <span class="built_in">this</span>.topics[topic])&#123;</span><br><span class="line">	    	fn(money)</span><br><span class="line">	    &#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//定义一个猎人类</span></span><br><span class="line"><span class="comment">//包括姓名，级别</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Hunter</span>(<span class="params">name, level</span>)</span>&#123;</span><br><span class="line">	<span class="built_in">this</span>.name = name</span><br><span class="line">	<span class="built_in">this</span>.level = level</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//猎人可在猎人工会发布订阅任务</span></span><br><span class="line">Hunter.prototype.subscribe = <span class="function"><span class="keyword">function</span> (<span class="params">topic, fn</span>)</span>&#123;</span><br><span class="line">	<span class="built_in">console</span>.log(<span class="built_in">this</span>.level + <span class="string">&#x27;猎人&#x27;</span> + <span class="built_in">this</span>.name + <span class="string">&#x27;订阅了狩猎&#x27;</span> + topic + <span class="string">&#x27;的任务&#x27;</span>)</span><br><span class="line">    HunterUnion.subscribe(topic, fn)</span><br><span class="line">&#125;</span><br><span class="line">Hunter.prototype.publish = <span class="function"><span class="keyword">function</span> (<span class="params">topic, money</span>)</span>&#123;</span><br><span class="line">	<span class="built_in">console</span>.log(<span class="built_in">this</span>.level + <span class="string">&#x27;猎人&#x27;</span> + <span class="built_in">this</span>.name + <span class="string">&#x27;发布了狩猎&#x27;</span> + topic + <span class="string">&#x27;的任务&#x27;</span>)</span><br><span class="line">    HunterUnion.publish(topic, money)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//猎人工会走来了几个猎人</span></span><br><span class="line"><span class="keyword">let</span> hunterMing = <span class="keyword">new</span> Hunter(<span class="string">&#x27;小明&#x27;</span>, <span class="string">&#x27;黄金&#x27;</span>)</span><br><span class="line"><span class="keyword">let</span> hunterJin = <span class="keyword">new</span> Hunter(<span class="string">&#x27;小金&#x27;</span>, <span class="string">&#x27;白银&#x27;</span>)</span><br><span class="line"><span class="keyword">let</span> hunterZhang = <span class="keyword">new</span> Hunter(<span class="string">&#x27;小张&#x27;</span>, <span class="string">&#x27;黄金&#x27;</span>)</span><br><span class="line"><span class="keyword">let</span> hunterPeter = <span class="keyword">new</span> Hunter(<span class="string">&#x27;Peter&#x27;</span>, <span class="string">&#x27;青铜&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">//小明，小金，小张分别订阅了狩猎tiger的任务</span></span><br><span class="line">hunterMing.subscribe(<span class="string">&#x27;tiger&#x27;</span>, <span class="function"><span class="keyword">function</span>(<span class="params">money</span>)</span>&#123;</span><br><span class="line">	<span class="built_in">console</span>.log(<span class="string">&#x27;小明表示：&#x27;</span> + (money &gt; <span class="number">200</span> ? <span class="string">&#x27;&#x27;</span> : <span class="string">&#x27;不&#x27;</span>) + <span class="string">&#x27;接取任务&#x27;</span>)</span><br><span class="line">&#125;)</span><br><span class="line">hunterJin.subscribe(<span class="string">&#x27;tiger&#x27;</span>, <span class="function"><span class="keyword">function</span>(<span class="params">money</span>)</span>&#123;</span><br><span class="line">	<span class="built_in">console</span>.log(<span class="string">&#x27;小金表示：接取任务&#x27;</span>)</span><br><span class="line">&#125;)</span><br><span class="line">hunterZhang.subscribe(<span class="string">&#x27;tiger&#x27;</span>, <span class="function"><span class="keyword">function</span>(<span class="params">money</span>)</span>&#123;</span><br><span class="line">	<span class="built_in">console</span>.log(<span class="string">&#x27;小张表示：接取任务&#x27;</span>)</span><br><span class="line">&#125;)</span><br><span class="line"><span class="comment">//Peter订阅了狩猎sheep的任务</span></span><br><span class="line">hunterPeter.subscribe(<span class="string">&#x27;sheep&#x27;</span>, <span class="function"><span class="keyword">function</span>(<span class="params">money</span>)</span>&#123;</span><br><span class="line">	<span class="built_in">console</span>.log(<span class="string">&#x27;Peter表示：接取任务&#x27;</span>)</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="comment">//Peter发布了狩猎tiger的任务</span></span><br><span class="line">hunterPeter.publish(<span class="string">&#x27;tiger&#x27;</span>, <span class="number">198</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">//猎人们发布(发布者)或订阅(观察者/订阅者)任务都是通过猎人工会(调度中心)关联起来的，他们没有直接的交流。</span></span><br></pre></td></tr></table></figure>
-
-<img src="https://img-blog.csdnimg.cn/20190329182209470.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2hmODcyOTE0MzM0,size_16,color_FFFFFF,t_70" class="" title="图片404 观察者模式和发布订阅模式">
-
-
-<h2 id="Object-defineProperty-和-proxy"><a href="#Object-defineProperty-和-proxy" class="headerlink" title="Object.defineProperty 和 proxy"></a><code>Object.defineProperty</code> 和 <code>proxy</code></h2><h3 id="Object-defineProperty"><a href="#Object-defineProperty" class="headerlink" title="Object.defineProperty"></a><code>Object.defineProperty</code></h3><h4 id="Object-defineProperty-obj-prop-descriptor-参数：obj-要定义的属性的对象；prop：要修改的属性的名称；descriptor：要定义或修改的属性描述符。"><a href="#Object-defineProperty-obj-prop-descriptor-参数：obj-要定义的属性的对象；prop：要修改的属性的名称；descriptor：要定义或修改的属性描述符。" class="headerlink" title="Object.defineProperty(obj, prop, descriptor)  参数：obj 要定义的属性的对象；prop：要修改的属性的名称；descriptor：要定义或修改的属性描述符。"></a><code>Object.defineProperty(obj, prop, descriptor)</code>  参数：obj 要定义的属性的对象；prop：要修改的属性的名称；descriptor：要定义或修改的属性描述符。</h4><h4 id="对象目前存在的属性描述符有两种主要形式：数据描述符和存取描述符。数据描述符是一个具有值的属性，该值是可写的也可以是不可写的。存取描述符是由getter函数和setter函数所描述的函数的属性。一个描述符只能是两者之一；不能同事用两者。这两种描述符都是对象，它们共享以下可选键值"><a href="#对象目前存在的属性描述符有两种主要形式：数据描述符和存取描述符。数据描述符是一个具有值的属性，该值是可写的也可以是不可写的。存取描述符是由getter函数和setter函数所描述的函数的属性。一个描述符只能是两者之一；不能同事用两者。这两种描述符都是对象，它们共享以下可选键值" class="headerlink" title="对象目前存在的属性描述符有两种主要形式：数据描述符和存取描述符。数据描述符是一个具有值的属性，该值是可写的也可以是不可写的。存取描述符是由getter函数和setter函数所描述的函数的属性。一个描述符只能是两者之一；不能同事用两者。这两种描述符都是对象，它们共享以下可选键值"></a>对象目前存在的属性描述符有两种主要形式：数据描述符和存取描述符。数据描述符是一个具有值的属性，该值是可写的也可以是不可写的。存取描述符是由getter函数和setter函数所描述的函数的属性。一个描述符只能是两者之一；不能同事用两者。这两种描述符都是对象，它们共享以下可选键值</h4><p>configurable：当且仅当该属性的 configurable 的值为true时，该属性的描述符才能被改变，同时该对象的属性也是可以被删除的（默认false);<br>enumerable: 当且仅当该属性的值为true时,该属性才会出现在对象的枚举属性(默认false);</p>
-<p>数据描述符可选键值：</p>
-<p>value:该属性对应的值。可以是任何js的有效值(数值，对象，函数等)(默认undefind)。</p>
-<p>writable:当且仅当该属性的waitable属性为ture时，则该属性的值(上面所述的value)才可被赋值运算符所改变。</p>
-<p>数据存取符可选键：<br>get:属性的getter函数，如果没有getter函数，则为undefind。当访问属性的值时，会调用该函数。执行时不传入任何参数，但是会传入this对象，该函数的返回值会被用作属性的值。<br>set:属性的setter函数，当属性值被修改时，会调用此函数。该方法接收一个参数(被赋值的新值)，会传入赋值时的this对象。</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE <span class="meta-keyword">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">&quot;en&quot;</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">&quot;UTF-8&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">&quot;viewport&quot;</span> <span class="attr">content</span>=<span class="string">&quot;width=device-width, initial-scale=1.0&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>muvue<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">&quot;app&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">&quot;addnumber&quot;</span>&gt;</span>+<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">&quot;./myvue.js&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="javascript"></span></span><br><span class="line"><span class="javascript">    <span class="keyword">var</span> ele = <span class="built_in">document</span>.getElementById(<span class="string">&#x27;app&#x27;</span>);</span></span><br><span class="line"><span class="javascript">    <span class="keyword">var</span> btn = <span class="built_in">document</span>.getElementById(<span class="string">&#x27;addnumber&#x27;</span>);</span></span><br><span class="line"><span class="javascript"></span></span><br><span class="line"><span class="javascript">    <span class="keyword">var</span> data = &#123;</span></span><br><span class="line"><span class="javascript">        <span class="attr">number</span>:<span class="number">1</span></span></span><br><span class="line"><span class="javascript">    &#125;;</span></span><br><span class="line"><span class="javascript">    <span class="keyword">var</span> selfVue = <span class="keyword">new</span> SelfVue(data , <span class="string">&#x27;number&#x27;</span>,</span></span><br><span class="line"><span class="javascript">      <span class="function">()=&gt;</span>&#123; ele.innerHTML = data.number&#125;</span></span><br><span class="line"><span class="javascript">    );</span></span><br><span class="line"><span class="javascript">    <span class="built_in">document</span>.addEventListener(<span class="string">&#x27;click&#x27;</span>,<span class="function">()=&gt;</span>&#123;</span></span><br><span class="line"><span class="javascript">        <span class="built_in">console</span>.log(<span class="string">&#x27;ddd&#x27;</span>)</span></span><br><span class="line"><span class="javascript">        data.number +=<span class="number">1</span>;</span></span><br><span class="line"><span class="javascript">    &#125;);</span></span><br><span class="line"><span class="javascript"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">SelfVue</span> (<span class="params">data, key, cb</span>) </span>&#123;</span><br><span class="line">    <span class="built_in">this</span>.data = data;</span><br><span class="line">    observe(data);<span class="comment">// </span></span><br><span class="line">    cb(); <span class="comment">// 初始化模板数据的值</span></span><br><span class="line">    <span class="keyword">new</span> Watcher(<span class="built_in">this</span>.data, key,cb);</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">this</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 定义观察者 一个数据监听器 如果要对所有属性都进行监听的话，那么可以通过递归方法遍历所有属性值，并对其进行Object.defineProperty () 处理</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">observe</span>(<span class="params">data</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (!data || <span class="keyword">typeof</span> data !== <span class="string">&#x27;object&#x27;</span>) &#123; <span class="comment">// 判断传入的参数是否是符合标准的</span></span><br><span class="line">      <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">Object</span>.keys(data).forEach(<span class="function">(<span class="params">key</span>)=&gt;</span>&#123;   <span class="comment">// 遍历参数的每一个属性</span></span><br><span class="line">      defineReactive(data, key, data[key])</span><br><span class="line">    &#125;)</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="function"><span class="keyword">function</span> <span class="title">defineReactive</span> (<span class="params">obj, key, value</span>)</span>&#123;     </span><br><span class="line">      <span class="keyword">let</span> dep = <span class="keyword">new</span> Dep();</span><br><span class="line">      observe(value);</span><br><span class="line">      <span class="built_in">Object</span>.defineProperty(obj, key, &#123;</span><br><span class="line">        <span class="attr">enumerable</span>: <span class="literal">true</span>,</span><br><span class="line">        <span class="attr">configurable</span>: <span class="literal">true</span>,</span><br><span class="line">        <span class="attr">set</span>: <span class="function">(<span class="params">newValue</span>) =&gt;</span> &#123;</span><br><span class="line">            <span class="built_in">console</span>.log(<span class="string">&#x27;值被设置&#x27;</span>)</span><br><span class="line">          <span class="keyword">if</span>( newValue !== value )&#123;</span><br><span class="line">              value = newValue;</span><br><span class="line">              <span class="built_in">console</span>.log(dep,<span class="string">&#x27;dep&#x27;</span>)</span><br><span class="line">              <span class="comment">//更新视图</span></span><br><span class="line">              dep.notify();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;,</span><br><span class="line">        <span class="attr">get</span>: <span class="function">() =&gt;</span> &#123;</span><br><span class="line">            <span class="built_in">console</span>.log(<span class="string">&#x27;值被获取&#x27;</span>,Dep)</span><br><span class="line">          <span class="keyword">if</span>(Dep.target) &#123;   <span class="comment">// 与下面Watcher 的 Dep的target的值赋值为this和为null相对应</span></span><br><span class="line">              dep.addSub(Dep.target);</span><br><span class="line">          &#125;</span><br><span class="line">          <span class="keyword">return</span> value;</span><br><span class="line">        &#125;,</span><br><span class="line">      &#125;)</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="comment">// 依赖收集 订阅者列表</span></span><br><span class="line">  <span class="comment">// 主要负责收集订阅者，然后再属性变化的时候执行对应订阅者的更新函数</span></span><br><span class="line">  <span class="function"><span class="keyword">function</span> <span class="title">Dep</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">      <span class="built_in">this</span>.subs = [];</span><br><span class="line">  &#125;</span><br><span class="line">  Dep.prototype = &#123;</span><br><span class="line">      <span class="attr">addSub</span>: <span class="function"><span class="keyword">function</span>(<span class="params">sub</span>) </span>&#123;</span><br><span class="line">          <span class="built_in">this</span>.subs.push(sub);</span><br><span class="line">      &#125;,</span><br><span class="line">      <span class="attr">notify</span>: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">          <span class="built_in">console</span>.log(<span class="built_in">this</span>.subs,<span class="string">&#x27;this.subs&#x27;</span>)</span><br><span class="line">          <span class="built_in">this</span>.subs.forEach(<span class="function"><span class="keyword">function</span>(<span class="params">sub</span>) </span>&#123;</span><br><span class="line">              sub.update();</span><br><span class="line">          &#125;);</span><br><span class="line">      &#125;</span><br><span class="line">  &#125;;</span><br><span class="line">  <span class="comment">// 订阅者</span></span><br><span class="line">  <span class="function"><span class="keyword">function</span> <span class="title">Watcher</span>(<span class="params">data, key,cb</span>) </span>&#123;</span><br><span class="line">      <span class="built_in">this</span>.cb = cb;</span><br><span class="line">      <span class="built_in">this</span>.data = data;</span><br><span class="line">      <span class="built_in">this</span>.key = key;</span><br><span class="line">      <span class="comment">// 此处为了触发属性的getter，从而在dep添加自己，结合Observer更易理解</span></span><br><span class="line">      <span class="built_in">this</span>.value = <span class="built_in">this</span>.get(); </span><br><span class="line">  &#125;</span><br><span class="line">  Watcher.prototype = &#123;</span><br><span class="line">      <span class="attr">update</span>: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">          <span class="built_in">this</span>.run(); <span class="comment">// 属性值变化收到通知</span></span><br><span class="line">      &#125;,</span><br><span class="line">      <span class="attr">run</span>: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">          <span class="keyword">var</span> value = <span class="built_in">this</span>.get(); <span class="comment">// 取到最新值</span></span><br><span class="line">          <span class="built_in">console</span>.log(value,<span class="string">&#x27;取到最新值&#x27;</span>)</span><br><span class="line">          <span class="keyword">var</span> oldVal = <span class="built_in">this</span>.value;</span><br><span class="line">          <span class="keyword">if</span> (value !== oldVal) &#123;</span><br><span class="line">              <span class="built_in">this</span>.value = value;</span><br><span class="line">              <span class="built_in">this</span>.cb(); <span class="comment">// 执行Compile中绑定的回调，更新视图</span></span><br><span class="line">          &#125;</span><br><span class="line">      &#125;,</span><br><span class="line">      <span class="attr">get</span>: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">          Dep.target = <span class="built_in">this</span>;  <span class="comment">// 将当前订阅者指向自己</span></span><br><span class="line">          <span class="keyword">var</span> value = <span class="built_in">this</span>.data[<span class="built_in">this</span>.key];   <span class="comment">// 触发getter，添加自己到属性订阅器中</span></span><br><span class="line">          Dep.target = <span class="literal">null</span>;  <span class="comment">// 添加完毕，重置</span></span><br><span class="line">          <span class="keyword">return</span> value;</span><br><span class="line">      &#125;</span><br><span class="line">  &#125;;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-
-<h3 id="proxy"><a href="#proxy" class="headerlink" title="proxy"></a><code>proxy</code></h3><p>proxy 是当访问或者操作之前对目标对象设置一层拦截，所有的操作都必须通过这层拦截。</p>
-<p>ES6提供构造函数来创建proxy实例<code>let proxy = new proxy(target,handler)</code></p>
-<figure class="highlight plaintext"><figcaption><span>``` 参数指的是目标对象，</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line">``` handler ``` 参数也是一个对象，在该对象中定制拦截行为。</span><br><span class="line"></span><br><span class="line">proxy 的拦截操作一共13种</span><br><span class="line">``` get(target,propkey,receiver)``` :拦截对象的获取</span><br><span class="line">``` set(target, propKey, value, receiver)``` ：拦截对象属性的设置</span><br><span class="line">``` has(target, propKey)``` ：拦截propKey in proxy的操作，返回一个布尔值。</span><br><span class="line">``` deleteProperty(target, propKey)``` ：拦截delete proxy[propKey]的操作，返回一个布尔值。</span><br><span class="line">``` ownKeys(target)``` ：拦截Object.getOwnPropertyNames(proxy)、Object.getOwnPropertySymbols(proxy)、Object.keys(proxy)、for...in循环，返回一个数组。该方法返回目标对象所有自身的属性的属性名，而Object.keys()的返回结果仅包括目标对象自身的可遍历属性。</span><br><span class="line">``` getOwnPropertyDescriptor(target, propKey)``` ：拦截Object.getOwnPropertyDescriptor(proxy, propKey)，返回属性的描述对象。</span><br><span class="line">``` defineProperty(target, propKey, propDesc)``` ：拦截Object.defineProperty(proxy, propKey, propDesc）、Object.defineProperties(proxy, propDescs)，返回一个布尔值。</span><br><span class="line">``` preventExtensions(target)``` ：拦截Object.preventExtensions(proxy)，返回一个布尔值。</span><br><span class="line">``` getPrototypeOf(target)``` ：拦截Object.getPrototypeOf(proxy)，返回一个对象。</span><br><span class="line">``` isExtensible(target)``` ：拦截Object.isExtensible(proxy)，返回一个布尔值。</span><br><span class="line">``` setPrototypeOf(target, proto)``` ：拦截Object.setPrototypeOf(proxy, proto)，返回一个布尔值。如果目标对象是函数，那么还有两种额外操作可以拦截</span><br><span class="line">``` apply(target, object, args)``` ：拦截 Proxy 实例作为函数调用的操作，比如proxy(...args)、proxy.call(object, ...args)、proxy.apply(...)。</span><br><span class="line">``` construct(target, args)``` ：拦截 Proxy 实例作为构造函数调用的操作，比如new proxy(...args)。</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"> ``` Reflect ```</span><br><span class="line"></span><br><span class="line">``` 事件委托 ```</span><br><span class="line">不给每一个子节点单独设置事件监听器，而是通过操作父节点，通过冒泡原理来设置每个子节点</span><br><span class="line"></span><br><span class="line">``` javascript</span><br><span class="line"></span><br><span class="line">var bindedel = Person.mybind(Animal,name);</span><br><span class="line"></span><br><span class="line">function mybind(context,...arg)&#123;</span><br><span class="line">  var self = this;  //现将调用的this 指向存储</span><br><span class="line"></span><br><span class="line">  if(typeof context == &quot;function&quot;)&#123;</span><br><span class="line">    // params 参数指向bind参数（除第一个参数以外的参数）</span><br><span class="line">    var fn = function(params) &#123;</span><br><span class="line">      // 判断当前的this指向是否是跟第一个参数相同</span><br><span class="line">      // params 是new bindedel时所传递的参数</span><br><span class="line">      return this.apply(this instanceof context?this:context,params.concat(arg));</span><br><span class="line">    &#125;</span><br><span class="line">    // 如果Animal 的prototype 还有其他属性 构造一个对象，将其他属性传递给它</span><br><span class="line">      fn.prototype = Object.create(this.prototype);</span><br><span class="line">     return fn</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-<h3 id="数组和类数组"><a href="#数组和类数组" class="headerlink" title="数组和类数组"></a>数组和类数组</h3><ul>
-<li><p>数组定义：</p>
-<ol>
-<li>数组有length 属性</li>
-<li>数组 使用 Array.isArray 判断是否数组</li>
-<li>可以使用数组的添加删除等属性</li>
-</ol>
-</li>
-<li><p>类数组：拥有length属性的，但是不能使用数组的相关属性</p>
-</li>
-<li><p>类数组转换为数组：Array.form(),Array.prototype.slice.call(),Array.prototype.forEach()</p>
-</li>
-</ul>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2020/09/08/javascript/" data-id="cl022tv3i000latfyh4gge7c6" data-title="javascript" class="article-share-link">Share</a>
-      
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javascript/" rel="tag">javascript</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" rel="tag">设计模式</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
 
 
   <nav id="page-nav">
     
-    <a class="extend prev" rel="prev" href="/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span>
+    <a class="extend prev" rel="prev" href="/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/3/">Next &raquo;</a>
   </nav>
 
 </section>
@@ -773,7 +693,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Categories</h3>
     <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/HTML/">HTML</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/HTTP/">HTTP</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/React/">React</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/React/javascript/">javascript</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/javascript/">javascript</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/javascript/CommonJS/">CommonJS</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/javascript/angular/">angular</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/javascript/class/">class</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/javascript/rxjs/">rxjs</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/javascript/vue3/">vue3</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/javascript/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">设计模式</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/promise/">promise</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/promise/angular/">angular</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/typescript/">typescript</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%8E%9F%E5%9E%8B%E9%93%BE/">原型链</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%B8%B2%E6%9F%93/">渲染</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%B8%B2%E6%9F%93/HTML/">HTML</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%9B%92%E6%A8%A1%E5%9E%8B/">盒模型</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%BC%93%E5%AD%98/">缓存</a></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/HTML/">HTML</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/HTTP/">HTTP</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/React/">React</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/React/javascript/">javascript</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/javascript/">javascript</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/javascript/CommonJS/">CommonJS</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/javascript/angular/">angular</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/javascript/class/">class</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/javascript/rxjs/">rxjs</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/javascript/vue3/">vue3</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/javascript/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">设计模式</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/node/">node</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/promise/">promise</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/promise/javascript/">javascript</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/typescript/">typescript</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%8E%9F%E5%9E%8B%E9%93%BE/">原型链</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%B8%B2%E6%9F%93/">渲染</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%B8%B2%E6%9F%93/HTML/">HTML</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%9B%92%E6%A8%A1%E5%9E%8B/">盒模型</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%BC%93%E5%AD%98/">缓存</a></li></ul>
     </div>
   </div>
 
@@ -783,7 +703,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tags</h3>
     <div class="widget">
-      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/BFC/" rel="tag">BFC</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CommonJS/" rel="tag">CommonJS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTML/" rel="tag">HTML</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTTP/" rel="tag">HTTP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/React/" rel="tag">React</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/angular/" rel="tag">angular</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/class/" rel="tag">class</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/javascript/" rel="tag">javascript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/promise/" rel="tag">promise</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/rxjs/" rel="tag">rxjs</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/typescript/" rel="tag">typescript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%83%8F%E7%B4%A0/" rel="tag">像素</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%8E%9F%E5%9E%8B%E9%93%BE/" rel="tag">原型链</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%B8%B2%E6%9F%93/" rel="tag">渲染</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%9B%92%E6%A8%A1%E5%9E%8B/" rel="tag">盒模型</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BC%93%E5%AD%98/" rel="tag">缓存</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" rel="tag">设计模式</a></li></ul>
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/BFC/" rel="tag">BFC</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CommonJS/" rel="tag">CommonJS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTML/" rel="tag">HTML</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTTP/" rel="tag">HTTP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/React/" rel="tag">React</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/angular/" rel="tag">angular</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/class/" rel="tag">class</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/javascript/" rel="tag">javascript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/node/" rel="tag">node</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/promise/" rel="tag">promise</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/rxjs/" rel="tag">rxjs</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/typescript/" rel="tag">typescript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%83%8F%E7%B4%A0/" rel="tag">像素</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%8E%9F%E5%9E%8B%E9%93%BE/" rel="tag">原型链</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%B8%B2%E6%9F%93/" rel="tag">渲染</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%9B%92%E6%A8%A1%E5%9E%8B/" rel="tag">盒模型</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BC%93%E5%AD%98/" rel="tag">缓存</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" rel="tag">设计模式</a></li></ul>
     </div>
   </div>
 
@@ -793,7 +713,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/BFC/" style="font-size: 10px;">BFC</a> <a href="/tags/CommonJS/" style="font-size: 10px;">CommonJS</a> <a href="/tags/HTML/" style="font-size: 15px;">HTML</a> <a href="/tags/HTTP/" style="font-size: 10px;">HTTP</a> <a href="/tags/React/" style="font-size: 10px;">React</a> <a href="/tags/angular/" style="font-size: 10px;">angular</a> <a href="/tags/class/" style="font-size: 10px;">class</a> <a href="/tags/javascript/" style="font-size: 20px;">javascript</a> <a href="/tags/promise/" style="font-size: 10px;">promise</a> <a href="/tags/rxjs/" style="font-size: 10px;">rxjs</a> <a href="/tags/typescript/" style="font-size: 10px;">typescript</a> <a href="/tags/%E5%83%8F%E7%B4%A0/" style="font-size: 10px;">像素</a> <a href="/tags/%E5%8E%9F%E5%9E%8B%E9%93%BE/" style="font-size: 10px;">原型链</a> <a href="/tags/%E6%B8%B2%E6%9F%93/" style="font-size: 10px;">渲染</a> <a href="/tags/%E7%9B%92%E6%A8%A1%E5%9E%8B/" style="font-size: 10px;">盒模型</a> <a href="/tags/%E7%BC%93%E5%AD%98/" style="font-size: 10px;">缓存</a> <a href="/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" style="font-size: 10px;">设计模式</a>
+      <a href="/tags/BFC/" style="font-size: 10px;">BFC</a> <a href="/tags/CommonJS/" style="font-size: 10px;">CommonJS</a> <a href="/tags/HTML/" style="font-size: 15px;">HTML</a> <a href="/tags/HTTP/" style="font-size: 10px;">HTTP</a> <a href="/tags/React/" style="font-size: 10px;">React</a> <a href="/tags/angular/" style="font-size: 10px;">angular</a> <a href="/tags/class/" style="font-size: 10px;">class</a> <a href="/tags/javascript/" style="font-size: 20px;">javascript</a> <a href="/tags/node/" style="font-size: 10px;">node</a> <a href="/tags/promise/" style="font-size: 10px;">promise</a> <a href="/tags/rxjs/" style="font-size: 10px;">rxjs</a> <a href="/tags/typescript/" style="font-size: 10px;">typescript</a> <a href="/tags/%E5%83%8F%E7%B4%A0/" style="font-size: 10px;">像素</a> <a href="/tags/%E5%8E%9F%E5%9E%8B%E9%93%BE/" style="font-size: 10px;">原型链</a> <a href="/tags/%E6%B8%B2%E6%9F%93/" style="font-size: 10px;">渲染</a> <a href="/tags/%E7%9B%92%E6%A8%A1%E5%9E%8B/" style="font-size: 10px;">盒模型</a> <a href="/tags/%E7%BC%93%E5%AD%98/" style="font-size: 10px;">缓存</a> <a href="/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" style="font-size: 10px;">设计模式</a>
     </div>
   </div>
 
@@ -815,6 +735,10 @@
       <ul>
         
           <li>
+            <a href="/2022/02/25/node/">node</a>
+          </li>
+        
+          <li>
             <a href="/2022/02/24/%E6%B5%8F%E8%A7%88%E5%99%A8/">浏览器</a>
           </li>
         
@@ -828,10 +752,6 @@
         
           <li>
             <a href="/2021/10/15/React/">React</a>
-          </li>
-        
-          <li>
-            <a href="/2021/10/15/webpack/">(no title)</a>
           </li>
         
       </ul>
