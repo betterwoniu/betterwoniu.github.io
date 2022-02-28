@@ -71,6 +71,109 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-export-import、require-exports" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2021/01/27/export-import%E3%80%81require-exports/" class="article-date">
+  <time class="dt-published" datetime="2021-01-27T05:29:42.000Z" itemprop="datePublished">2021-01-27</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/javascript/">javascript</a>►<a class="article-category-link" href="/categories/javascript/CommonJS/">CommonJS</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2021/01/27/export-import%E3%80%81require-exports/">export/import、require/exports</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p><code> require</code> 和<code> import</code>是不同规范下引入模块的语句<br><code>require/exports</code> 是2009年 CommonJs规范下引入模块的的方式<br><code>import/export</code> 是2015年 es6 规范下引入模块的方式</p>
+<table>
+<thead>
+<tr>
+<th>类型</th>
+<th>require/exports</th>
+<th>import/export</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Node.js</td>
+<td>所有版本</td>
+<td>Node 9.0+（启动需加上 flag –experimental-modules Node 13.2+（直接启动）</td>
+</tr>
+<tr>
+<td>Chrome</td>
+<td>不支持</td>
+<td>61+</td>
+</tr>
+<tr>
+<td>Firefox</td>
+<td>不支持</td>
+<td>60+</td>
+</tr>
+<tr>
+<td>Safari</td>
+<td>不支持</td>
+<td>10.1+</td>
+</tr>
+<tr>
+<td>Edge</td>
+<td>不支持</td>
+<td>16+</td>
+</tr>
+</tbody></table>
+<p>CommonJs规范下的 <code> require/exports</code> 是针对于服务端开发的，服务器模块系统同步读取模块文件的内容，编译执行后得到模块接口（nodejs是CommonJs的实现）</p>
+<p>在浏览器端因为异步加载的特性，commonJs无法正常加载。所以出现了RequireJs，SeaJs的模块化设计方案</p>
+<ul>
+<li><code>import/export</code> 在浏览器中是无法使用的，需要在加载的模块的<code>&lt;script&gt;</code>标签中使用<code> type=&quot;module&quot;</code></li>
+<li>即使node 13.2+ 已经支持 <code>import/export </code>, Node官方不建议在正式环境使用，可以使用babel转化成CommonJs规范(具体实现还是require/exports)</li>
+</ul>
+<h3 id="require-exports-是运行时的动态加载，import-export-是静态编译"><a href="#require-exports-是运行时的动态加载，import-export-是静态编译" class="headerlink" title="require/exports 是运行时的动态加载，import/export 是静态编译"></a>require/exports 是运行时的动态加载，import/export 是静态编译</h3><p><code>CommonJs加载的是一个对象（即module.exports 属性）, 该对象只有在脚本运行完才会生成，而es6模块不是对象，它的对外接口只是一种静态定义，代码静态解析阶段就会生成</code></p>
+<ul>
+<li>es模块下 可以在import引用前使用，CommonJs则需要在require引用后使用</li>
+</ul>
+<h3 id="require-exports-输出的是一个值的拷贝，import-export输出的是一个值的引用"><a href="#require-exports-输出的是一个值的拷贝，import-export输出的是一个值的引用" class="headerlink" title="require/exports 输出的是一个值的拷贝，import/export输出的是一个值的引用"></a>require/exports 输出的是一个值的拷贝，import/export输出的是一个值的引用</h3><ul>
+<li>改变输出的值对于<code>require/exports</code>的模块内部不会造成影响，对于 <code>import/export</code> 的内部会造成影响</li>
+<li><code>import/export</code>的模块不允许重新赋值/定义</li>
+</ul>
+<h3 id="exports-和-module-exports-的区别（commonjs）"><a href="#exports-和-module-exports-的区别（commonjs）" class="headerlink" title="exports 和 module.exports 的区别（commonjs）"></a>exports 和 module.exports 的区别（commonjs）</h3><ul>
+<li>不可以以直接对exports直接赋值 （exports.hello = hello; function hello(){ console.log(hello)}）,使用module.exports 可以直接赋值</li>
+<li>node 加载模块的时候 会将模块放入包装函数load中执行，在执行load函数前 将会定义一个变量<br>var module = {<br>id:’hello’,<br>exports:{}<br>}<br>load 函数最终返回的是 exports；<br>如果输出的是一个对象或者数组的话就要使用module.exports<br>所以做好使用module.exports输出模块变量<h3 id="export-和-export-defult-区别-es6"><a href="#export-和-export-defult-区别-es6" class="headerlink" title="export 和 export defult 区别(es6)"></a>export 和 export defult 区别(es6)</h3></li>
+<li>exports defult 默认导出的数据</li>
+<li>exports 是导出指定的数据</li>
+</ul>
+<h3 id="垃圾处理机制"><a href="#垃圾处理机制" class="headerlink" title="垃圾处理机制"></a>垃圾处理机制</h3><ul>
+<li>新生代</li>
+<li>老生代</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2021/01/27/export-import%E3%80%81require-exports/" data-id="cl06t01v3000fbfqs2b6g0ym7" data-title="export/import、require/exports" class="article-share-link">Share</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/CommonJS/" rel="tag">CommonJS</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javascript/" rel="tag">javascript</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
     <article id="post-页面渲染" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
     <a href="/2021/01/07/%E9%A1%B5%E9%9D%A2%E6%B8%B2%E6%9F%93/" class="article-date">
@@ -124,7 +227,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2021/01/07/%E9%A1%B5%E9%9D%A2%E6%B8%B2%E6%9F%93/" data-id="cl02k87sa001cl5qs0os610hh" data-title="页面渲染" class="article-share-link">Share</a>
+      <a data-url="http://example.com/2021/01/07/%E9%A1%B5%E9%9D%A2%E6%B8%B2%E6%9F%93/" data-id="cl06t01vq001gbfqs8vibg48w" data-title="页面渲染" class="article-share-link">Share</a>
       
       
       
@@ -175,7 +278,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2020/12/23/PPI%E3%80%81DPI%E3%80%81%E8%AE%BE%E5%A4%87%E5%83%8F%E7%B4%A0%E7%AD%89%E6%A6%82%E5%BF%B5/" data-id="cl02k87rc0004l5qs8fi1fjqv" data-title="PPI、DPI、设备像素等概念及自适应布局方案" class="article-share-link">Share</a>
+      <a data-url="http://example.com/2020/12/23/PPI%E3%80%81DPI%E3%80%81%E8%AE%BE%E5%A4%87%E5%83%8F%E7%B4%A0%E7%AD%89%E6%A6%82%E5%BF%B5/" data-id="cl06t01uu0004bfqsf425dnn7" data-title="PPI、DPI、设备像素等概念及自适应布局方案" class="article-share-link">Share</a>
       
       
       
@@ -225,7 +328,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2020/11/09/BFC/" data-id="cl02k87r00000l5qsf2xggsmo" data-title="BFC" class="article-share-link">Share</a>
+      <a data-url="http://example.com/2020/11/09/BFC/" data-id="cl06t01ui0000bfqs6lpp9nmw" data-title="BFC" class="article-share-link">Share</a>
       
       
       
@@ -290,7 +393,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2020/09/24/Promise/" data-id="cl02k87re0005l5qs24smen7x" data-title="Promise" class="article-share-link">Share</a>
+      <a data-url="http://example.com/2020/09/24/Promise/" data-id="cl06t01uv0005bfqscbq80nas" data-title="Promise" class="article-share-link">Share</a>
       
       
       
@@ -364,7 +467,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2020/09/19/HTTP/" data-id="cl02k87r60001l5qsdezw31li" data-title="HTTP" class="article-share-link">Share</a>
+      <a data-url="http://example.com/2020/09/19/HTTP/" data-id="cl06t01uo0001bfqs4vht255x" data-title="HTTP" class="article-share-link">Share</a>
       
       
       
@@ -414,11 +517,60 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2020/09/19/%E5%8E%9F%E5%9E%8B%E9%93%BE/" data-id="cl02k87s30012l5qs9na6bzwt" data-title="原型链" class="article-share-link">Share</a>
+      <a data-url="http://example.com/2020/09/19/%E5%8E%9F%E5%9E%8B%E9%93%BE/" data-id="cl06t01vl0016bfqs9nw8akei" data-title="原型链" class="article-share-link">Share</a>
       
       
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%8E%9F%E5%9E%8B%E9%93%BE/" rel="tag">原型链</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-typescript" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2020/09/11/typescript/" class="article-date">
+  <time class="dt-published" datetime="2020-09-11T02:40:51.000Z" itemprop="datePublished">2020-09-11</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/typescript/">typescript</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2020/09/11/typescript/">typescript</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h3 id="泛型"><a href="#泛型" class="headerlink" title="泛型"></a>泛型</h3><ul>
+<li>定义函数或者类时就可以使用泛型<h3 id="高级类型"><a href="#高级类型" class="headerlink" title="高级类型"></a>高级类型</h3></li>
+<li>交叉类型：是将多个类型合并为一个类型;</li>
+<li></li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2020/09/11/typescript/" data-id="cl06t01vb000rbfqsfw1p2lby" data-title="typescript" class="article-share-link">Share</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/typescript/" rel="tag">typescript</a></li></ul>
 
     </footer>
   </div>
@@ -470,60 +622,11 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2020/09/11/rxjs/" data-id="cl02k87rt000nl5qs76l62wth" data-title="rxjs" class="article-share-link">Share</a>
+      <a data-url="http://example.com/2020/09/11/rxjs/" data-id="cl06t01vc000sbfqs2adt1elr" data-title="rxjs" class="article-share-link">Share</a>
       
       
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javascript/" rel="tag">javascript</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/rxjs/" rel="tag">rxjs</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-typescript" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2020/09/11/typescript/" class="article-date">
-  <time class="dt-published" datetime="2020-09-11T02:40:51.000Z" itemprop="datePublished">2020-09-11</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/typescript/">typescript</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2020/09/11/typescript/">typescript</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <h3 id="泛型"><a href="#泛型" class="headerlink" title="泛型"></a>泛型</h3><ul>
-<li>定义函数或者类时就可以使用泛型<h3 id="高级类型"><a href="#高级类型" class="headerlink" title="高级类型"></a>高级类型</h3></li>
-<li>交叉类型：是将多个类型合并为一个类型;</li>
-<li></li>
-</ul>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2020/09/11/typescript/" data-id="cl02k87rw000rl5qs6nw8eeye" data-title="typescript" class="article-share-link">Share</a>
-      
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/typescript/" rel="tag">typescript</a></li></ul>
 
     </footer>
   </div>
@@ -601,74 +704,11 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2020/09/09/angular/" data-id="cl02k87rh000al5qsckak30qi" data-title="angular" class="article-share-link">Share</a>
+      <a data-url="http://example.com/2020/09/09/angular/" data-id="cl06t01uy000abfqs12rmav1x" data-title="angular" class="article-share-link">Share</a>
       
       
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/angular/" rel="tag">angular</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javascript/" rel="tag">javascript</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-缓存" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2020/09/09/%E7%BC%93%E5%AD%98/" class="article-date">
-  <time class="dt-published" datetime="2020-09-09T01:02:13.000Z" itemprop="datePublished">2020-09-09</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/%E7%BC%93%E5%AD%98/">缓存</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2020/09/09/%E7%BC%93%E5%AD%98/">缓存</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <p>缓存之cookies、session、sessionStorage和localStorage</p>
-<h3 id="cookies-和-session"><a href="#cookies-和-session" class="headerlink" title="cookies 和 session"></a>cookies 和 session</h3><ol>
-<li><p>cookies 是存储在客户端，session是存储在服务器端</p>
-</li>
-<li><p>cookies机制:如果不再浏览器中设置cookies的过期时间，cookies将会保存在内存中，生命周期随着浏览器关闭而结束，这种cookie称之为会话cookies，如果给cookies设置了过期时间，则是将cookies存储在硬盘中，随着过期时间结束才消失。cookies是服务器发送给客户端的特殊信息，cookies是以文本的形式存储在客户端，当每次发送请求的时候都会带上cookies</p>
-</li>
-<li><p>session机制：当服务端收到请求需要创建session对象时，首先会检查请求中是否包含sessionId，如果包含sessionId，则服务端会根据sessionId找到对应的session对象，如果没有sessionID，服务端则会创建新的session对象，并把sessionId返回给客户端。通常使用cookies的形式将sessionId存储到客户端。</p>
-</li>
-<li><p>cookies是以字符串的形式，将信息以文本的形式存储到硬盘，session是以hashtable的数据结构形式保存，能支持任何类型的对象（session可能包含多个对象）</p>
-</li>
-<li><p>cookie是有大小限制的，单个cookies的大小不能超过4kb，session的大小是没有限制的</p>
-</li>
-</ol>
-<h3 id="sessionStorage和localStorage——html5的本地储存方式"><a href="#sessionStorage和localStorage——html5的本地储存方式" class="headerlink" title="sessionStorage和localStorage——html5的本地储存方式"></a>sessionStorage和localStorage——html5的本地储存方式</h3><p>针对H5对于cookie存储机制的一个改善，H5转而使用改良后的Web Storage存储机制<br>web storage 分为sessionStorage和localStorage：</p>
-<ol>
-<li>sessionStorage机制：将数据保存到session对象中，用于临时保存同一窗口(或标签页)的数据，在关闭窗口或标签页之后将会删除这些数据（临时保存）</li>
-<li>将数据保存在客户端本地的硬件设备(通常指硬盘，也可以是其他硬件设备)中，即使浏览器被关闭了，该数据仍然存在，下次打开浏览器访问网站时仍然可以继续使用（永久保存）</li>
-<li>sessionStorage和localStorage的存储大小一般都是5MB，不与服务器相互通信，只能存储字符串类型</li>
-</ol>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2020/09/09/%E7%BC%93%E5%AD%98/" data-id="cl02k87s70018l5qsd4kdbbcw" data-title="缓存" class="article-share-link">Share</a>
-      
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%BC%93%E5%AD%98/" rel="tag">缓存</a></li></ul>
 
     </footer>
   </div>
@@ -693,7 +733,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Categories</h3>
     <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/HTML/">HTML</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/HTTP/">HTTP</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/React/">React</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/React/javascript/">javascript</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/javascript/">javascript</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/javascript/CommonJS/">CommonJS</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/javascript/angular/">angular</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/javascript/class/">class</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/javascript/rxjs/">rxjs</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/javascript/vue3/">vue3</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/javascript/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">设计模式</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/node/">node</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/promise/">promise</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/promise/javascript/">javascript</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/typescript/">typescript</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%8E%9F%E5%9E%8B%E9%93%BE/">原型链</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%B8%B2%E6%9F%93/">渲染</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%B8%B2%E6%9F%93/HTML/">HTML</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%9B%92%E6%A8%A1%E5%9E%8B/">盒模型</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%BC%93%E5%AD%98/">缓存</a></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/HTML/">HTML</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/HTTP/">HTTP</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/React/">React</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/React/javascript/">javascript</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/css/">css</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/javascript/">javascript</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/javascript/CommonJS/">CommonJS</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/javascript/angular/">angular</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/javascript/class/">class</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/javascript/rxjs/">rxjs</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/javascript/vue3/">vue3</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/javascript/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">设计模式</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/node/">node</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/promise/">promise</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/promise/javascript/">javascript</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/typescript/">typescript</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%8E%9F%E5%9E%8B%E9%93%BE/">原型链</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%B8%B2%E6%9F%93/">渲染</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%B8%B2%E6%9F%93/HTML/">HTML</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%9B%92%E6%A8%A1%E5%9E%8B/">盒模型</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%BC%93%E5%AD%98/">缓存</a></li></ul>
     </div>
   </div>
 
@@ -703,7 +743,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tags</h3>
     <div class="widget">
-      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/BFC/" rel="tag">BFC</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CommonJS/" rel="tag">CommonJS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTML/" rel="tag">HTML</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTTP/" rel="tag">HTTP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/React/" rel="tag">React</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/angular/" rel="tag">angular</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/class/" rel="tag">class</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/javascript/" rel="tag">javascript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/node/" rel="tag">node</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/promise/" rel="tag">promise</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/rxjs/" rel="tag">rxjs</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/typescript/" rel="tag">typescript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%83%8F%E7%B4%A0/" rel="tag">像素</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%8E%9F%E5%9E%8B%E9%93%BE/" rel="tag">原型链</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%B8%B2%E6%9F%93/" rel="tag">渲染</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%9B%92%E6%A8%A1%E5%9E%8B/" rel="tag">盒模型</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BC%93%E5%AD%98/" rel="tag">缓存</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" rel="tag">设计模式</a></li></ul>
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/BFC/" rel="tag">BFC</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CommonJS/" rel="tag">CommonJS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTML/" rel="tag">HTML</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTTP/" rel="tag">HTTP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/React/" rel="tag">React</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/angular/" rel="tag">angular</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/class/" rel="tag">class</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/css/" rel="tag">css</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/javascript/" rel="tag">javascript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/node/" rel="tag">node</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/promise/" rel="tag">promise</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/rxjs/" rel="tag">rxjs</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/typescript/" rel="tag">typescript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%83%8F%E7%B4%A0/" rel="tag">像素</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%8E%9F%E5%9E%8B%E9%93%BE/" rel="tag">原型链</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%B8%B2%E6%9F%93/" rel="tag">渲染</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%9B%92%E6%A8%A1%E5%9E%8B/" rel="tag">盒模型</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BC%93%E5%AD%98/" rel="tag">缓存</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" rel="tag">设计模式</a></li></ul>
     </div>
   </div>
 
@@ -713,7 +753,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/BFC/" style="font-size: 10px;">BFC</a> <a href="/tags/CommonJS/" style="font-size: 10px;">CommonJS</a> <a href="/tags/HTML/" style="font-size: 15px;">HTML</a> <a href="/tags/HTTP/" style="font-size: 10px;">HTTP</a> <a href="/tags/React/" style="font-size: 10px;">React</a> <a href="/tags/angular/" style="font-size: 10px;">angular</a> <a href="/tags/class/" style="font-size: 10px;">class</a> <a href="/tags/javascript/" style="font-size: 20px;">javascript</a> <a href="/tags/node/" style="font-size: 10px;">node</a> <a href="/tags/promise/" style="font-size: 10px;">promise</a> <a href="/tags/rxjs/" style="font-size: 10px;">rxjs</a> <a href="/tags/typescript/" style="font-size: 10px;">typescript</a> <a href="/tags/%E5%83%8F%E7%B4%A0/" style="font-size: 10px;">像素</a> <a href="/tags/%E5%8E%9F%E5%9E%8B%E9%93%BE/" style="font-size: 10px;">原型链</a> <a href="/tags/%E6%B8%B2%E6%9F%93/" style="font-size: 10px;">渲染</a> <a href="/tags/%E7%9B%92%E6%A8%A1%E5%9E%8B/" style="font-size: 10px;">盒模型</a> <a href="/tags/%E7%BC%93%E5%AD%98/" style="font-size: 10px;">缓存</a> <a href="/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" style="font-size: 10px;">设计模式</a>
+      <a href="/tags/BFC/" style="font-size: 10px;">BFC</a> <a href="/tags/CommonJS/" style="font-size: 10px;">CommonJS</a> <a href="/tags/HTML/" style="font-size: 15px;">HTML</a> <a href="/tags/HTTP/" style="font-size: 10px;">HTTP</a> <a href="/tags/React/" style="font-size: 10px;">React</a> <a href="/tags/angular/" style="font-size: 10px;">angular</a> <a href="/tags/class/" style="font-size: 10px;">class</a> <a href="/tags/css/" style="font-size: 10px;">css</a> <a href="/tags/javascript/" style="font-size: 20px;">javascript</a> <a href="/tags/node/" style="font-size: 10px;">node</a> <a href="/tags/promise/" style="font-size: 10px;">promise</a> <a href="/tags/rxjs/" style="font-size: 10px;">rxjs</a> <a href="/tags/typescript/" style="font-size: 10px;">typescript</a> <a href="/tags/%E5%83%8F%E7%B4%A0/" style="font-size: 10px;">像素</a> <a href="/tags/%E5%8E%9F%E5%9E%8B%E9%93%BE/" style="font-size: 10px;">原型链</a> <a href="/tags/%E6%B8%B2%E6%9F%93/" style="font-size: 10px;">渲染</a> <a href="/tags/%E7%9B%92%E6%A8%A1%E5%9E%8B/" style="font-size: 10px;">盒模型</a> <a href="/tags/%E7%BC%93%E5%AD%98/" style="font-size: 10px;">缓存</a> <a href="/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" style="font-size: 10px;">设计模式</a>
     </div>
   </div>
 
@@ -722,7 +762,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/02/">February 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/12/">December 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/10/">October 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/06/">June 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/05/">May 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/01/">January 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/12/">December 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/11/">November 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/09/">September 2020</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/02/">February 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/12/">December 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/10/">October 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/06/">June 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/05/">May 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/01/">January 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/12/">December 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/11/">November 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/09/">September 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/02/">February 2020</a></li></ul>
     </div>
   </div>
 
@@ -733,6 +773,10 @@
     <h3 class="widget-title">Recent Posts</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2022/02/28/%E4%BC%98%E5%8C%96%E4%B8%80%E6%AC%A1%E6%80%A7%E6%8E%A5%E5%8F%97%E5%90%8E%E7%AB%AF%E5%A4%A7%E6%89%B9%E9%87%8F%E6%95%B0%E6%8D%AE%E5%B1%95%E7%A4%BA%E7%9A%84%E6%96%B9%E5%BC%8F/">优化一次性接受后端大批量数据展示的方式</a>
+          </li>
         
           <li>
             <a href="/2022/02/25/node/">node</a>
@@ -748,10 +792,6 @@
         
           <li>
             <a href="/2021/10/28/vue3/">vue3</a>
-          </li>
-        
-          <li>
-            <a href="/2021/10/15/React/">React</a>
           </li>
         
       </ul>
