@@ -71,6 +71,79 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-class类" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2021/01/27/class%E7%B1%BB/" class="article-date">
+  <time class="dt-published" datetime="2021-01-27T07:47:57.000Z" itemprop="datePublished">2021-01-27</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/javascript/">javascript</a>►<a class="article-category-link" href="/categories/javascript/class/">class</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2021/01/27/class%E7%B1%BB/">class类</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// es5 实现类</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Point</span>(<span class="params">x,y</span>)</span>&#123;</span><br><span class="line">    <span class="built_in">this</span>.x = x;</span><br><span class="line">    <span class="built_in">this</span>.y = y;</span><br><span class="line">&#125;</span><br><span class="line">Point.prototype.toString =<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> x+<span class="string">&#x27;,&#x27;</span>+y;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> ponit = <span class="keyword">new</span> Point(<span class="number">1</span>,<span class="number">2</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// es6 的语法糖</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Ponit</span>()</span>&#123;</span><br><span class="line">   <span class="function"><span class="title">constructor</span>(<span class="params">x,y</span>)</span>&#123;</span><br><span class="line">      <span class="built_in">this</span>.x = x;</span><br><span class="line">      <span class="built_in">this</span>.y = y;</span><br><span class="line">   &#125;</span><br><span class="line"></span><br><span class="line">   <span class="function"><span class="title">toString</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">       <span class="keyword">return</span> <span class="built_in">this</span>.x+<span class="string">&#x27;,&#x27;</span>+<span class="built_in">this</span>.y;</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>类不存在变量提升</li>
+<li><code>this</code> 的指向问题<br>类的方法中this默认指向类的实例，但是如果单独使用就会造成错误，this就会指向当时运行的环境<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Logger</span></span>&#123;</span><br><span class="line">  <span class="function"><span class="title">print</span>(<span class="params">text</span>)</span>&#123;</span><br><span class="line">      <span class="built_in">console</span>.log(text)</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="function"><span class="title">printName</span>(<span class="params">text = <span class="string">&#x27;text&#x27;</span></span>)</span>&#123;</span><br><span class="line">      <span class="built_in">this</span>.print(text);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">const</span> logger = <span class="keyword">new</span> Logger();</span><br><span class="line"><span class="keyword">let</span> &#123;printName&#125; = logger;</span><br><span class="line">printName();</span><br></pre></td></tr></table></figure>
+解决方案：</li>
+<li>在构造方法中绑定this的指向<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Logger</span></span>&#123;</span><br><span class="line">    <span class="function"><span class="title">constructor</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        <span class="built_in">this</span>.printName = <span class="built_in">this</span>.printName.bind(<span class="built_in">this</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li>使用箭头函数(在箭头函数中，this的指向为定义时所在的对象)<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Logger</span></span>&#123;</span><br><span class="line">    <span class="function"><span class="title">constructor</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        <span class="built_in">this</span>.printName = <span class="function">()=&gt;</span> <span class="built_in">this</span>;</span><br><span class="line">    &#125;</span><br><span class="line">   </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li>使用proxy，获取方法的时候自动绑定this<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">selfish</span> (<span class="params">target</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">const</span> cache = <span class="keyword">new</span> <span class="built_in">WeakMap</span>();</span><br><span class="line">  <span class="keyword">const</span> handler = &#123;</span><br><span class="line">    get (target, key) &#123;</span><br><span class="line">      <span class="keyword">const</span> value = <span class="built_in">Reflect</span>.get(target, key);</span><br><span class="line">      <span class="keyword">if</span> (<span class="keyword">typeof</span> value !== <span class="string">&#x27;function&#x27;</span>) &#123;</span><br><span class="line">        <span class="keyword">return</span> value;</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="keyword">if</span> (!cache.has(value)) &#123;</span><br><span class="line">        cache.set(value, value.bind(target));</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="keyword">return</span> cache.get(value);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;;</span><br><span class="line">  <span class="keyword">const</span> proxy = <span class="keyword">new</span> <span class="built_in">Proxy</span>(target, handler);</span><br><span class="line">  <span class="keyword">return</span> proxy;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> logger = selfish(<span class="keyword">new</span> Logger());</span><br></pre></td></tr></table></figure>
+<h3 id="静态方法"><a href="#静态方法" class="headerlink" title="静态方法"></a>静态方法</h3></li>
+<li>加上关键字<code>static</code> 的静态方法是不可以被实例继承的，而是通过类直接调用。(如果静态方法中使用this，那么这个this指向的就是类,而不是实例)</li>
+<li>父类的静态方法可以被子类继承</li>
+<li>实例属性定义可以放在类的顶层<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">foo</span> </span>&#123;</span><br><span class="line">  bar = <span class="string">&#x27;hello&#x27;</span>;<span class="comment">// &lt;&lt;---</span></span><br><span class="line">  baz = <span class="string">&#x27;world&#x27;</span>;<span class="comment">// &lt;&lt;---</span></span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="title">constructor</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line">    <span class="comment">// ...</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h3 id="私有方法和私有属性"><a href="#私有方法和私有属性" class="headerlink" title="私有方法和私有属性"></a>私有方法和私有属性</h3><p>私有方法和私有属性只能在类的内部使用，不能在外部访问</p>
+<ul>
+<li><p>定义的方法名上加以区分</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Wiget</span></span>&#123;</span><br><span class="line">    <span class="comment">// 公有方法</span></span><br><span class="line">    <span class="function"><span class="title">foo</span>(<span class="params">baz</span>)</span>&#123;</span><br><span class="line">        <span class="built_in">this</span>._baz(baz);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 私有方法</span></span><br><span class="line">    <span class="function"><span class="title">_baz</span>(<span class="params">baz</span>)</span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">this</span>.text = baz;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li><p> 通过<code> call()</code> 绑定,从而达到私有方法的目的</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Wiget</span></span>&#123;</span><br><span class="line">    <span class="comment">// 公有方法</span></span><br><span class="line">    <span class="function"><span class="title">foo</span>(<span class="params">baz</span>)</span>&#123;</span><br><span class="line">        bar.call(<span class="built_in">this</span>,baz)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">bar</span>(<span class="params">baz</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">this</span>.text = baz;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li><p>使用<code> Symbol</code> 的唯一性(但是通过Reflect.ownKeys()依然可以从外部使用)</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> bar = <span class="built_in">Symbol</span>(<span class="string">&#x27;bar&#x27;</span>);</span><br><span class="line"><span class="keyword">const</span> text = <span class="built_in">Symbol</span>(<span class="string">&#x27;bar&#x27;</span>);</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Wight</span></span>&#123;</span><br><span class="line">    <span class="function"><span class="title">foo</span>(<span class="params">baz</span>)</span>&#123;</span><br><span class="line">      <span class="built_in">this</span>[bar](baz);</span><br><span class="line">    &#125;</span><br><span class="line">    [bar](baz)&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">this</span>[text]= baz</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h3 id="new-target-属性"><a href="#new-target-属性" class="headerlink" title="new target 属性"></a>new target 属性</h3></li>
+<li><p>es6 引入了 <code>new.target</code>属性，该属性一般用于构造函数中。创建实例如果不是通过<code>new </code> 或<code> Reflect.constructor()</code>调用的，那么<code>new.target</code> 返回的就是<code>undefine</code>.因此该属性是可以确定构造函数是怎么调用的。</p>
+</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 方法判断</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Foo</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(<span class="keyword">new</span>.target == Foo)&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">&#x27;this is use new&#x27;</span>)</span><br><span class="line">    &#125;<span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">&#x27;this is not new &#x27;</span>)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> foo = <span class="keyword">new</span> Foo();</span><br><span class="line"><span class="keyword">let</span> foo2 = Foo.call(foo);</span><br><span class="line"><span class="keyword">var</span> foo1 = <span class="built_in">Reflect</span>.construct(Foo,[<span class="string">&#x27;rnew&#x27;</span>])</span><br><span class="line"></span><br><span class="line"><span class="comment">// 类判断</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Foo</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="title">constructor</span>(<span class="params">name</span>)</span> &#123;</span><br><span class="line">        <span class="keyword">if</span> (<span class="keyword">new</span>.target == Foo) &#123;</span><br><span class="line">            <span class="built_in">console</span>.log(<span class="string">&#x27;this is use new&#x27;</span>);</span><br><span class="line">            <span class="built_in">this</span>.name = name;</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="built_in">console</span>.log(<span class="string">&#x27;this is not user&#x27;</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="built_in">this</span>.name)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> foo = <span class="keyword">new</span> Foo(<span class="string">&#x27;new&#x27;</span>);</span><br></pre></td></tr></table></figure>
+<ul>
+<li>可以创建一个必须继承才能使用的类<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Shape</span> </span>&#123;</span><br><span class="line">  <span class="function"><span class="title">constructor</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> (<span class="keyword">new</span>.target === Shape) &#123;</span><br><span class="line">      <span class="keyword">throw</span> <span class="keyword">new</span> <span class="built_in">Error</span>(<span class="string">&#x27;本类不能实例化&#x27;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Rectangle</span> <span class="keyword">extends</span> <span class="title">Shape</span> </span>&#123;</span><br><span class="line">  <span class="function"><span class="title">constructor</span>(<span class="params">length, width</span>)</span> &#123;</span><br><span class="line">    <span class="built_in">super</span>();</span><br><span class="line">    <span class="comment">// ...</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> x = <span class="keyword">new</span> Shape();  <span class="comment">// 报错</span></span><br><span class="line"><span class="keyword">var</span> y = <span class="keyword">new</span> Rectangle(<span class="number">3</span>, <span class="number">4</span>); </span><br></pre></td></tr></table></figure></li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2021/01/27/class%E7%B1%BB/" data-id="cl0y1k913000szuqsddgt8xvo" data-title="class类" class="article-share-link">Share</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/class/" rel="tag">class</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javascript/" rel="tag">javascript</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
     <article id="post-export-import、require-exports" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
     <a href="/2021/01/27/export-import%E3%80%81require-exports/" class="article-date">
@@ -160,7 +233,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2021/01/27/export-import%E3%80%81require-exports/" data-id="cl06t01v3000fbfqs2b6g0ym7" data-title="export/import、require/exports" class="article-share-link">Share</a>
+      <a data-url="http://example.com/2021/01/27/export-import%E3%80%81require-exports/" data-id="cl0y1k90q000bzuqs73qqhoa7" data-title="export/import、require/exports" class="article-share-link">Share</a>
       
       
       
@@ -227,7 +300,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2021/01/07/%E9%A1%B5%E9%9D%A2%E6%B8%B2%E6%9F%93/" data-id="cl06t01vq001gbfqs8vibg48w" data-title="页面渲染" class="article-share-link">Share</a>
+      <a data-url="http://example.com/2021/01/07/%E9%A1%B5%E9%9D%A2%E6%B8%B2%E6%9F%93/" data-id="cl0y1k91f001czuqs1klwaevw" data-title="页面渲染" class="article-share-link">Share</a>
       
       
       
@@ -278,7 +351,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2020/12/23/PPI%E3%80%81DPI%E3%80%81%E8%AE%BE%E5%A4%87%E5%83%8F%E7%B4%A0%E7%AD%89%E6%A6%82%E5%BF%B5/" data-id="cl06t01uu0004bfqsf425dnn7" data-title="PPI、DPI、设备像素等概念及自适应布局方案" class="article-share-link">Share</a>
+      <a data-url="http://example.com/2020/12/23/PPI%E3%80%81DPI%E3%80%81%E8%AE%BE%E5%A4%87%E5%83%8F%E7%B4%A0%E7%AD%89%E6%A6%82%E5%BF%B5/" data-id="cl0y1k90k0004zuqs7y3shykp" data-title="PPI、DPI、设备像素等概念及自适应布局方案" class="article-share-link">Share</a>
       
       
       
@@ -328,7 +401,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2020/11/09/BFC/" data-id="cl06t01ui0000bfqs6lpp9nmw" data-title="BFC" class="article-share-link">Share</a>
+      <a data-url="http://example.com/2020/11/09/BFC/" data-id="cl0y1k9080000zuqs3o5rh7nh" data-title="BFC" class="article-share-link">Share</a>
       
       
       
@@ -393,7 +466,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2020/09/24/Promise/" data-id="cl06t01uv0005bfqscbq80nas" data-title="Promise" class="article-share-link">Share</a>
+      <a data-url="http://example.com/2020/09/24/Promise/" data-id="cl0y1k90l0005zuqs2e2r5mkr" data-title="Promise" class="article-share-link">Share</a>
       
       
       
@@ -467,7 +540,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2020/09/19/HTTP/" data-id="cl06t01uo0001bfqs4vht255x" data-title="HTTP" class="article-share-link">Share</a>
+      <a data-url="http://example.com/2020/09/19/HTTP/" data-id="cl0y1k90e0001zuqs6qu4ded0" data-title="HTTP" class="article-share-link">Share</a>
       
       
       
@@ -517,60 +590,11 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2020/09/19/%E5%8E%9F%E5%9E%8B%E9%93%BE/" data-id="cl06t01vl0016bfqs9nw8akei" data-title="原型链" class="article-share-link">Share</a>
+      <a data-url="http://example.com/2020/09/19/%E5%8E%9F%E5%9E%8B%E9%93%BE/" data-id="cl0y1k9190012zuqs7m818m8k" data-title="原型链" class="article-share-link">Share</a>
       
       
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%8E%9F%E5%9E%8B%E9%93%BE/" rel="tag">原型链</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-typescript" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2020/09/11/typescript/" class="article-date">
-  <time class="dt-published" datetime="2020-09-11T02:40:51.000Z" itemprop="datePublished">2020-09-11</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/typescript/">typescript</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2020/09/11/typescript/">typescript</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <h3 id="泛型"><a href="#泛型" class="headerlink" title="泛型"></a>泛型</h3><ul>
-<li>定义函数或者类时就可以使用泛型<h3 id="高级类型"><a href="#高级类型" class="headerlink" title="高级类型"></a>高级类型</h3></li>
-<li>交叉类型：是将多个类型合并为一个类型;</li>
-<li></li>
-</ul>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2020/09/11/typescript/" data-id="cl06t01vb000rbfqsfw1p2lby" data-title="typescript" class="article-share-link">Share</a>
-      
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/typescript/" rel="tag">typescript</a></li></ul>
 
     </footer>
   </div>
@@ -622,7 +646,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2020/09/11/rxjs/" data-id="cl06t01vc000sbfqs2adt1elr" data-title="rxjs" class="article-share-link">Share</a>
+      <a data-url="http://example.com/2020/09/11/rxjs/" data-id="cl0y1k90z000nzuqs3gmpacvm" data-title="rxjs" class="article-share-link">Share</a>
       
       
       
@@ -636,14 +660,14 @@
 
 
   
-    <article id="post-angular" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+    <article id="post-typescript" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
-    <a href="/2020/09/09/angular/" class="article-date">
-  <time class="dt-published" datetime="2020-09-09T01:02:13.000Z" itemprop="datePublished">2020-09-09</time>
+    <a href="/2020/09/11/typescript/" class="article-date">
+  <time class="dt-published" datetime="2020-09-11T02:40:51.000Z" itemprop="datePublished">2020-09-11</time>
 </a>
     
   <div class="article-category">
-    <a class="article-category-link" href="/categories/javascript/">javascript</a>►<a class="article-category-link" href="/categories/javascript/angular/">angular</a>
+    <a class="article-category-link" href="/categories/typescript/">typescript</a>
   </div>
 
   </div>
@@ -654,7 +678,7 @@
         
   
     <h1 itemprop="name">
-      <a class="p-name article-title" href="/2020/09/09/angular/">angular</a>
+      <a class="p-name article-title" href="/2020/09/11/typescript/">typescript</a>
     </h1>
   
 
@@ -662,53 +686,20 @@
     
     <div class="e-content article-entry" itemprop="articleBody">
       
-        <h2 id="angular-基本知识"><a href="#angular-基本知识" class="headerlink" title="angular 基本知识"></a>angular 基本知识</h2><h3 id="绑定语法"><a href="#绑定语法" class="headerlink" title="绑定语法"></a>绑定语法</h3><table>
-<thead>
-<tr>
-<th>绑定类型</th>
-<th>语法</th>
-<th>分类</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>插值 属性 Attribute CSS 类 样式</td>
-<td><code>&#123;&#123;expression&#125;&#125; [target]=&quot;expression&quot; bind-target=&quot;expression&quot;</code></td>
-<td>单向 从数据源到视图</td>
-</tr>
-<tr>
-<td>事件</td>
-<td><code>(target)= statement on-target=&quot;statement&quot;</code></td>
-<td>从视图到数据源的单向绑定</td>
-</tr>
-<tr>
-<td>双向</td>
-<td><code>[(target)] = &quot;express&quot; bindon-target=&quot;expression&quot;</code></td>
-<td>双向</td>
-</tr>
-</tbody></table>
-<h3 id="Input-和-Output"><a href="#Input-和-Output" class="headerlink" title="@Input 和 @Output"></a><code>@Input</code> 和 <code>@Output</code></h3><h4 id="Input-和-Output-是-angular-中父上下文（父组件？）和子组件、子指令共享数据，-Input-属性是可写的，数据流入；而-Output-是可观察的对象，允许向外发送数据"><a href="#Input-和-Output-是-angular-中父上下文（父组件？）和子组件、子指令共享数据，-Input-属性是可写的，数据流入；而-Output-是可观察的对象，允许向外发送数据" class="headerlink" title="@Input 和 @Output 是 angular 中父上下文（父组件？）和子组件、子指令共享数据，@Input 属性是可写的，数据流入；而@Output 是可观察的对象，允许向外发送数据"></a><code>@Input</code> 和 <code>@Output</code> 是 angular 中父上下文（父组件？）和子组件、子指令共享数据，<code>@Input</code> 属性是可写的，数据流入；而<code>@Output</code> 是可观察的对象，允许向外发送数据</h4><h5 id="Input-一般是在父上下文向子组件或者子指令传递信息-父组件的html页面中引入子组件或者子指令的时候-写入类似-pcmsg-quot-pmsg-quot-pcmsg-是子组件或者子指令中定义接收父组件传递的数据变量，pmsg-是父上下文中定义要传递子组件或者子指令的变量"><a href="#Input-一般是在父上下文向子组件或者子指令传递信息-父组件的html页面中引入子组件或者子指令的时候-写入类似-pcmsg-quot-pmsg-quot-pcmsg-是子组件或者子指令中定义接收父组件传递的数据变量，pmsg-是父上下文中定义要传递子组件或者子指令的变量" class="headerlink" title="@Input 一般是在父上下文向子组件或者子指令传递信息 父组件的html页面中引入子组件或者子指令的时候 写入类似[pcmsg]=&quot;pmsg&quot; pcmsg 是子组件或者子指令中定义接收父组件传递的数据变量，pmsg 是父上下文中定义要传递子组件或者子指令的变量"></a><code>@Input</code> 一般是在父上下文向子组件或者子指令传递信息 父组件的<code>html</code>页面中引入子组件或者子指令的时候 写入类似<code>[pcmsg]=&quot;pmsg&quot;</code> <code>pcmsg</code> 是子组件或者子指令中定义接收父组件传递的数据变量，<code>pmsg</code> 是父上下文中定义要传递子组件或者子指令的变量</h5><h4 id="Output-通常是将该属性初始化为-Angular-EventEmitter-并将值作为事件流出。-Output-childmsg-new-EventEmitter-lt-string-gt-this-childmsg-emit-在子组件或者子指令中通过定义的事件流来向父上下文来传递数据"><a href="#Output-通常是将该属性初始化为-Angular-EventEmitter-并将值作为事件流出。-Output-childmsg-new-EventEmitter-lt-string-gt-this-childmsg-emit-在子组件或者子指令中通过定义的事件流来向父上下文来传递数据" class="headerlink" title="@Output 通常是将该属性初始化为 Angular EventEmitter,  并将值作为事件流出。 @Output() childmsg = new EventEmitter&lt;string&gt;(); this.childmsg.emit() 在子组件或者子指令中通过定义的事件流来向父上下文来传递数据"></a><code>@Output</code> 通常是将该属性初始化为 <code>Angular EventEmitter</code>,  并将值作为事件流出。<code> @Output() childmsg = new EventEmitter&lt;string&gt;(); this.childmsg.emit()</code> 在子组件或者子指令中通过定义的事件流来向父上下文来传递数据</h4><h3 id="属性型指令"><a href="#属性型指令" class="headerlink" title="属性型指令"></a>属性型指令</h3><h4 id="属性型指令是通过一个-Directive-装饰器的控制器的类获取到使用该指令的元素标签来控制该元素标签的操作。"><a href="#属性型指令是通过一个-Directive-装饰器的控制器的类获取到使用该指令的元素标签来控制该元素标签的操作。" class="headerlink" title="属性型指令是通过一个@Directive 装饰器的控制器的类获取到使用该指令的元素标签来控制该元素标签的操作。"></a>属性型指令是通过一个<code>@Directive</code> 装饰器的控制器的类获取到使用该指令的元素标签来控制该元素标签的操作。</h4><h3 id="结构型指令"><a href="#结构型指令" class="headerlink" title="结构型指令"></a>结构型指令</h3><h4 id="结构型指令的职责就是HTML-布局，重塑DOM的结构-比如添加、移除或维护这些元素"><a href="#结构型指令的职责就是HTML-布局，重塑DOM的结构-比如添加、移除或维护这些元素" class="headerlink" title="结构型指令的职责就是HTML 布局，重塑DOM的结构 比如添加、移除或维护这些元素"></a>结构型指令的职责就是<code>HTML</code> 布局，重塑<code>DOM</code>的结构 比如添加、移除或维护这些元素</h4><h3 id="组件交互"><a href="#组件交互" class="headerlink" title="组件交互"></a>组件交互</h3><h4 id="1-在父子组件中通过-Input-和-Output-两个装饰器来交互"><a href="#1-在父子组件中通过-Input-和-Output-两个装饰器来交互" class="headerlink" title="1.在父子组件中通过 @Input 和@Output 两个装饰器来交互"></a>1.在父子组件中通过 <code>@Input</code> 和<code>@Output</code> 两个装饰器来交互</h4><h4 id="2-通过setter-截听输入属性值的变化"><a href="#2-通过setter-截听输入属性值的变化" class="headerlink" title="2.通过setter 截听输入属性值的变化"></a>2.通过<code>setter</code> 截听输入属性值的变化</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 父组件中 &lt;app-child-msg [toChildMsg]=&quot;childMsg&quot;&gt;&lt;/app-child-msg&gt;   childMsg 是父组件定义的变量， toChildMsg 是与子组件交互传递的变量名</span></span><br><span class="line"></span><br><span class="line">  @Input()</span><br><span class="line">  <span class="keyword">set</span> <span class="title">toChildMsg</span>(<span class="params">toChildMsg: string</span>) &#123;</span><br><span class="line">    <span class="built_in">this</span>._tochidmsg = toChildMsg;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">get</span> <span class="title">toChildMsg</span>(): <span class="title">string</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">this</span>._tochidmsg;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="comment">// 子组件中仍然通过 @Input 装饰器来接受父组件传递的数据，但是通过set 和 get方式来监听数据的变化</span></span><br></pre></td></tr></table></figure>
-
-<h4 id="3-通过生命周期的钩子函数OnChanges-函数来监听数据变化"><a href="#3-通过生命周期的钩子函数OnChanges-函数来监听数据变化" class="headerlink" title="3.通过生命周期的钩子函数OnChanges 函数来监听数据变化"></a>3.通过生命周期的钩子函数<code>OnChanges</code> 函数来监听数据变化</h4><h4 id="4-通过指令-XXX-来定义某组件，即可使用该组件中的函数和定义的属性变量"><a href="#4-通过指令-XXX-来定义某组件，即可使用该组件中的函数和定义的属性变量" class="headerlink" title="4.通过指令#XXX 来定义某组件，即可使用该组件中的函数和定义的属性变量"></a>4.通过指令<code>#XXX</code> 来定义某组件，即可使用该组件中的函数和定义的属性变量</h4><h4 id="5-通过在父组件中使用-ViewChild装饰器来定义代表子组件的变量，即可使用子组件中的函数和定义的属性变量"><a href="#5-通过在父组件中使用-ViewChild装饰器来定义代表子组件的变量，即可使用子组件中的函数和定义的属性变量" class="headerlink" title="5.通过在父组件中使用@ViewChild装饰器来定义代表子组件的变量，即可使用子组件中的函数和定义的属性变量"></a>5.通过在父组件中使用<code>@ViewChild</code>装饰器来定义代表子组件的变量，即可使用子组件中的函数和定义的属性变量</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">@ViewChild(CountdownTimerComponent)</span><br><span class="line">private timerComponent: CountdownTimerComponent;</span><br></pre></td></tr></table></figure>
-
-<h4 id="6-父子组件之间通讯？？？？"><a href="#6-父子组件之间通讯？？？？" class="headerlink" title="6.父子组件之间通讯？？？？"></a>6.父子组件之间通讯？？？？</h4><h3 id="angular-表单（模版驱动表单，响应式表单）"><a href="#angular-表单（模版驱动表单，响应式表单）" class="headerlink" title="angular 表单（模版驱动表单，响应式表单）"></a>angular 表单（模版驱动表单，响应式表单）</h3><h3 id="常用表单基础类"><a href="#常用表单基础类" class="headerlink" title="常用表单基础类"></a>常用表单基础类</h3><h4 id="响应式表单和模版驱动表单都是建立下列基础类之上的："><a href="#响应式表单和模版驱动表单都是建立下列基础类之上的：" class="headerlink" title="响应式表单和模版驱动表单都是建立下列基础类之上的："></a>响应式表单和模版驱动表单都是建立下列基础类之上的：</h4><ol>
-<li>FromControl 实例用于追踪单个表单控件的值和验证状态</li>
-<li>FromGroup 用于追踪一个表单控件组合的状态和值</li>
-<li>FormArray 用于追踪表单控件的数组的值和状态</li>
-<li>ControlValueAccessor 用于angular的FromControl实例和原生DOM元素之间的一个桥梁</li>
-</ol>
-<h4 id="模版驱动表单"><a href="#模版驱动表单" class="headerlink" title="模版驱动表单"></a>模版驱动表单</h4><p>[FromControl]指令会通过内部值的访问器来把显示创建的FromControl实例与视图中的表单元素联系在一起</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; Component &#125; <span class="keyword">from</span> <span class="string">&#x27;@angular/core&#x27;</span>;</span><br><span class="line"><span class="keyword">import</span> &#123; FormControl &#125; <span class="keyword">from</span> <span class="string">&#x27;@angular/forms&#x27;</span>;</span><br><span class="line"></span><br><span class="line">@Component(&#123;</span><br><span class="line">  <span class="attr">selector</span>: <span class="string">&#x27;app-reactive-favorite-color&#x27;</span>,</span><br><span class="line">  <span class="attr">template</span>: <span class="string">`</span></span><br><span class="line"><span class="string">    Favorite Color: &lt;input type=&quot;text&quot; [formControl]=&quot;favoriteColorControl&quot;&gt;</span></span><br><span class="line"><span class="string">  `</span></span><br><span class="line">&#125;)</span><br><span class="line"><span class="keyword">export</span> <span class="class"><span class="keyword">class</span> <span class="title">FavoriteColorComponent</span> </span>&#123;</span><br><span class="line">  favoriteColorControl = <span class="keyword">new</span> FormControl(<span class="string">&#x27;&#x27;</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h4 id="响应式表单"><a href="#响应式表单" class="headerlink" title="响应式表单"></a>响应式表单</h4><p>在模版驱动表单中，表单模式是隐式的，指令[(ngModel)]为指定的表单创建一个FromControl实例</p>
- <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"> <span class="keyword">import</span> &#123; Component &#125; <span class="keyword">from</span> <span class="string">&#x27;@angular/core&#x27;</span>;</span><br><span class="line"></span><br><span class="line">@Component(&#123;</span><br><span class="line">  <span class="attr">selector</span>: <span class="string">&#x27;app-template-favorite-color&#x27;</span>,</span><br><span class="line">  <span class="attr">template</span>: <span class="string">`</span></span><br><span class="line"><span class="string">    Favorite Color: &lt;input type=&quot;text&quot; [(ngModel)]=&quot;favoriteColor&quot;&gt;</span></span><br><span class="line"><span class="string">  `</span></span><br><span class="line">&#125;)</span><br><span class="line"><span class="keyword">export</span> <span class="class"><span class="keyword">class</span> <span class="title">FavoriteColorComponent</span> </span>&#123;</span><br><span class="line">  favoriteColor = <span class="string">&#x27;&#x27;</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+        <h3 id="泛型"><a href="#泛型" class="headerlink" title="泛型"></a>泛型</h3><ul>
+<li>定义函数或者类时就可以使用泛型<h3 id="高级类型"><a href="#高级类型" class="headerlink" title="高级类型"></a>高级类型</h3></li>
+<li>交叉类型：是将多个类型合并为一个类型;</li>
+<li></li>
+</ul>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2020/09/09/angular/" data-id="cl06t01uy000abfqs12rmav1x" data-title="angular" class="article-share-link">Share</a>
+      <a data-url="http://example.com/2020/09/11/typescript/" data-id="cl0y1k911000rzuqsdwk0746d" data-title="typescript" class="article-share-link">Share</a>
       
       
       
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/angular/" rel="tag">angular</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javascript/" rel="tag">javascript</a></li></ul>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/typescript/" rel="tag">typescript</a></li></ul>
 
     </footer>
   </div>
@@ -762,7 +753,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/02/">February 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/12/">December 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/10/">October 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/06/">June 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/05/">May 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/01/">January 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/12/">December 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/11/">November 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/09/">September 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/02/">February 2020</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/02/">February 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/12/">December 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/10/">October 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/06/">June 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/05/">May 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/03/">March 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/01/">January 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/12/">December 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/11/">November 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/09/">September 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/02/">February 2020</a></li></ul>
     </div>
   </div>
 
