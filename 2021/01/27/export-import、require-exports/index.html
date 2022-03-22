@@ -14,7 +14,7 @@
 <meta property="og:description" content="require 和 import是不同规范下引入模块的语句require&#x2F;exports 是2009年 CommonJs规范下引入模块的的方式import&#x2F;export 是2015年 es6 规范下引入模块的方式    类型 require&#x2F;exports import&#x2F;export    Node.js 所有版本 Node 9.0+（启动需加上 flag –experimental-modul">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2021-01-27T05:29:42.000Z">
-<meta property="article:modified_time" content="2021-09-08T09:13:05.000Z">
+<meta property="article:modified_time" content="2022-03-22T02:46:19.254Z">
 <meta property="article:author" content="John Doe">
 <meta property="article:tag" content="javascript">
 <meta property="article:tag" content="CommonJS">
@@ -153,8 +153,8 @@
 <h3 id="exports-和-module-exports-的区别（commonjs）"><a href="#exports-和-module-exports-的区别（commonjs）" class="headerlink" title="exports 和 module.exports 的区别（commonjs）"></a>exports 和 module.exports 的区别（commonjs）</h3><ul>
 <li>不可以以直接对exports直接赋值 （exports.hello = hello; function hello(){ console.log(hello)}）,使用module.exports 可以直接赋值</li>
 <li>node 加载模块的时候 会将模块放入包装函数load中执行，在执行load函数前 将会定义一个变量<br>var module = {<br>id:’hello’,<br>exports:{}<br>}<br>load 函数最终返回的是 exports；<br>如果输出的是一个对象或者数组的话就要使用module.exports<br>所以做好使用module.exports输出模块变量<h3 id="export-和-export-defult-区别-es6"><a href="#export-和-export-defult-区别-es6" class="headerlink" title="export 和 export defult 区别(es6)"></a>export 和 export defult 区别(es6)</h3></li>
-<li>exports defult 默认导出的数据</li>
-<li>exports 是导出指定的数据</li>
+<li>export defult 默认导出的数据</li>
+<li>export 是导出指定的数据</li>
 </ul>
 <h3 id="垃圾处理机制"><a href="#垃圾处理机制" class="headerlink" title="垃圾处理机制"></a>垃圾处理机制</h3><ul>
 <li>新生代</li>
