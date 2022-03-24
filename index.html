@@ -71,6 +71,166 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-ES6" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2022/03/23/ES6/" class="article-date">
+  <time class="dt-published" datetime="2022-03-23T14:42:54.000Z" itemprop="datePublished">2022-03-23</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2022/03/23/ES6/">ES6</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2022/03/23/ES6/" data-id="cl151b7mf0000fvqs4qggcr0z" data-title="ES6" class="article-share-link">Share</a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-express" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2022/03/23/express/" class="article-date">
+  <time class="dt-published" datetime="2022-03-23T14:42:30.000Z" itemprop="datePublished">2022-03-23</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/javascript/">javascript</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2022/03/23/express/">express</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h3 id="创建一个基本的express-项目"><a href="#创建一个基本的express-项目" class="headerlink" title="创建一个基本的express 项目"></a>创建一个基本的express 项目</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> express = <span class="built_in">require</span>(<span class="string">&#x27;express&#x27;</span>);</span><br><span class="line"><span class="keyword">const</span> app = express();</span><br><span class="line"></span><br><span class="line">app.listen(<span class="number">3000</span>,<span class="function">()=&gt;</span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">&#x27;3000&#x27;</span>);</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<h3 id="基本路由"><a href="#基本路由" class="headerlink" title="基本路由"></a>基本路由</h3><ul>
+<li>app.METHOD(path,Callbak)<br>METHOD:app监听端口发送的HTTP请求方式(GET，POST、DELETE、PUT、)<br>path: 监听路径(该路径是从监听端口的跟路径“/”，开始监听的)<br>Callbak: 监听到指定方法请求的路径时触发的方法(该回调方法的参数是request,response)</li>
+</ul>
+<h3 id="托管静态文件"><a href="#托管静态文件" class="headerlink" title="托管静态文件"></a>托管静态文件</h3><ul>
+<li>app.use(express.static(root, [options]))<br>root:静态文件的根路径名<br>options:<br>  maxAge: 以毫秒为单位设置 cache-control 中的maxAge 属性， 指定该静态文件的缓存时间<br>  setHeaders: 设置请求静态资源时的 header中的属性<br>  lastModified：该静态文件在服务器上最近一次修改的时候</li>
+<li>当找不到指定的文件的时候，将不会跳转到404，而是直接执行下一个中间件</li>
+</ul>
+<h3 id="express-json-option"><a href="#express-json-option" class="headerlink" title="express.json([option])"></a>express.json([option])</h3><ul>
+<li>返回仅解析json并查看content-type标头与type选项匹配的请求的中间件</li>
+</ul>
+<h3 id="express-raw"><a href="#express-raw" class="headerlink" title="express.raw()"></a>express.raw()</h3><ul>
+<li>返回将所有body解析为abuffer并查看content-type与type选项匹配的请求的中间件</li>
+</ul>
+<h3 id="express-router"><a href="#express-router" class="headerlink" title="express.router()"></a>express.router()</h3><ul>
+<li>创建一个新的路由对象</li>
+</ul>
+<h3 id="express-text"><a href="#express-text" class="headerlink" title="express.text()"></a>express.text()</h3><ul>
+<li>返回将所有body解析为字符串并查看content-type标头与type匹配的请求的中间件</li>
+</ul>
+<h3 id="express-urlencoded"><a href="#express-urlencoded" class="headerlink" title="express.urlencoded()"></a>express.urlencoded()</h3><ul>
+<li>返回仅解析urlencoded正文并查看content-type标头与type匹配的请求的中间件</li>
+</ul>
+<h3 id="app-locals"><a href="#app-locals" class="headerlink" title="app.locals"></a>app.locals</h3><ul>
+<li>该属性设置之后将会在整个程序的生命周期内都保持不变</li>
+<li>而res.local是在整个请求的生命周期内保持不变</li>
+</ul>
+<h3 id="app-mounthpath"><a href="#app-mounthpath" class="headerlink" title="app.mounthpath"></a>app.mounthpath</h3><ul>
+<li>包含一个或者多个子应用程序的路径模式</li>
+</ul>
+<h3 id="app-on-‘mount’-callback-parent"><a href="#app-on-‘mount’-callback-parent" class="headerlink" title="app.on(‘mount’,callback(parent))"></a>app.on(‘mount’,callback(parent))</h3><ul>
+<li>当子应用程序安装到父程序的时候，该mount事件将会被触发，回调函数的参数为父程序</li>
+</ul>
+<h3 id="app-all-path-callback-req-res-next"><a href="#app-all-path-callback-req-res-next" class="headerlink" title="app.all(path,callback(req, res, next))"></a>app.all(path,callback(req, res, next))</h3><ul>
+<li>此方法匹配该路径下的所有HTTP方法</li>
+</ul>
+<h3 id="app-delete-path-callback"><a href="#app-delete-path-callback" class="headerlink" title="app.delete (path,callback)"></a>app.delete (path,callback)</h3><h3 id="app-disable"><a href="#app-disable" class="headerlink" title="app.disable"></a>app.disable</h3><ul>
+<li>设置应用设置表中的值为false<h3 id="app-disabled"><a href="#app-disabled" class="headerlink" title="app.disabled"></a>app.disabled</h3></li>
+<li>设置应用设置表中的值为true</li>
+</ul>
+<h3 id="应用设置表"><a href="#应用设置表" class="headerlink" title="应用设置表"></a>应用设置表</h3><h3 id="app-engine-ext-callback"><a href="#app-engine-ext-callback" class="headerlink" title="app.engine(ext, callback)"></a>app.engine(ext, callback)</h3><ul>
+<li>注册模版引擎的callback处理文件后缀为ext</li>
+</ul>
+<h3 id="app-param-name-callback-req-res-next-value"><a href="#app-param-name-callback-req-res-next-value" class="headerlink" title="app.param([name],callback(req, res, next, value))"></a>app.param([name],callback(req, res, next, value))</h3><ul>
+<li>用来获取请求中符合/:name形式的路径，并在value中返回该name的值</li>
+</ul>
+<h3 id="req-accepts-types"><a href="#req-accepts-types" class="headerlink" title="req.accepts(types)"></a>req.accepts(types)</h3><ul>
+<li>可接受发送请求的类型：json，text/html，application/json</li>
+</ul>
+<h3 id="req-accepted"><a href="#req-accepted" class="headerlink" title="req.accepted()"></a>req.accepted()</h3><ul>
+<li>返回一个从高质量到低质量排序的接受媒体类型数组</li>
+</ul>
+<h3 id="req-is-type"><a href="#req-is-type" class="headerlink" title="req.is(type)"></a>req.is(type)</h3><ul>
+<li>检查请求的文件头是不是包含”Content-Type” 字段, 它匹配给定的type.</li>
+</ul>
+<h3 id="req-acceptedLanguages"><a href="#req-acceptedLanguages" class="headerlink" title="req.acceptedLanguages"></a>req.acceptedLanguages</h3><ul>
+<li>返回一个从高质量到低质量排序的接受语言数组</li>
+</ul>
+<h3 id="req-acceptCharts"><a href="#req-acceptCharts" class="headerlink" title="req.acceptCharts"></a>req.acceptCharts</h3><ul>
+<li>返回接受的字符集数组</li>
+</ul>
+<h3 id="res-status"><a href="#res-status" class="headerlink" title="res.status"></a>res.status</h3><ul>
+<li> 设置响应的状态码<h3 id="res-formaat"><a href="#res-formaat" class="headerlink" title="res.formaat"></a>res.formaat</h3><h3 id="res-jsonp"><a href="#res-jsonp" class="headerlink" title="res.jsonp"></a>res.jsonp</h3></li>
+<li>发送带有jsonp支持的json响应，传递的参数将作为回调函数的参数</li>
+</ul>
+<h3 id="res-set-field-value"><a href="#res-set-field-value" class="headerlink" title="res.set(field,[value])"></a>res.set(field,[value])</h3><ul>
+<li>设置响应的响应头字段,类似于res.header</li>
+</ul>
+<h3 id="res-sendFile-path-option-fn"><a href="#res-sendFile-path-option-fn" class="headerlink" title="res.sendFile(path,[option],[fn])"></a>res.sendFile(path,[option],[fn])</h3><ul>
+<li>  传输制定path路径的文件</li>
+<li>option: maxAge、root、lastModified、header、dotfiles、acceptRanges、cacheControl、immutable</li>
+<li>fn: 传输完成后的回调函数</li>
+</ul>
+<h3 id="res-download-path-filename-fn"><a href="#res-download-path-filename-fn" class="headerlink" title="res.download(path,[filename],[fn])"></a>res.download(path,[filename],[fn])</h3><p>- 将path路径的文件进行传输</p>
+<ul>
+<li>fn 作为回调函数</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2022/03/23/express/" data-id="cl151b7mp0001fvqsh5n1gilw" data-title="express" class="article-share-link">Share</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/express/" rel="tag">express</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javascript/" rel="tag">javascript</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
     <article id="post-优化一次性接受后端大批量数据展示的方式" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
     <a href="/2022/02/28/%E4%BC%98%E5%8C%96%E4%B8%80%E6%AC%A1%E6%80%A7%E6%8E%A5%E5%8F%97%E5%90%8E%E7%AB%AF%E5%A4%A7%E6%89%B9%E9%87%8F%E6%95%B0%E6%8D%AE%E5%B1%95%E7%A4%BA%E7%9A%84%E6%96%B9%E5%BC%8F/" class="article-date">
@@ -678,108 +838,6 @@
 
 
   
-    <article id="post-盒模型" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2021/05/13/%E7%9B%92%E6%A8%A1%E5%9E%8B/" class="article-date">
-  <time class="dt-published" datetime="2021-05-13T01:47:12.000Z" itemprop="datePublished">2021-05-13</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/%E7%9B%92%E6%A8%A1%E5%9E%8B/">盒模型</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2021/05/13/%E7%9B%92%E6%A8%A1%E5%9E%8B/">盒模型</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <h3 id="盒模型"><a href="#盒模型" class="headerlink" title="盒模型"></a>盒模型</h3><ul>
-<li>盒模型包括：内容(context)、border(边框)、填充(padding）、间距（margin）四部分</li>
-</ul>
-<h3 id="IE盒模型"><a href="#IE盒模型" class="headerlink" title="IE盒模型"></a>IE盒模型</h3><ul>
-<li>IE盒模型的宽高包括：内容(context)、padding(填充)、border(边框)，context+padding+border<br><code>content</code>的范围只有他自己的高宽<br><img src="https://gitee.com/lbnbetter/images/raw/master/img/IE-box-mode.jpeg" alt="IE标准盒模型"></li>
-</ul>
-<h3 id="w3c-标准盒模型"><a href="#w3c-标准盒模型" class="headerlink" title="w3c 标准盒模型"></a>w3c 标准盒模型</h3><ul>
-<li>w3c 标准盒模型：同样也分为context、padding、border、margin 四部分</li>
-<li>标准盒模型的宽高包括：context、padding、border，但是不包括margin这部分</li>
-<li>但是不同的是IE盒模型的<code>content</code>的范围包括<code>border</code> 和 <code>padding</code><br><img src="https://gitee.com/lbnbetter/images/raw/master/img/box.jpeg" alt="标准盒模型"></li>
-</ul>
-<h3 id="修改盒模型"><a href="#修改盒模型" class="headerlink" title="修改盒模型"></a>修改盒模型</h3><ul>
-<li>修改盒模型通过box-sizing 属性：属性值 content-box(标砖盒模型) 和 border-box(IE盒模型)</li>
-</ul>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2021/05/13/%E7%9B%92%E6%A8%A1%E5%9E%8B/" data-id="cl0y402ve001ckkqscbyybq65" data-title="盒模型" class="article-share-link">Share</a>
-      
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/HTML/" rel="tag">HTML</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%9B%92%E6%A8%A1%E5%9E%8B/" rel="tag">盒模型</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-call、apply和bind" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2021/03/01/call%E3%80%81apply%E5%92%8Cbind/" class="article-date">
-  <time class="dt-published" datetime="2021-03-01T13:42:43.000Z" itemprop="datePublished">2021-03-01</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2021/03/01/call%E3%80%81apply%E5%92%8Cbind/">call、apply和bind</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <h3 id="call和apply"><a href="#call和apply" class="headerlink" title="call和apply"></a>call和apply</h3><ul>
-<li>作用：用来改变this的指向</li>
-<li>特点：因为是Function.prototype上的方法，所以任何函数都可以使用它们</li>
-<li>apply方法的第一个参数是this的指向，第二个参数为数组，该参数是方法的参数</li>
-<li>call 方法的第一个参数是this的指向，第二个参数参数列表，多个参数，该参数为方法的参数</li>
-</ul>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2021/03/01/call%E3%80%81apply%E5%92%8Cbind/" data-id="cl0y402uf0006kkqs8lvqcmmr" data-title="call、apply和bind" class="article-share-link">Share</a>
-      
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
 
 
   <nav id="page-nav">
@@ -805,7 +863,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tags</h3>
     <div class="widget">
-      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/BFC/" rel="tag">BFC</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CommonJS/" rel="tag">CommonJS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTML/" rel="tag">HTML</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTTP/" rel="tag">HTTP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/React/" rel="tag">React</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/angular/" rel="tag">angular</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/class/" rel="tag">class</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/css/" rel="tag">css</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/javascript/" rel="tag">javascript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/node/" rel="tag">node</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/promise/" rel="tag">promise</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/rxjs/" rel="tag">rxjs</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/typescript/" rel="tag">typescript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%83%8F%E7%B4%A0/" rel="tag">像素</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%8E%9F%E5%9E%8B%E9%93%BE/" rel="tag">原型链</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%B8%B2%E6%9F%93/" rel="tag">渲染</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%9B%92%E6%A8%A1%E5%9E%8B/" rel="tag">盒模型</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BC%93%E5%AD%98/" rel="tag">缓存</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" rel="tag">设计模式</a></li></ul>
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/BFC/" rel="tag">BFC</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CommonJS/" rel="tag">CommonJS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTML/" rel="tag">HTML</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTTP/" rel="tag">HTTP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/React/" rel="tag">React</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/angular/" rel="tag">angular</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/class/" rel="tag">class</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/css/" rel="tag">css</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/express/" rel="tag">express</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/javascript/" rel="tag">javascript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/node/" rel="tag">node</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/promise/" rel="tag">promise</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/rxjs/" rel="tag">rxjs</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/typescript/" rel="tag">typescript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%83%8F%E7%B4%A0/" rel="tag">像素</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%8E%9F%E5%9E%8B%E9%93%BE/" rel="tag">原型链</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%B8%B2%E6%9F%93/" rel="tag">渲染</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%9B%92%E6%A8%A1%E5%9E%8B/" rel="tag">盒模型</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BC%93%E5%AD%98/" rel="tag">缓存</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" rel="tag">设计模式</a></li></ul>
     </div>
   </div>
 
@@ -815,7 +873,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/BFC/" style="font-size: 10px;">BFC</a> <a href="/tags/CommonJS/" style="font-size: 10px;">CommonJS</a> <a href="/tags/HTML/" style="font-size: 15px;">HTML</a> <a href="/tags/HTTP/" style="font-size: 10px;">HTTP</a> <a href="/tags/React/" style="font-size: 10px;">React</a> <a href="/tags/angular/" style="font-size: 10px;">angular</a> <a href="/tags/class/" style="font-size: 10px;">class</a> <a href="/tags/css/" style="font-size: 10px;">css</a> <a href="/tags/javascript/" style="font-size: 20px;">javascript</a> <a href="/tags/node/" style="font-size: 10px;">node</a> <a href="/tags/promise/" style="font-size: 10px;">promise</a> <a href="/tags/rxjs/" style="font-size: 10px;">rxjs</a> <a href="/tags/typescript/" style="font-size: 10px;">typescript</a> <a href="/tags/%E5%83%8F%E7%B4%A0/" style="font-size: 10px;">像素</a> <a href="/tags/%E5%8E%9F%E5%9E%8B%E9%93%BE/" style="font-size: 10px;">原型链</a> <a href="/tags/%E6%B8%B2%E6%9F%93/" style="font-size: 10px;">渲染</a> <a href="/tags/%E7%9B%92%E6%A8%A1%E5%9E%8B/" style="font-size: 10px;">盒模型</a> <a href="/tags/%E7%BC%93%E5%AD%98/" style="font-size: 10px;">缓存</a> <a href="/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" style="font-size: 10px;">设计模式</a>
+      <a href="/tags/BFC/" style="font-size: 10px;">BFC</a> <a href="/tags/CommonJS/" style="font-size: 10px;">CommonJS</a> <a href="/tags/HTML/" style="font-size: 15px;">HTML</a> <a href="/tags/HTTP/" style="font-size: 10px;">HTTP</a> <a href="/tags/React/" style="font-size: 10px;">React</a> <a href="/tags/angular/" style="font-size: 10px;">angular</a> <a href="/tags/class/" style="font-size: 10px;">class</a> <a href="/tags/css/" style="font-size: 10px;">css</a> <a href="/tags/express/" style="font-size: 10px;">express</a> <a href="/tags/javascript/" style="font-size: 20px;">javascript</a> <a href="/tags/node/" style="font-size: 10px;">node</a> <a href="/tags/promise/" style="font-size: 10px;">promise</a> <a href="/tags/rxjs/" style="font-size: 10px;">rxjs</a> <a href="/tags/typescript/" style="font-size: 10px;">typescript</a> <a href="/tags/%E5%83%8F%E7%B4%A0/" style="font-size: 10px;">像素</a> <a href="/tags/%E5%8E%9F%E5%9E%8B%E9%93%BE/" style="font-size: 10px;">原型链</a> <a href="/tags/%E6%B8%B2%E6%9F%93/" style="font-size: 10px;">渲染</a> <a href="/tags/%E7%9B%92%E6%A8%A1%E5%9E%8B/" style="font-size: 10px;">盒模型</a> <a href="/tags/%E7%BC%93%E5%AD%98/" style="font-size: 10px;">缓存</a> <a href="/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" style="font-size: 10px;">设计模式</a>
     </div>
   </div>
 
@@ -824,7 +882,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/02/">February 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/12/">December 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/10/">October 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/06/">June 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/05/">May 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/03/">March 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/01/">January 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/12/">December 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/11/">November 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/09/">September 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/02/">February 2020</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/03/">March 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/02/">February 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/12/">December 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/10/">October 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/06/">June 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/05/">May 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/03/">March 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/01/">January 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/12/">December 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/11/">November 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/09/">September 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/02/">February 2020</a></li></ul>
     </div>
   </div>
 
@@ -837,6 +895,14 @@
       <ul>
         
           <li>
+            <a href="/2022/03/23/ES6/">ES6</a>
+          </li>
+        
+          <li>
+            <a href="/2022/03/23/express/">express</a>
+          </li>
+        
+          <li>
             <a href="/2022/02/28/%E4%BC%98%E5%8C%96%E4%B8%80%E6%AC%A1%E6%80%A7%E6%8E%A5%E5%8F%97%E5%90%8E%E7%AB%AF%E5%A4%A7%E6%89%B9%E9%87%8F%E6%95%B0%E6%8D%AE%E5%B1%95%E7%A4%BA%E7%9A%84%E6%96%B9%E5%BC%8F/">优化一次性接受后端大批量数据展示的方式</a>
           </li>
         
@@ -846,14 +912,6 @@
         
           <li>
             <a href="/2022/02/24/%E6%B5%8F%E8%A7%88%E5%99%A8/">浏览器</a>
-          </li>
-        
-          <li>
-            <a href="/2021/12/11/uni-app/">uni-app.md</a>
-          </li>
-        
-          <li>
-            <a href="/2021/10/28/vue3/">vue3</a>
           </li>
         
       </ul>

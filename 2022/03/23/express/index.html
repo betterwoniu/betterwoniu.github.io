@@ -4,20 +4,20 @@
   <meta charset="utf-8">
   
   
-  <title>页面渲染 | Hexo</title>
+  <title>express | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="页面的渲染过程 将HTML构建成一个DOM树(DOM&#x3D;Document object model 文档对象模型)，DOM的构建是一个深度遍历的过程：当前节点的所有子节点都构建好了才会去构建下一个兄弟节点 将CSS样式文件解析成 CSS Rule tree 根据DOM树和CSS树来构建一个 Rendering tree(渲染树)。注意：Render Tree渲染树并不等于 DOM树，因为像一些dis">
+  <meta name="description" content="创建一个基本的express 项目123456const express &#x3D; require(&amp;#x27;express&amp;#x27;);const app &#x3D; express();app.listen(3000,()&#x3D;&gt;&amp;#123;  console.log(&amp;#x27;3000&amp;#x27;);&amp;#125;)  基本路由 app.METHOD(path,Callbak)METHOD:app监">
 <meta property="og:type" content="article">
-<meta property="og:title" content="页面渲染">
-<meta property="og:url" content="http://example.com/2021/01/07/%E9%A1%B5%E9%9D%A2%E6%B8%B2%E6%9F%93/index.html">
+<meta property="og:title" content="express">
+<meta property="og:url" content="http://example.com/2022/03/23/express/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="页面的渲染过程 将HTML构建成一个DOM树(DOM&#x3D;Document object model 文档对象模型)，DOM的构建是一个深度遍历的过程：当前节点的所有子节点都构建好了才会去构建下一个兄弟节点 将CSS样式文件解析成 CSS Rule tree 根据DOM树和CSS树来构建一个 Rendering tree(渲染树)。注意：Render Tree渲染树并不等于 DOM树，因为像一些dis">
+<meta property="og:description" content="创建一个基本的express 项目123456const express &#x3D; require(&amp;#x27;express&amp;#x27;);const app &#x3D; express();app.listen(3000,()&#x3D;&gt;&amp;#123;  console.log(&amp;#x27;3000&amp;#x27;);&amp;#125;)  基本路由 app.METHOD(path,Callbak)METHOD:app监">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2021-01-07T07:19:28.000Z">
-<meta property="article:modified_time" content="2022-03-19T16:42:32.400Z">
+<meta property="article:published_time" content="2022-03-23T14:42:30.000Z">
+<meta property="article:modified_time" content="2022-03-24T13:31:24.693Z">
 <meta property="article:author" content="John Doe">
-<meta property="article:tag" content="HTML">
-<meta property="article:tag" content="渲染">
+<meta property="article:tag" content="javascript">
+<meta property="article:tag" content="express">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
@@ -75,14 +75,14 @@
 </header>
 
       <div class="outer">
-        <section id="main"><article id="post-页面渲染" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+        <section id="main"><article id="post-express" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
-    <a href="/2021/01/07/%E9%A1%B5%E9%9D%A2%E6%B8%B2%E6%9F%93/" class="article-date">
-  <time class="dt-published" datetime="2021-01-07T07:19:28.000Z" itemprop="datePublished">2021-01-07</time>
+    <a href="/2022/03/23/express/" class="article-date">
+  <time class="dt-published" datetime="2022-03-23T14:42:30.000Z" itemprop="datePublished">2022-03-23</time>
 </a>
     
   <div class="article-category">
-    <a class="article-category-link" href="/categories/%E6%B8%B2%E6%9F%93/">渲染</a>►<a class="article-category-link" href="/categories/%E6%B8%B2%E6%9F%93/HTML/">HTML</a>
+    <a class="article-category-link" href="/categories/javascript/">javascript</a>
   </div>
 
   </div>
@@ -93,7 +93,7 @@
         
   
     <h1 class="p-name article-title" itemprop="headline name">
-      页面渲染
+      express
     </h1>
   
 
@@ -101,52 +101,93 @@
     
     <div class="e-content article-entry" itemprop="articleBody">
       
-        <h3 id="页面的渲染过程"><a href="#页面的渲染过程" class="headerlink" title="页面的渲染过程"></a>页面的渲染过程</h3><ol>
-<li>将HTML构建成一个DOM树(DOM=Document object model 文档对象模型)，DOM的构建是一个深度遍历的过程：当前节点的所有子节点都构建好了才会去构建下一个兄弟节点</li>
-<li>将CSS样式文件解析成 CSS Rule tree</li>
-<li>根据DOM树和CSS树来构建一个 Rendering tree(渲染树)。注意：Render Tree渲染树并不等于 DOM树，因为像一些dispaly：none的标签就每必要渲染出来放在渲染树中</li>
-<li>有了渲染树 Rendering Tree，浏览器能够知道页面的节点和节点的样式</li>
-<li>页面根据 Rendering Tree 开始计算出每个节点的具体位置</li>
-<li>开始绘制，遍历Rendering Tree 使用浏览器后端层绘制每个节点</li>
-</ol>
-<h3 id="回流-Reflow-和重绘-Repaint"><a href="#回流-Reflow-和重绘-Repaint" class="headerlink" title="回流(Reflow)和重绘(Repaint)"></a>回流(Reflow)和重绘(Repaint)</h3><p>回流/重排(Reflow): 页面中某个或多个页面元素的大小，显示隐藏，位置，将会引起回流，页面第一次加载必会引发回流<br>重绘(Repaint):  改变了某个元素的背景颜色、文字颜色等，不影响页面的布局或者元素周围，只会引起浏览器的重绘(repaint)</p>
-<h3 id="如何减少回流-Reflow"><a href="#如何减少回流-Reflow" class="headerlink" title="如何减少回流(Reflow)"></a>如何减少回流(Reflow)</h3><ol>
-<li>第一次的页面加载必定会触发依次回流/重排和重绘</li>
-<li>触发重绘不一定会触发回流/重排，但是回流/重绘必定会触发重绘</li>
-</ol>
-<h4 id="触发回流的原因"><a href="#触发回流的原因" class="headerlink" title="触发回流的原因"></a>触发回流的原因</h4><ol>
-<li>元素在视图中的位置和大小发生改变</li>
-<li>删除或者添加元素</li>
-<li>浏览器的视图大小发生改变</li>
-</ol>
-<h3 id="CSS和JS的阻塞规则"><a href="#CSS和JS的阻塞规则" class="headerlink" title="CSS和JS的阻塞规则"></a>CSS和JS的阻塞规则</h3><ol>
-<li>CSS不会阻塞DOM的解析，但会阻塞DOM渲染</li>
-<li>JS阻塞DOM解析，但是浏览器会“偷看”DOM，预先下载相关资源</li>
-<li>浏览器遇到且没有defer或async属性的 标签时，可能会触发页面渲染，因此如果前面的CSS资源尚未加载完成，浏览器会等待完它加载完毕再执行脚本</li>
-</ol>
-<h3 id="js文件的加载和执行"><a href="#js文件的加载和执行" class="headerlink" title="js文件的加载和执行"></a>js文件的加载和执行</h3><ul>
-<li>js文件会并行下载，但是会按照书写的顺序来执行代码</li>
-<li>加载或者执行会阻塞对dom树的解析，因为在js文件中会存在操作dom元素的操作，会影响dom树的的渲染。<h4 id="script文件添加defer属性"><a href="#script文件添加defer属性" class="headerlink" title="script文件添加defer属性"></a>script文件添加defer属性</h4></li>
-<li>defer属性表示延迟js文件执行，等待所有文件解析完成后再执行</li>
-<li>defer属性会让js文件延迟执行，但是js文件并不会延迟加载，浏览器遇见script标签时就会加载</li>
-<li>解析完成之后将会触发documentload事件，但是会优先执行defer属性的文件，按照书写顺序执行<h4 id="script文件添加async属性"><a href="#script文件添加async属性" class="headerlink" title="script文件添加async属性"></a>script文件添加async属性</h4></li>
-<li>async属性是指浏览器异步加载js文件，在加载js文件的时候将会继续解析dom</li>
-<li>执行js文件将不会按照书写顺序执行</li>
+        <h3 id="创建一个基本的express-项目"><a href="#创建一个基本的express-项目" class="headerlink" title="创建一个基本的express 项目"></a>创建一个基本的express 项目</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> express = <span class="built_in">require</span>(<span class="string">&#x27;express&#x27;</span>);</span><br><span class="line"><span class="keyword">const</span> app = express();</span><br><span class="line"></span><br><span class="line">app.listen(<span class="number">3000</span>,<span class="function">()=&gt;</span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">&#x27;3000&#x27;</span>);</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<h3 id="基本路由"><a href="#基本路由" class="headerlink" title="基本路由"></a>基本路由</h3><ul>
+<li>app.METHOD(path,Callbak)<br>METHOD:app监听端口发送的HTTP请求方式(GET，POST、DELETE、PUT、)<br>path: 监听路径(该路径是从监听端口的跟路径“/”，开始监听的)<br>Callbak: 监听到指定方法请求的路径时触发的方法(该回调方法的参数是request,response)</li>
 </ul>
-<h3 id="css文件加载和执行"><a href="#css文件加载和执行" class="headerlink" title="css文件加载和执行"></a>css文件加载和执行</h3><ul>
-<li>css文件是并行加载的</li>
-<li>css文件的下载将会阻塞js文件的执行，但是不会阻塞js文件的下载</li>
-<li>js文件下载完成之后将会阻塞执行</li>
+<h3 id="托管静态文件"><a href="#托管静态文件" class="headerlink" title="托管静态文件"></a>托管静态文件</h3><ul>
+<li>app.use(express.static(root, [options]))<br>root:静态文件的根路径名<br>options:<br>  maxAge: 以毫秒为单位设置 cache-control 中的maxAge 属性， 指定该静态文件的缓存时间<br>  setHeaders: 设置请求静态资源时的 header中的属性<br>  lastModified：该静态文件在服务器上最近一次修改的时候</li>
+<li>当找不到指定的文件的时候，将不会跳转到404，而是直接执行下一个中间件</li>
+</ul>
+<h3 id="express-json-option"><a href="#express-json-option" class="headerlink" title="express.json([option])"></a>express.json([option])</h3><ul>
+<li>返回仅解析json并查看content-type标头与type选项匹配的请求的中间件</li>
+</ul>
+<h3 id="express-raw"><a href="#express-raw" class="headerlink" title="express.raw()"></a>express.raw()</h3><ul>
+<li>返回将所有body解析为abuffer并查看content-type与type选项匹配的请求的中间件</li>
+</ul>
+<h3 id="express-router"><a href="#express-router" class="headerlink" title="express.router()"></a>express.router()</h3><ul>
+<li>创建一个新的路由对象</li>
+</ul>
+<h3 id="express-text"><a href="#express-text" class="headerlink" title="express.text()"></a>express.text()</h3><ul>
+<li>返回将所有body解析为字符串并查看content-type标头与type匹配的请求的中间件</li>
+</ul>
+<h3 id="express-urlencoded"><a href="#express-urlencoded" class="headerlink" title="express.urlencoded()"></a>express.urlencoded()</h3><ul>
+<li>返回仅解析urlencoded正文并查看content-type标头与type匹配的请求的中间件</li>
+</ul>
+<h3 id="app-locals"><a href="#app-locals" class="headerlink" title="app.locals"></a>app.locals</h3><ul>
+<li>该属性设置之后将会在整个程序的生命周期内都保持不变</li>
+<li>而res.local是在整个请求的生命周期内保持不变</li>
+</ul>
+<h3 id="app-mounthpath"><a href="#app-mounthpath" class="headerlink" title="app.mounthpath"></a>app.mounthpath</h3><ul>
+<li>包含一个或者多个子应用程序的路径模式</li>
+</ul>
+<h3 id="app-on-‘mount’-callback-parent"><a href="#app-on-‘mount’-callback-parent" class="headerlink" title="app.on(‘mount’,callback(parent))"></a>app.on(‘mount’,callback(parent))</h3><ul>
+<li>当子应用程序安装到父程序的时候，该mount事件将会被触发，回调函数的参数为父程序</li>
+</ul>
+<h3 id="app-all-path-callback-req-res-next"><a href="#app-all-path-callback-req-res-next" class="headerlink" title="app.all(path,callback(req, res, next))"></a>app.all(path,callback(req, res, next))</h3><ul>
+<li>此方法匹配该路径下的所有HTTP方法</li>
+</ul>
+<h3 id="app-delete-path-callback"><a href="#app-delete-path-callback" class="headerlink" title="app.delete (path,callback)"></a>app.delete (path,callback)</h3><h3 id="app-disable"><a href="#app-disable" class="headerlink" title="app.disable"></a>app.disable</h3><ul>
+<li>设置应用设置表中的值为false<h3 id="app-disabled"><a href="#app-disabled" class="headerlink" title="app.disabled"></a>app.disabled</h3></li>
+<li>设置应用设置表中的值为true</li>
+</ul>
+<h3 id="应用设置表"><a href="#应用设置表" class="headerlink" title="应用设置表"></a>应用设置表</h3><h3 id="app-engine-ext-callback"><a href="#app-engine-ext-callback" class="headerlink" title="app.engine(ext, callback)"></a>app.engine(ext, callback)</h3><ul>
+<li>注册模版引擎的callback处理文件后缀为ext</li>
+</ul>
+<h3 id="app-param-name-callback-req-res-next-value"><a href="#app-param-name-callback-req-res-next-value" class="headerlink" title="app.param([name],callback(req, res, next, value))"></a>app.param([name],callback(req, res, next, value))</h3><ul>
+<li>用来获取请求中符合/:name形式的路径，并在value中返回该name的值</li>
+</ul>
+<h3 id="req-accepts-types"><a href="#req-accepts-types" class="headerlink" title="req.accepts(types)"></a>req.accepts(types)</h3><ul>
+<li>可接受发送请求的类型：json，text/html，application/json</li>
+</ul>
+<h3 id="req-accepted"><a href="#req-accepted" class="headerlink" title="req.accepted()"></a>req.accepted()</h3><ul>
+<li>返回一个从高质量到低质量排序的接受媒体类型数组</li>
+</ul>
+<h3 id="req-is-type"><a href="#req-is-type" class="headerlink" title="req.is(type)"></a>req.is(type)</h3><ul>
+<li>检查请求的文件头是不是包含”Content-Type” 字段, 它匹配给定的type.</li>
+</ul>
+<h3 id="req-acceptedLanguages"><a href="#req-acceptedLanguages" class="headerlink" title="req.acceptedLanguages"></a>req.acceptedLanguages</h3><ul>
+<li>返回一个从高质量到低质量排序的接受语言数组</li>
+</ul>
+<h3 id="req-acceptCharts"><a href="#req-acceptCharts" class="headerlink" title="req.acceptCharts"></a>req.acceptCharts</h3><ul>
+<li>返回接受的字符集数组</li>
+</ul>
+<h3 id="res-status"><a href="#res-status" class="headerlink" title="res.status"></a>res.status</h3><ul>
+<li> 设置响应的状态码<h3 id="res-formaat"><a href="#res-formaat" class="headerlink" title="res.formaat"></a>res.formaat</h3><h3 id="res-jsonp"><a href="#res-jsonp" class="headerlink" title="res.jsonp"></a>res.jsonp</h3></li>
+<li>发送带有jsonp支持的json响应，传递的参数将作为回调函数的参数</li>
+</ul>
+<h3 id="res-set-field-value"><a href="#res-set-field-value" class="headerlink" title="res.set(field,[value])"></a>res.set(field,[value])</h3><ul>
+<li>设置响应的响应头字段,类似于res.header</li>
+</ul>
+<h3 id="res-sendFile-path-option-fn"><a href="#res-sendFile-path-option-fn" class="headerlink" title="res.sendFile(path,[option],[fn])"></a>res.sendFile(path,[option],[fn])</h3><ul>
+<li>  传输制定path路径的文件</li>
+<li>option: maxAge、root、lastModified、header、dotfiles、acceptRanges、cacheControl、immutable</li>
+<li>fn: 传输完成后的回调函数</li>
+</ul>
+<h3 id="res-download-path-filename-fn"><a href="#res-download-path-filename-fn" class="headerlink" title="res.download(path,[filename],[fn])"></a>res.download(path,[filename],[fn])</h3><p>- 将path路径的文件进行传输</p>
+<ul>
+<li>fn 作为回调函数</li>
 </ul>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2021/01/07/%E9%A1%B5%E9%9D%A2%E6%B8%B2%E6%9F%93/" data-id="cl0y402vh001kkkqsaux00s4r" data-title="页面渲染" class="article-share-link">Share</a>
+      <a data-url="http://example.com/2022/03/23/express/" data-id="cl151b7mp0001fvqsh5n1gilw" data-title="express" class="article-share-link">Share</a>
       
       
       
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/HTML/" rel="tag">HTML</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%B8%B2%E6%9F%93/" rel="tag">渲染</a></li></ul>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/express/" rel="tag">express</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javascript/" rel="tag">javascript</a></li></ul>
 
     </footer>
   </div>
@@ -154,19 +195,19 @@
     
 <nav id="article-nav">
   
-    <a href="/2021/01/27/export-import%E3%80%81require-exports/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2022/03/23/ES6/" id="article-nav-newer" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Newer</strong>
       <div class="article-nav-title">
         
-          export/import、require/exports
+          ES6
         
       </div>
     </a>
   
   
-    <a href="/2020/12/23/PPI%E3%80%81DPI%E3%80%81%E8%AE%BE%E5%A4%87%E5%83%8F%E7%B4%A0%E7%AD%89%E6%A6%82%E5%BF%B5/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2022/02/28/%E4%BC%98%E5%8C%96%E4%B8%80%E6%AC%A1%E6%80%A7%E6%8E%A5%E5%8F%97%E5%90%8E%E7%AB%AF%E5%A4%A7%E6%89%B9%E9%87%8F%E6%95%B0%E6%8D%AE%E5%B1%95%E7%A4%BA%E7%9A%84%E6%96%B9%E5%BC%8F/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">PPI、DPI、设备像素等概念及自适应布局方案</div>
+      <div class="article-nav-title">优化一次性接受后端大批量数据展示的方式</div>
     </a>
   
 </nav>
