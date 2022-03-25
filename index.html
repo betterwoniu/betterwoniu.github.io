@@ -97,7 +97,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2022/03/23/ES6/" data-id="cl151b7mf0000fvqs4qggcr0z" data-title="ES6" class="article-share-link">Share</a>
+      <a data-url="http://example.com/2022/03/23/ES6/" data-id="cl16kdds7000agyqs3cn2hmq8" data-title="ES6" class="article-share-link">Share</a>
       
       
       
@@ -217,7 +217,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2022/03/23/express/" data-id="cl151b7mp0001fvqsh5n1gilw" data-title="express" class="article-share-link">Share</a>
+      <a data-url="http://example.com/2022/03/23/express/" data-id="cl16kddsi000lgyqsf3awgj8f" data-title="express" class="article-share-link">Share</a>
       
       
       
@@ -263,7 +263,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2022/02/28/%E4%BC%98%E5%8C%96%E4%B8%80%E6%AC%A1%E6%80%A7%E6%8E%A5%E5%8F%97%E5%90%8E%E7%AB%AF%E5%A4%A7%E6%89%B9%E9%87%8F%E6%95%B0%E6%8D%AE%E5%B1%95%E7%A4%BA%E7%9A%84%E6%96%B9%E5%BC%8F/" data-id="cl0y402v70012kkqsa3adecve" data-title="优化一次性接受后端大批量数据展示的方式" class="article-share-link">Share</a>
+      <a data-url="http://example.com/2022/02/28/%E4%BC%98%E5%8C%96%E4%B8%80%E6%AC%A1%E6%80%A7%E6%8E%A5%E5%8F%97%E5%90%8E%E7%AB%AF%E5%A4%A7%E6%89%B9%E9%87%8F%E6%95%B0%E6%8D%AE%E5%B1%95%E7%A4%BA%E7%9A%84%E6%96%B9%E5%BC%8F/" data-id="cl16kddsy001egyqs8ep581n5" data-title="优化一次性接受后端大批量数据展示的方式" class="article-share-link">Share</a>
       
       
       
@@ -308,7 +308,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2022/02/25/node/" data-id="cl0y402up000lkkqs6bln0hll" data-title="node" class="article-share-link">Share</a>
+      <a data-url="http://example.com/2022/02/25/node/" data-id="cl16kddsn000vgyqs6h1sgxyu" data-title="node" class="article-share-link">Share</a>
       
       
       
@@ -356,7 +356,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2022/02/24/%E6%B5%8F%E8%A7%88%E5%99%A8/" data-id="cl0y402vc0018kkqsc9dq7wss" data-title="浏览器" class="article-share-link">Share</a>
+      <a data-url="http://example.com/2022/02/24/%E6%B5%8F%E8%A7%88%E5%99%A8/" data-id="cl16kddt0001igyqs44pt9p4b" data-title="浏览器" class="article-share-link">Share</a>
       
       
       
@@ -407,7 +407,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2021/12/11/uni-app/" data-id="cl0y402uv000ukkqs96sca6t1" data-title="uni-app.md" class="article-share-link">Share</a>
+      <a data-url="http://example.com/2021/12/11/uni-app/" data-id="cl16kddsp000zgyqs5f4jbdig" data-title="uni-app.md" class="article-share-link">Share</a>
       
       
       
@@ -445,14 +445,75 @@
     
     <div class="e-content article-entry" itemprop="articleBody">
       
-        <h3 id="setup"><a href="#setup" class="headerlink" title="setup"></a>setup</h3><ul>
+        <h3 id="模版语法"><a href="#模版语法" class="headerlink" title="模版语法"></a>模版语法</h3><ol>
+<li>v-once：一次性执行数据解析，当数据发生改变时候将不会重新更新数据</li>
+<li>v-bind：绑定标签属性使用动态数据 <code> v-bind:herf</code> 缩写为 <code>:herf</code></li>
+<li>v-on:  绑定标签事件的 <code> v-on:click</code> 缩写为 <code>@click</code><h3 id="事件修饰符"><a href="#事件修饰符" class="headerlink" title="事件修饰符"></a>事件修饰符</h3></li>
+<li>.stop:阻止单击事件继续冒泡</li>
+<li>.once: 事件只会触发一次</li>
+<li>.prevent:提交事件不再重载页面</li>
+<li>.self</li>
+<li>.passive: 配合scroll 事件使用，滚动事件的默认行为将会立刻触发，不会等待onscroll 完成</li>
+<li>.capture </li>
+</ol>
+<h3 id="按键修饰符"><a href="#按键修饰符" class="headerlink" title="按键修饰符"></a>按键修饰符</h3><ul>
+<li>你可以直接将 KeyboardEvent.key 暴露的任意有效按键名转换为 kebab-case 来作为修饰符。</li>
+</ul>
+<ol>
+<li>.enter:  监听enter键触发</li>
+<li>.page-down: pageDown 键触发</li>
+<li>tab</li>
+<li>delete</li>
+<li>esc</li>
+<li>space</li>
+<li>up</li>
+<li>down</li>
+<li>left</li>
+<li>right</li>
+</ol>
+<h3 id="系统修饰键"><a href="#系统修饰键" class="headerlink" title="系统修饰键"></a>系统修饰键</h3><p>.ctrl<br>.alt<br>.shift<br>.meta</p>
+<h3 id="exact-修饰符"><a href="#exact-修饰符" class="headerlink" title=".exact 修饰符"></a>.exact 修饰符</h3><ul>
+<li>精确控制系统修饰符组合触发事件</li>
+</ul>
+<h3 id="鼠标修饰符"><a href="#鼠标修饰符" class="headerlink" title="鼠标修饰符"></a>鼠标修饰符</h3><p>.left<br>.right<br>.middle</p>
+<h3 id="组件"><a href="#组件" class="headerlink" title="组件"></a>组件</h3><h4 id="全局注册组件"><a href="#全局注册组件" class="headerlink" title="全局注册组件"></a>全局注册组件</h4><ul>
+<li>使用<code>app.component(componentName)</code></li>
+</ul>
+<h4 id="子组件中修改props传递的值"><a href="#子组件中修改props传递的值" class="headerlink" title="子组件中修改props传递的值"></a>子组件中修改props传递的值</h4><ol>
+<li>重新赋值</li>
+<li>使用计算属性去修改</li>
+</ol>
+<h3 id="插槽"><a href="#插槽" class="headerlink" title="插槽"></a>插槽</h3><h4 id="具名插槽"><a href="#具名插槽" class="headerlink" title="具名插槽"></a>具名插槽</h4><ul>
+<li>在使用多个插槽的时候，在使用插槽的父组件中通过在标签上定义插槽名来渲染到对应的正确的组件插槽中</li>
+<li>使用：<pre><code> 1. 通过在```slot ```标签上通过name属性定义插槽名
+ 2. 在父组件中通过在需要渲染到插槽的顶级标签上通过``` v-slot:[name] ```来选择需要渲染的标签
+</code></pre>
+</li>
+</ul>
+<h4 id="作用域插槽"><a href="#作用域插槽" class="headerlink" title="作用域插槽"></a>作用域插槽</h4><ul>
+<li>在普通插槽中，父子组件之间插槽使用数据渲染是相互不影响的，也就是：父组件的内容都是在父组件的作用域内编译的，子组件的内容都是在子组件的作用域内编译的</li>
+<li>为了解决在父组件中使用子组件插槽的内容，需要在父组件中使用子组件标签的时候通过<code> v-slot:default=&quot;scope&quot;</code><br>将子组件slot标签中绑定的数据传递到父组件中作为scope的属性；在子组件中通过<code>slot</code>标签上绑定数据``` <slot :obj="obj"></slot>````</li>
+</ul>
+<h3 id="provide和-Inject"><a href="#provide和-Inject" class="headerlink" title="provide和 Inject"></a>provide和 Inject</h3><ul>
+<li>在父子或者爷孙组件之间可以通过provide来发送数据，在接受数据的组件中通过Inject来接受发送的数据</li>
+<li>注：在子组件之间不可进行数据传递，provide和Inject的数据流向是通过provide在上层组件中向下流到下层组件通过Inject来接受</li>
+</ul>
+<h3 id="动态组件"><a href="#动态组件" class="headerlink" title="动态组件"></a>动态组件</h3><ul>
+<li>在vue中可以使用<code>componment</code>标签 搭配is属性来动态设置componment标签渲染的组件，is的值为组件名</li>
+</ul>
+<h3 id="异步组件"><a href="#异步组件" class="headerlink" title="异步组件"></a>异步组件</h3><ul>
+<li>vue 提供了使用<code> defineAsyncComponent</code>函数来进行组件的异步加载</li>
+</ul>
+<h3 id="setup"><a href="#setup" class="headerlink" title="setup"></a>setup</h3><ul>
 <li>在setup函数中定义数据和方法，通过return返回出去，用于模版中直接使用</li>
 <li>参数(props和context)：props参数用于存储组件的传值，context参数中有attrs:组件外部传递过来的，但没有在props中定义的属性；slots属性：收到插槽的相关内容；emit：父子组件之间方法调用，与vue2中的this.$emit相似<h3 id="ref函数"><a href="#ref函数" class="headerlink" title="ref函数"></a>ref函数</h3></li>
 <li>用来定义基本数据<h3 id="reactive函数"><a href="#reactive函数" class="headerlink" title="reactive函数"></a>reactive函数</h3></li>
 <li>用来定义引用数据<h3 id="响应式原理"><a href="#响应式原理" class="headerlink" title="响应式原理"></a>响应式原理</h3></li>
 <li>通过proxy来拦截对象中的任意属性变化，使用reflect来操作源数据</li>
 </ul>
-<h3 id="vue2的响应式原理"><a href="#vue2的响应式原理" class="headerlink" title="vue2的响应式原理"></a>vue2的响应式原理</h3><ul>
+<h3 id="多事件处理器"><a href="#多事件处理器" class="headerlink" title="多事件处理器"></a>多事件处理器</h3><ul>
+<li>事件处理程序可以有多个方法，这些方法将由逗号分隔<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">button</span> @<span class="attr">click</span>=<span class="string">&quot;one($event), two($event)&quot;</span>&gt;</span></span><br><span class="line">  Submit</span><br><span class="line"><span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h3 id="vue2的响应式原理"><a href="#vue2的响应式原理" class="headerlink" title="vue2的响应式原理"></a>vue2的响应式原理</h3></li>
 <li>vue2通过使用<code>Object.defineProperty</code> get和set方法来劫持数据监听数据变化，更新视图</li>
 <li>对象属性新增和删除不会引发视图更新、通过数组下标修改数据也不会引发视图更新</li>
 </ul>
@@ -470,7 +531,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2021/10/28/vue3/" data-id="cl0y402v3000ykkqs8v3odqe4" data-title="vue3" class="article-share-link">Share</a>
+      <a data-url="http://example.com/2021/10/28/vue3/" data-id="cl16kddsu0017gyqsh8i94z0f" data-title="vue3" class="article-share-link">Share</a>
       
       
       
@@ -613,7 +674,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2021/10/15/React/" data-id="cl0y402ud0005kkqsc8wk3ref" data-title="React" class="article-share-link">Share</a>
+      <a data-url="http://example.com/2021/10/15/React/" data-id="cl16kdds40006gyqsecq6fefq" data-title="React" class="article-share-link">Share</a>
       
       
       
@@ -705,7 +766,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2021/10/15/webpack/" data-id="cl0y402v90014kkqsf2h9fnef" data-title="" class="article-share-link">Share</a>
+      <a data-url="http://example.com/2021/10/15/webpack/" data-id="cl16kddsw001agyqs1ix841ek" data-title="" class="article-share-link">Share</a>
       
       
       
@@ -826,7 +887,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2021/06/22/vue2/" data-id="cl0y402v1000xkkqs9p1b9cy8" data-title="vue2" class="article-share-link">Share</a>
+      <a data-url="http://example.com/2021/06/22/vue2/" data-id="cl16kddss0013gyqs9yb7ahnf" data-title="vue2" class="article-share-link">Share</a>
       
       
       
