@@ -14,7 +14,7 @@
 <meta property="og:description" content="HTTPhttp协议是基于tcp协议的无状态，无连接的超文本协议 三次握手 客户端首先向服务器端发送联机请求（发送syn（联机确认）的数据包）,并进入syn_send状态，登台服务器端确认 服务器端收到客户端发送的联机请求的syn的数据包，但是服务端还需要确认客户端的syn（即ack）数据包，同时也向服务端发送一个syn包，即syn和ack数据包，此时服务器进入syn_recv状态 客户端收到服务">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2020-09-19T11:02:13.000Z">
-<meta property="article:modified_time" content="2022-02-24T08:21:57.431Z">
+<meta property="article:modified_time" content="2022-03-31T05:46:35.298Z">
 <meta property="article:author" content="John Doe">
 <meta property="article:tag" content="HTTP">
 <meta name="twitter:card" content="summary">
@@ -130,11 +130,22 @@
 <h3 id="get和post请求区别"><a href="#get和post请求区别" class="headerlink" title="get和post请求区别"></a>get和post请求区别</h3><p>1.get请求的参数会在地址栏中显示出来，post请求的参数是放在请求体中的</p>
 <p>2.get请求的浏览器和服务器对url访问地址长度有限制，post请求由于不是通过地址传参，理论上不受长度限制，但是服务器端也对请求体的参数大小有限制</p>
 <p>3.post请求的安全性高于get请求</p>
-<h3 id="HTTP-的缓存策略"><a href="#HTTP-的缓存策略" class="headerlink" title="HTTP 的缓存策略"></a>HTTP 的缓存策略</h3>
+<h3 id="HTTP-的缓存策略"><a href="#HTTP-的缓存策略" class="headerlink" title="HTTP 的缓存策略"></a>HTTP 的缓存策略</h3><h4 id="强缓存-通过cache-control-和expires-来控制强缓存"><a href="#强缓存-通过cache-control-和expires-来控制强缓存" class="headerlink" title="强缓存:通过cache-control 和expires 来控制强缓存"></a>强缓存:通过cache-control 和expires 来控制强缓存</h4><ol>
+<li>expires：值为一个绝对时间，表示该资源在该时间点之前都是可以直接从缓存中获取的</li>
+<li>cache-controle：值的常见字段一般为 public:表明任何内容都是可以被缓存的   private：表明响应只能被单个缓存不能被作为共享缓存； no-cache：可以在本地缓存，但是需要通过服务器验证，如果服务器允许才可以缓存； no-store：禁止缓存； max-age：设置缓存的最大时间<h5 id="强缓存的状态"><a href="#强缓存的状态" class="headerlink" title="强缓存的状态"></a>强缓存的状态</h5></li>
+<li>from memory cache：缓存在内存中，浏览器或者页面关闭，缓存就会被释放，重新打开页面将不会获取到</li>
+<li>from disk cache：缓存在本地，浏览器关闭后重新打开还是可以重新获取的<h4 id="协商缓存"><a href="#协商缓存" class="headerlink" title="协商缓存"></a>协商缓存</h4></li>
+</ol>
+<ul>
+<li>对比缓存需要通过服务器确认是否需要使用缓存机制<h5 id="协商缓存标识"><a href="#协商缓存标识" class="headerlink" title="协商缓存标识"></a>协商缓存标识</h5></li>
+<li>last-modified/if-modified-since：last-modified表示浏览器资源最近一次的修改时间，客户端访问的时候将会将最后修改时间返回，if-modified-since：浏览器再次访问该资源的时候将会在header中带上 if-modified-since 值为 last-modified的值，服务端会判断这个时间点之后资源是否修改，返回200或者304</li>
+<li>etag/if-none-match：etage表示第一次访问的时候服务端将会返回一个验证码，再次访问的时候将会在header中加入 if-none-match的字段，值为atage的值，判断时候需要返回200或者304</li>
+</ul>
+
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2020/09/19/HTTP/" data-id="cl18zokf10002hnqsh18raow4" data-title="HTTP" class="article-share-link">Share</a>
+      <a data-url="http://example.com/2020/09/19/HTTP/" data-id="cl1ekr1sy000522qsdwki52wz" data-title="HTTP" class="article-share-link">Share</a>
       
       
       

@@ -93,11 +93,19 @@
     
     <div class="e-content article-entry" itemprop="articleBody">
       
-        
+        <h3 id="变量声明"><a href="#变量声明" class="headerlink" title="变量声明"></a>变量声明</h3><ul>
+<li>let、const、var，let用于定义一个变量，不存在变量提升，使用let定义的变量，需要注意作用域；const用于定义一个常量，一旦声明赋值之后将不允许进行更改；需要注意作用域，在子作用域中可以重新声明定义，在该子作用域中使用的是该子作用域中定义的常量，同样也不存在变量提升；var定义的变量存在变量提升，提升定义不提升变量的值<h4 id="变量提升"><a href="#变量提升" class="headerlink" title="变量提升"></a>变量提升</h4></li>
+<li>在声明定义变量之前使用该变量时，将会将该变量的声明提升，该变量为undefined，值不会提升<h4 id="暂时性死区"><a href="#暂时性死区" class="headerlink" title="暂时性死区"></a>暂时性死区</h4></li>
+<li>在使用let 定义变量的时候，将会将该变量绑定到该作用域，在定义该变量之前使用该变量将会出现暂时性死区</li>
+</ul>
+<h3 id="symbol-数据类型"><a href="#symbol-数据类型" class="headerlink" title="symbol 数据类型"></a>symbol 数据类型</h3><ul>
+<li>symbol 的值通过symbol() 函数生成，表示独一无二的值</li>
+</ul>
+
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2022/03/23/ES6/" data-id="cl18zoket0000hnqsg5ho1w77" data-title="ES6" class="article-share-link">Share</a>
+      <a data-url="http://example.com/2022/03/23/ES6/" data-id="cl1ekr1sr000122qshu99acjb" data-title="ES6" class="article-share-link">Share</a>
       
       
       
@@ -217,7 +225,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2022/03/23/express/" data-id="cl18zokfj000nhnqs1cn07kuf" data-title="express" class="article-share-link">Share</a>
+      <a data-url="http://example.com/2022/03/23/express/" data-id="cl1ekr1tk000n22qshbtxa56e" data-title="express" class="article-share-link">Share</a>
       
       
       
@@ -263,7 +271,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2022/02/28/%E4%BC%98%E5%8C%96%E4%B8%80%E6%AC%A1%E6%80%A7%E6%8E%A5%E5%8F%97%E5%90%8E%E7%AB%AF%E5%A4%A7%E6%89%B9%E9%87%8F%E6%95%B0%E6%8D%AE%E5%B1%95%E7%A4%BA%E7%9A%84%E6%96%B9%E5%BC%8F/" data-id="cl18zokfy0018hnqs3y9qblg2" data-title="优化一次性接受后端大批量数据展示的方式" class="article-share-link">Share</a>
+      <a data-url="http://example.com/2022/02/28/%E4%BC%98%E5%8C%96%E4%B8%80%E6%AC%A1%E6%80%A7%E6%8E%A5%E5%8F%97%E5%90%8E%E7%AB%AF%E5%A4%A7%E6%89%B9%E9%87%8F%E6%95%B0%E6%8D%AE%E5%B1%95%E7%A4%BA%E7%9A%84%E6%96%B9%E5%BC%8F/" data-id="cl1ekr1u1001d22qs9lev97jw" data-title="优化一次性接受后端大批量数据展示的方式" class="article-share-link">Share</a>
       
       
       
@@ -308,7 +316,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2022/02/25/node/" data-id="cl18zokfn000thnqs4ftp0jny" data-title="node" class="article-share-link">Share</a>
+      <a data-url="http://example.com/2022/02/25/node/" data-id="cl1ekr1tp000u22qs8o3xfiwg" data-title="node" class="article-share-link">Share</a>
       
       
       
@@ -356,7 +364,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2022/02/24/%E6%B5%8F%E8%A7%88%E5%99%A8/" data-id="cl18zokg1001hhnqs788qgha6" data-title="浏览器" class="article-share-link">Share</a>
+      <a data-url="http://example.com/2022/02/24/%E6%B5%8F%E8%A7%88%E5%99%A8/" data-id="cl1ekr1u3001i22qsdyky6r6w" data-title="浏览器" class="article-share-link">Share</a>
       
       
       
@@ -407,7 +415,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2021/12/11/uni-app/" data-id="cl18zokft0011hnqs4331cvlk" data-title="uni-app.md" class="article-share-link">Share</a>
+      <a data-url="http://example.com/2021/12/11/uni-app/" data-id="cl1ekr1ts000z22qs4xqfbdah" data-title="uni-app.md" class="article-share-link">Share</a>
       
       
       
@@ -545,6 +553,9 @@
 <h3 id="Teleport"><a href="#Teleport" class="headerlink" title="Teleport"></a>Teleport</h3><ul>
 <li>使用teleport标签 可以通过to属性来控制当前dom元素在那个父元素下进行渲染</li>
 </ul>
+<h3 id="watchEffect"><a href="#watchEffect" class="headerlink" title="watchEffect"></a>watchEffect</h3><ul>
+<li>watchEffect 传入一个函数，同时追踪其依赖，当依赖发生改变将会重新激活该函数</li>
+</ul>
 <h3 id="vue2-的响应式原理"><a href="#vue2-的响应式原理" class="headerlink" title="vue2 的响应式原理"></a>vue2 的响应式原理</h3><ul>
 <li>vue2 通过使用<code>Object.defineProperty</code> get 和 set 方法来劫持数据监听数据变化，更新视图</li>
 <li>对象属性新增和删除不会引发视图更新、通过数组下标修改数据也不会引发视图更新</li>
@@ -553,7 +564,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2021/10/28/vue3/" data-id="cl18zokfv0014hnqsb0963fab" data-title="vue3" class="article-share-link">Share</a>
+      <a data-url="http://example.com/2021/10/28/vue3/" data-id="cl1ekr1tx001622qsgpccdcjx" data-title="vue3" class="article-share-link">Share</a>
       
       
       
@@ -696,7 +707,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2021/10/15/React/" data-id="cl18zokfb000bhnqs37ga9jxi" data-title="React" class="article-share-link">Share</a>
+      <a data-url="http://example.com/2021/10/15/React/" data-id="cl1ekr1sz000622qsg9zoa26x" data-title="React" class="article-share-link">Share</a>
       
       
       
@@ -788,7 +799,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2021/10/15/webpack/" data-id="cl18zokfw0015hnqsgk8k12qp" data-title="" class="article-share-link">Share</a>
+      <a data-url="http://example.com/2021/10/15/webpack/" data-id="cl1ekr1ty001822qs8pds1zct" data-title="" class="article-share-link">Share</a>
       
       
       
@@ -909,7 +920,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2021/06/22/vue2/" data-id="cl18zokge001rhnqscb6j85pf" data-title="vue2" class="article-share-link">Share</a>
+      <a data-url="http://example.com/2021/06/22/vue2/" data-id="cl1ekr1tv001322qsgn1vhrfc" data-title="vue2" class="article-share-link">Share</a>
       
       
       
