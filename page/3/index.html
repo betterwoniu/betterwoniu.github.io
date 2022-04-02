@@ -71,6 +71,56 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-原型链" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2020/09/19/%E5%8E%9F%E5%9E%8B%E9%93%BE/" class="article-date">
+  <time class="dt-published" datetime="2020-09-19T01:02:13.000Z" itemprop="datePublished">2020-09-19</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E5%8E%9F%E5%9E%8B%E9%93%BE/">原型链</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2020/09/19/%E5%8E%9F%E5%9E%8B%E9%93%BE/">原型链</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h3 id="原型链"><a href="#原型链" class="headerlink" title="原型链"></a>原型链</h3><p>每个对象都有一个原型 <code> _proto_</code> ，这个原型对象还可以有自己的原型对象，以此类推形成一个原型链。查找特定的属性先在这个对象属属性中寻找，如果没有就去它的原型对象中查找，如果没有的话就从这个对象的原型对象的原型对象中查找；这个操作就被委托在原型链中，这个就是原型链。</p>
+<ol>
+<li>每个对象的都有一个<code>_proto_</code> 属性，并且指向它的<code>prototype</code> 原型对象</li>
+<li>每个构造函数都有一个<code>prototype</code>  原型对象</li>
+<li><code>prototype</code> 原型对象里的constructor函数<br>实例函数的 <code>_proto</code>  指向构造函数的<code>prototype</code>,从而实现原型链继承</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">实例对象的_proto_指向原型对象</span><br><span class="line">构造函数的prototype 指向原型对象</span><br><span class="line">构造函数通过new创建实例对象</span><br><span class="line">原型对象的contsructor指向构造函数</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2020/09/19/%E5%8E%9F%E5%9E%8B%E9%93%BE/" data-id="cl1hlw445001cf8qs7vhuhvaz" data-title="原型链" class="article-share-link">Share</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%8E%9F%E5%9E%8B%E9%93%BE/" rel="tag">原型链</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
     <article id="post-rxjs" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
     <a href="/2020/09/11/rxjs/" class="article-date">
@@ -113,7 +163,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2020/09/11/rxjs/" data-id="cl1ekr1tr000x22qs2tbl7iv3" data-title="rxjs" class="article-share-link">Share</a>
+      <a data-url="http://example.com/2020/09/11/rxjs/" data-id="cl1hlw43s000rf8qs1dspav07" data-title="rxjs" class="article-share-link">Share</a>
       
       
       
@@ -162,7 +212,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2020/09/11/typescript/" data-id="cl1ekr1tu001222qs2j0x3hp7" data-title="typescript" class="article-share-link">Share</a>
+      <a data-url="http://example.com/2020/09/11/typescript/" data-id="cl1hlw446001df8qsfmxm5yxt" data-title="typescript" class="article-share-link">Share</a>
       
       
       
@@ -244,7 +294,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2020/09/09/angular/" data-id="cl1ekr1t5000b22qsbstvgk0q" data-title="angular" class="article-share-link">Share</a>
+      <a data-url="http://example.com/2020/09/09/angular/" data-id="cl1hlw437000af8qsextm3562" data-title="angular" class="article-share-link">Share</a>
       
       
       
@@ -329,7 +379,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2020/09/09/%E7%BC%93%E5%AD%98/" data-id="cl1ekr1u5001n22qs8dh68kmh" data-title="缓存" class="article-share-link">Share</a>
+      <a data-url="http://example.com/2020/09/09/%E7%BC%93%E5%AD%98/" data-id="cl1hlw44c001nf8qsa0hk5s2f" data-title="缓存" class="article-share-link">Share</a>
       
       
       
@@ -501,7 +551,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2020/09/08/javascript/" data-id="cl1ekr1tm000r22qsalxk7ill" data-title="javascript" class="article-share-link">Share</a>
+      <a data-url="http://example.com/2020/09/08/javascript/" data-id="cl1hlw43d000hf8qshj356kc1" data-title="javascript" class="article-share-link">Share</a>
       
       
       
@@ -574,7 +624,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2020/02/28/grid%E5%92%8Cflex/" data-id="cl1ekr1to000s22qsam7pbaui" data-title="grid" class="article-share-link">Share</a>
+      <a data-url="http://example.com/2020/02/28/grid%E5%92%8Cflex/" data-id="cl1hlw43w000wf8qsg6xx24gb" data-title="grid" class="article-share-link">Share</a>
       
       
       
@@ -632,7 +682,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/03/">March 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/02/">February 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/12/">December 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/10/">October 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/06/">June 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/05/">May 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/03/">March 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/01/">January 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/12/">December 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/11/">November 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/09/">September 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/02/">February 2020</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/04/">April 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/03/">March 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/02/">February 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/12/">December 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/10/">October 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/06/">June 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/05/">May 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/03/">March 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/01/">January 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/12/">December 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/11/">November 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/09/">September 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/02/">February 2020</a></li></ul>
     </div>
   </div>
 
@@ -643,6 +693,10 @@
     <h3 class="widget-title">Recent Posts</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2022/04/02/sass/">sass</a>
+          </li>
         
           <li>
             <a href="/2022/03/23/ES6/">ES6</a>
@@ -658,10 +712,6 @@
         
           <li>
             <a href="/2022/02/25/node/">node</a>
-          </li>
-        
-          <li>
-            <a href="/2022/02/24/%E6%B5%8F%E8%A7%88%E5%99%A8/">浏览器</a>
           </li>
         
       </ul>
